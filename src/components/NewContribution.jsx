@@ -3,7 +3,7 @@ import { contributionValidationSchema } from "../validataionSchema/contributionV
 import { Formik } from "formik";
 import userServices from "../../services/userServices";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
 const NewContribution = () => {
@@ -41,7 +41,6 @@ const NewContribution = () => {
         } catch (error) {
           console.log(error);
           alert(error.response.data.message);
-          
         } finally {
           setLoading(false);
           resetForm();
@@ -56,6 +55,19 @@ const NewContribution = () => {
               backgroundColor: "#6f42c1",
             }}
           >
+            <div className="row">
+              <div className="col-md-12 text-end">
+                <FontAwesomeIcon
+                  className="btn btn-outline-light"
+                  type="button"
+                  icon={faRectangleXmark}
+                  // style={{ fontSize: "36px" }}
+                  onClick={() => {
+                    navigate("/users/contributions");
+                  }}
+                />
+              </div>
+            </div>
             <div className="row">
               <div className="col-12">
                 <div className="row text-center mt-1">

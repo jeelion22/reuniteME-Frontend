@@ -13,7 +13,7 @@ const instance = axios.create({
 
 const protectedInstance = axios.create({
   baseURL,
-  timeout: 5000,
+  // timeout: 5000,
   // headers: {
   //   "Content-Type": "application/json",
   // },

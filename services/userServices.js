@@ -43,18 +43,27 @@ const userServices = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      timeout: 30000,
+      // timeout: 50000,
     });
   },
 
   deleteImage: async (imageId) => {
-    return await protectedInstance.get(`/users/images/delete/${imageId}`, {
-      timeout: 30000,
-    });
+    return await protectedInstance.get(`/users/images/delete/${imageId}`, {});
   },
 
   getMapUrl: async (imageId) => {
     return await protectedInstance.get(`/users/maps/${imageId}`);
+  },
+  updateContribution: async (contributionId, formData) => {
+    return await protectedInstance.put(
+      `/users/update/${contributionId}`,
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
   },
 };
 

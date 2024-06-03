@@ -15,6 +15,8 @@ import Profile from "./components/Profile";
 import Contributions from "./components/Contributions";
 import ImageDetails from "./components/ImageDetails";
 import NewContribution from "./components/NewContribution";
+import UpdateSeekerData from "./components/UpdateSeekerData";
+import ContributerDashboard from "./components/ContributerDashboard";
 
 const router = createBrowserRouter([
   {
@@ -55,7 +57,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "dashboard",
-        element: <h1>Dashboard</h1>,
+        element: <ContributerDashboard />,
+        loader: UserLoader,
       },
       {
         path: "profile",
@@ -76,7 +79,12 @@ const router = createBrowserRouter([
       },
       {
         path: "contributions/new",
+        loader: UserLoader,
         element: <NewContribution />,
+      },
+      {
+        path: "contributions/edit/:imageId",
+        element: <UpdateSeekerData />,
       },
     ],
   },

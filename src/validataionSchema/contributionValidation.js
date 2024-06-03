@@ -19,10 +19,11 @@ export const contributionValidationSchema = Yup.object({
   name: Yup.string().default("NA"),
   address: Yup.string().default("NA"),
   phone: Yup.string()
-    .nullable()
+
+    .transform((value, originalValue) => (originalValue === "" ? "NA" : value))
 
     .matches(phoneRegex, "Phone number is not valid"),
 
-  description: Yup.string().nullable(),
+  description: Yup.string().default("NA"),
   file: fileSchema.required("Image of reuniteseeker should be required"),
 });
