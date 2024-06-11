@@ -1,14 +1,8 @@
 import { instance, protectedInstance } from "./instance";
 
 const userServices = {
-  register: async (firstname, lastname, email, phone, category) => {
-    return await instance.post("/users/register", {
-      firstname,
-      lastname,
-      email,
-      phone,
-      category,
-    });
+  register: async (values) => {
+    return await instance.post("/users/register", values);
   },
   verify: async (activationId) => {
     return await instance.get(`/users/verify/${activationId}`);
@@ -43,7 +37,7 @@ const userServices = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      // timeout: 50000,
+      
     });
   },
 
@@ -65,6 +59,9 @@ const userServices = {
       }
     );
   },
+  getAllContributions: async ()=>{
+    return await protectedInstance.get("users/images")
+  }
 };
 
 export default userServices;

@@ -1,13 +1,9 @@
-import "../styles/ContributorDashboard.css";
 import React from "react";
-import { useLoaderData } from "react-router-dom";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
+import "../styles/ContributorDashboard.css";
 
-const ContributorDashboard = () => {
-  const { user } = useLoaderData();
-
-  // Sample data for the charts
-  const contributions = user.data.user.contributions || [];
+const ContributorDashboard = ({ userInfo }) => {
+  const contributions = userInfo.contributions || [];
   const totalContributions = contributions.length;
   const totalRescued = contributions.filter(
     (contribution) => contribution.status === "rescued"
@@ -28,7 +24,7 @@ const ContributorDashboard = () => {
           className="col-md-12 text-center p-4 border rounded glassy-header"
           style={{ backgroundColor: "purple", color: "white" }}
         >
-          <h2>Welcome, {user.data.user.firstname}</h2>
+          <h2>Welcome, {userInfo.firstname}</h2>
           <p>Here is the summary of your contributions.</p>
         </div>
       </div>

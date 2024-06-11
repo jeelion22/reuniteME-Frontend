@@ -58,6 +58,28 @@ const Profile = () => {
                   <td>Category</td>
                   <td>{user.data.user.userCategory} </td>
                 </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>
+                    {user.data.user.address ? user.data.user.address : "NA"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Authorized Id: </td>
+                  <td>
+                    {user.data.user.authorizedIdType
+                      ? user.data.user.authorizedIdType.toUpperCase()
+                      : "NA"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Authorized Id No.</td>
+                  <td>
+                    {user.data.user.authorizedIdNo
+                      ? user.data.user.authorizedIdNo
+                      : "NA"}
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>

@@ -16,7 +16,8 @@ import Contributions from "./components/Contributions";
 import ImageDetails from "./components/ImageDetails";
 import NewContribution from "./components/NewContribution";
 import UpdateSeekerData from "./components/UpdateSeekerData";
-import ContributerDashboard from "./components/ContributerDashboard";
+import ContributerDashboard from "./components/UserDashboard";
+import UserDashboard from "./components/UserDashboard";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "dashboard",
-        element: <ContributerDashboard />,
+        element: <UserDashboard />,
         loader: UserLoader,
       },
       {
