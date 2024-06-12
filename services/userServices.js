@@ -37,7 +37,6 @@ const userServices = {
       headers: {
         "Content-Type": "multipart/form-data",
       },
-      
     });
   },
 
@@ -59,9 +58,20 @@ const userServices = {
       }
     );
   },
-  getAllContributions: async ()=>{
-    return await protectedInstance.get("users/images")
-  }
+  getAllContributions: async () => {
+    return await protectedInstance.get("users/images");
+  },
+  addVisitor: async (contributionId, formData) => {
+    return await protectedInstance.post(
+      `users/maps/location/${contributionId}`,
+      formData
+    );
+  },
+  getStatus: async (contributionId) => {
+    return await protectedInstance.get(
+      `users/contribution/status/${contributionId}`
+    );
+  },
 };
 
 export default userServices;
