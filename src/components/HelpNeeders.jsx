@@ -7,19 +7,34 @@ import userServices from "../../services/userServices";
 
 const HelpNeeders = ({ contribution }) => {
   const [showResponse, setShowResponse] = useState(false);
+  const [btnDisable, setBtnDisable] = useState(false);
 
   useEffect(() => {
     const handleStatus = async (contributionId) => {
       try {
         const response = await userServices.getStatus(contributionId);
 
-        if (response.data.message.checking) {
-          console.log(response.data.checking);
+        if (
+          response.data?.message?.checking &&
+          response.data?.message?.status === "not-rescued"
+        ) {
+          if (response.data.visitorsId === contributionId) {
+            setShowResponse(true);
+          }
 
-          setShowResponse(true);
+          setBtnDisable(true);
+        }
+
+        if (response.data.message?.status === "rescued") {
+          setBtnDisable(true);
+        }
+
+        if (contribution.status === "rescued") {
+          setBtnDisable(true);
         }
       } catch (error) {
         console.log(error);
+        alert(error.message);
       }
     };
     handleStatus(contribution._id);
@@ -93,7 +108,7 @@ const HelpNeeders = ({ contribution }) => {
           </div>
         </div>
         <div className="card-footer text-center">
-          <button className="btn" disabled={showResponse}>
+          <button className="btn" disabled={btnDisable}>
             <FontAwesomeIcon
               icon={faMapLocationDot}
               type="button"
