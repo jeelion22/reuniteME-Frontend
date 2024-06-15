@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import userServices from "../../services/userServices";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
-const UpdateReuniteSeekerStatus = () => {
+const UpdateReuniteSeekerStatus = ({ contributionId }) => {
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
   const initialValues = {
     status: "",
   };
@@ -17,9 +25,25 @@ const UpdateReuniteSeekerStatus = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={(values) => {
-        console.log(values);
-        // Handle form submission here
+      onSubmit={async (values, { resetForm }) => {
+        try {
+          setLoading(true);
+          console.log(values);
+          const response = await userServices.updateStatus(
+            contributionId,
+            values
+          );
+
+          if (response.status === 200) {
+            alert(response.data.message);
+            navigate(0);
+          }
+
+          resetForm();
+        } catch (error) {
+          console.log(error);
+          alert(error.message);
+        }
       }}
     >
       {(formik) => (
@@ -55,8 +79,12 @@ const UpdateReuniteSeekerStatus = () => {
           <ErrorMessage name="status" component="div" className="text-danger" />
 
           <div className="text-end m-2">
-            <button type="submit" className="btn btn-primary btn-sm">
-              Submit
+            <button type="submit" className="btn btn-primary">
+              {loading ? (
+                <FontAwesomeIcon icon={faSpinner} spinPulse />
+              ) : (
+                "Submit"
+              )}
             </button>
           </div>
         </Form>

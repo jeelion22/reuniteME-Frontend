@@ -20,6 +20,7 @@ const Contributions = () => {
     try {
       const response = await userServices.deleteImage(imageId);
       console.log("Image deleted successfully:", response);
+      navigate(0);
       alert(response.data.message);
     } catch (error) {
       console.log(error);

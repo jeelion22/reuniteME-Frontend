@@ -72,6 +72,10 @@ const userServices = {
       `users/contribution/status/${contributionId}`
     );
   },
+
+  updateStatus: async (contributionId, formData)=>{
+    return await protectedInstance.put(`users/contribution/status/update/${contributionId}`, formData)
+  }
 };
 
 export default userServices;

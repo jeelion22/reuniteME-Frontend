@@ -5,10 +5,17 @@ import userServices from "../../services/userServices";
 import ReactPaginate from "react-paginate";
 import ReuniteSeekerResponseForm from "./ReuniteSeekerResponseForm";
 import HelpNeeders from "./HelpNeeders";
+import { useLoaderData } from "react-router-dom";
 
 export const ReuniteSeekerDashBoard = () => {
   const [contributions, setContributions] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+
+  const { user } = useLoaderData();
+
+ 
+
+ const userId = user.data.user._id
 
   useEffect(() => {
     async function getAllContributions() {
@@ -32,15 +39,13 @@ export const ReuniteSeekerDashBoard = () => {
     setCurrentPage(data.selected);
   };
 
-
-
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-12">
           <div className="row row-cols-1 row-cols-md-3 g-4">
             {paginatedContributions.map((contribution) => (
-              <HelpNeeders key={contribution._id} contribution={contribution} />
+              <HelpNeeders key={contribution._id} contribution={contribution} userId = {userId}/>
             ))}
           </div>
         </div>

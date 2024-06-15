@@ -5,7 +5,7 @@ import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import UpdateReuniteSeekerStatus from "./UpdateReuniteSeekerStatus";
 import userServices from "../../services/userServices";
 
-const HelpNeeders = ({ contribution }) => {
+const HelpNeeders = ({ contribution, userId }) => {
   const [showResponse, setShowResponse] = useState(false);
   const [btnDisable, setBtnDisable] = useState(false);
 
@@ -14,15 +14,21 @@ const HelpNeeders = ({ contribution }) => {
       try {
         const response = await userServices.getStatus(contributionId);
 
+        console.log(response.data.message);
+
+        if (contribution.status === "rescued") {
+          setBtnDisable(true);
+          return;
+        }
+
         if (
           response.data?.message?.checking &&
           response.data?.message?.status === "not-rescued"
         ) {
-          if (response.data.visitorsId === contributionId) {
+          if (response.data.message.visitorsId === userId) {
             setShowResponse(true);
+            setBtnDisable(true);
           }
-
-          setBtnDisable(true);
         }
 
         if (response.data.message?.status === "rescued") {
@@ -64,7 +70,9 @@ const HelpNeeders = ({ contribution }) => {
           </p>
         </div>
 
-        {showResponse && <UpdateReuniteSeekerStatus />}
+        {showResponse && (
+          <UpdateReuniteSeekerStatus contributionId={contribution._id} />
+        )}
 
         <div
           className="modal fade"

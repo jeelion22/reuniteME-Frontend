@@ -26,6 +26,7 @@ const CommunityUploader = () => {
           const response = await userServices.register(values);
           alert(response.data.message);
           navigate("/users/login");
+          navigate(0);
           resetForm();
         } catch (error) {
           alert(error.response.data.message);
