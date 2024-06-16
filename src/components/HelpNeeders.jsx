@@ -14,8 +14,6 @@ const HelpNeeders = ({ contribution, userId }) => {
       try {
         const response = await userServices.getStatus(contributionId);
 
-        console.log(response.data.message);
-
         if (contribution.status === "rescued") {
           setBtnDisable(true);
           return;
@@ -28,16 +26,21 @@ const HelpNeeders = ({ contribution, userId }) => {
           if (response.data.message.visitorsId === userId) {
             setShowResponse(true);
             setBtnDisable(true);
+          } else if (response.data.message.visitorsId !== userId) {
+            setBtnDisable(true);
+          } else {
+            setShowResponse(false);
+            setBtnDisable(false);
           }
         }
 
-        if (response.data.message?.status === "rescued") {
-          setBtnDisable(true);
-        }
+        // if (response.data.message?.status === "rescued") {
+        //   setBtnDisable(true);
+        // }
 
-        if (contribution.status === "rescued") {
-          setBtnDisable(true);
-        }
+        // if (contribution.status === "rescued") {
+        //   setBtnDisable(true);
+        // }
       } catch (error) {
         console.log(error);
         alert(error.message);
