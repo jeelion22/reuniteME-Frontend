@@ -1,9 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ user }) => {
+const Sidebar = ({ userType }) => {
   const [active, setActive] = useState("Dashboard");
-  const items = ["Dashboard", "Profile", "Contributions"];
+
+  let items;
+  if (userType === "reuniteSeeker") {
+    items = ["Dashboard", "Profile"];
+  } else {
+    items = ["Dashboard", "Profile", "Contributions"];
+  }
 
   return (
     <div className="list-group" style={{ maxHeight: 100 }}>
