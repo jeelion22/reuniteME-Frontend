@@ -68,7 +68,7 @@ const UserDashboardNav = () => {
 
       <div className="row mt-5">
         <div className="col-md-3">
-          <Sidebar />
+          <Sidebar userType={user.data.user.userCategory} />
         </div>
         <div className="col">
           <Outlet />
