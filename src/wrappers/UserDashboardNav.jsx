@@ -4,9 +4,14 @@ import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
 export async function loader() {
-  const user = await userServices.getCurrentUser();
+  try {
+    const user = await userServices.getCurrentUser();
 
-  return { user };
+    return { user };
+  } catch (error) {
+    alert(error.response.data.message);
+    return null;
+  }
 }
 
 const UserDashboardNav = () => {
@@ -22,7 +27,7 @@ const UserDashboardNav = () => {
         navigate("/");
       })
       .catch((error) => {
-        alert(error.response.message);
+        alert(error.response.data.message);
       });
   };
 
@@ -49,7 +54,7 @@ const UserDashboardNav = () => {
               className="collapse navbar-collapse"
               id="navbarSupportedContent"
             >
-              <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <a className="nav-link disabled" aria-disabled="true">
                     Welcome {user.data.user.firstname} {user.data.user.lastname}

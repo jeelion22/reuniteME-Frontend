@@ -34,7 +34,6 @@ const UserLogin = () => {
                 }, 500);
               } else {
                 setIsLoading(false);
-                alert("Hi");
               }
             })
             .catch((error) => {

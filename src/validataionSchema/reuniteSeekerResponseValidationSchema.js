@@ -15,7 +15,9 @@ export const reuniteSeekerResponseValidationSchema = Yup.object().shape({
 
   meetingDate: Yup.date().required("Meeting date must be entered"),
 
-  willUpdate: Yup.string()
-    .oneOf(["yes", "no"], "You must select whether you will update or not")
-    .required("You must select whether you will update or not"),
+  willUpdate: Yup.bool().oneOf([true]),
+
+  // willUpdate: Yup.string()
+  //   .oneOf(["yes", "no"], "You must select whether you will update or not")
+  //   .required("You must select whether you will update or not"),
 });
