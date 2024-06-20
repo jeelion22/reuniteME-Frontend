@@ -13,9 +13,7 @@ export const ReuniteSeekerDashBoard = () => {
 
   const { user } = useLoaderData();
 
- 
-
- const userId = user.data.user._id
+  const userId = user.data.user._id;
 
   useEffect(() => {
     async function getAllContributions() {
@@ -24,6 +22,7 @@ export const ReuniteSeekerDashBoard = () => {
         setContributions(response.data);
       } catch (error) {
         console.log(error);
+        alert(error.response.data.message);
       }
     }
     getAllContributions();
@@ -45,7 +44,11 @@ export const ReuniteSeekerDashBoard = () => {
         <div className="col-md-12">
           <div className="row row-cols-1 row-cols-md-3 g-4">
             {paginatedContributions.map((contribution) => (
-              <HelpNeeders key={contribution._id} contribution={contribution} userId = {userId}/>
+              <HelpNeeders
+                key={contribution._id}
+                contribution={contribution}
+                userId={userId}
+              />
             ))}
           </div>
         </div>
