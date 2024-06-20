@@ -73,9 +73,23 @@ const userServices = {
     );
   },
 
-  updateStatus: async (contributionId, formData)=>{
-    return await protectedInstance.put(`users/contribution/status/update/${contributionId}`, formData)
-  }
+  updateStatus: async (contributionId, formData) => {
+    return await protectedInstance.put(
+      `users/contribution/status/update/${contributionId}`,
+      formData
+    );
+  },
+  forgotPassword: async (email) => {
+    return await instance.put("users/password/reset", email);
+  },
+
+  verifyPasswordResetLink: async (activationId) => {
+    return await instance.get(`users/password/reset/verify/${activationId}`);
+  },
+
+  resetPassword: async (userId, password) => {
+    return await instance.put(`users/password/reset/${userId}`, password);
+  },
 };
 
 export default userServices;
