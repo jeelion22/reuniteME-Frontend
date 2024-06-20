@@ -18,7 +18,7 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
     purpose: "",
     contactNo: "",
     meetingDate: "",
-    willUpdate: "",
+    willUpdate: false,
   };
 
   const navigate = useNavigate();
@@ -159,6 +159,25 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
               </div>
 
               <div className="mb-3">
+                <div className="form-check form-switch">
+                  <Field
+                    type="checkbox"
+                    name="willUpdate"
+                    className="form-check-input"
+                    id="willUpdate"
+                  />
+                  <label className="form-check-label" htmlFor="willUpdate">
+                    Once you find them, will you update or inform us?
+                  </label>
+                </div>
+                <ErrorMessage
+                  name="willUpdate"
+                  component="div"
+                  className="text-danger"
+                />
+              </div>
+
+              {/* <div className="mb-3">
                 <label htmlFor="willUpdate" className="form-label">
                   Once you find them, will you update or inform us?
                 </label>
@@ -191,14 +210,18 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
                   component="div"
                   className="text-danger"
                 />
-              </div>
+              </div> */}
 
-              <div className="d-flex justify-content-between">
-                <button type="submit" className="btn btn-primary">
+              <div className="d-flex justify-content-end">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  disabled={
+                    !formik.values.willUpdate ||
+                    Object.keys(formik.errors).length > 0
+                  }
+                >
                   Submit
-                </button>
-                <button type="button" className="btn btn-secondary">
-                  Cancel
                 </button>
               </div>
             </Form>
