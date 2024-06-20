@@ -18,6 +18,9 @@ import NewContribution from "./components/NewContribution";
 import UpdateSeekerData from "./components/UpdateSeekerData";
 import ContributerDashboard from "./components/UserDashboard";
 import UserDashboard from "./components/UserDashboard";
+import VerifyPasswordResetLink from "./components/VerifyPasswordResetLink";
+import UserPasswordReset from "./components/UserPasswordReset";
+import UserUpdate from "./components/UserUpdate";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +47,16 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/users/password/reset/verify/:activationId",
+        element: <VerifyPasswordResetLink />,
+      },
+
+      {
+        path: "/users/password/reset/verified/:userId",
+        element: <UserPasswordReset />,
+      },
+
+      {
         path: "users/login",
         element: <UserLogin />,
       },
@@ -65,6 +78,11 @@ const router = createBrowserRouter([
         path: "profile",
         loader: UserLoader,
         element: <Profile />,
+      },
+      {
+        path: "profile/update",
+        loader: UserLoader,
+        element: <UserUpdate />,
       },
       {
         path: "contributions",
