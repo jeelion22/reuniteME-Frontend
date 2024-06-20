@@ -1,10 +1,16 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
   const { user } = useLoaderData();
+
+  const navigate = useNavigate();
+
+  const handleProfileUpdate = () => {
+    navigate("update");
+  };
 
   return (
     <div className="container" style={{ backgroundColor: "#f8f9fa" }}>
@@ -35,7 +41,7 @@ const Profile = () => {
                       icon={faPenToSquare}
                       type="button"
                       className="btn btn-outline-primary "
-                      onClick={() => {}}
+                      onClick={handleProfileUpdate}
                     />
                   </td>
                 </tr>
