@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
-  const { user } = useLoaderData();
+  const [userInfo, setUserInfo] = useState({});
 
   const navigate = useNavigate();
+  const { user } = useLoaderData();
 
   const handleProfileUpdate = () => {
     navigate("update");
   };
+
+  useEffect(() => {
+    if (user) {
+      setUserInfo(user.data.user);
+    }
+  }, [user]);
 
   return (
     <div className="container" style={{ backgroundColor: "#f8f9fa" }}>
@@ -49,43 +56,37 @@ const Profile = () => {
                 <tr>
                   <td>Fullname</td>
                   <td>
-                    {user.data.user.firstname} {user.data.user.lastname}
+                    {userInfo.firstname} {userInfo.lastname}
                   </td>
                 </tr>
                 <tr>
                   <td>Email</td>
-                  <td>{user.data.user.email}</td>
+                  <td>{userInfo.email}</td>
                 </tr>
                 <tr>
                   <td>Phone</td>
-                  <td>{user.data.user.phone}</td>
+                  <td>{userInfo.phone}</td>
                 </tr>
                 <tr>
                   <td>Category</td>
-                  <td>{user.data.user.userCategory} </td>
+                  <td>{userInfo.userCategory} </td>
                 </tr>
-                <tr>
-                  <td>Address</td>
-                  <td>
-                    {user.data.user.address ? user.data.user.address : "NA"}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Authorized Id: </td>
-                  <td>
-                    {user.data.user.authorizedIdType
-                      ? user.data.user.authorizedIdType.toUpperCase()
-                      : "NA"}
-                  </td>
-                </tr>
-                <tr>
-                  <td>Authorized Id No.</td>
-                  <td>
-                    {user.data.user.authorizedIdNo
-                      ? user.data.user.authorizedIdNo
-                      : "NA"}
-                  </td>
-                </tr>
+                {["reuniteSeeker", "both"].includes(userInfo.userCategory) && (
+                  <>
+                    <tr>
+                      <td>Address</td>
+                      <td>{userInfo.address}</td>
+                    </tr>
+                    <tr>
+                      <td>Authorized Id: </td>
+                      <td>{userInfo.authorizedIdType}</td>
+                    </tr>
+                    <tr>
+                      <td>Authorized Id No.</td>
+                      <td>{userInfo.authorizedIdNo}</td>
+                    </tr>
+                  </>
+                )}
               </tbody>
             </table>
           </div>
