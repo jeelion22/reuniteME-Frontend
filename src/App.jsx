@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomeNav from "./wrappers/HomeNav";
 import UserRegister from "./components/UserRegister";
 import UserLogin from "./components/UserLogin";
-import AdminLogin from "./components/AdminLogin";
+import AdminLogin from "./components/admin/AdminLogin";
 import Home from "./components/Home";
 import VerifyAccount from "./components/VerifyAccount";
 import CreatePassword from "./components/CreatePassword";
@@ -21,6 +21,10 @@ import UserDashboard from "./components/UserDashboard";
 import VerifyPasswordResetLink from "./components/VerifyPasswordResetLink";
 import UserPasswordReset from "./components/UserPasswordReset";
 import UserUpdate from "./components/UserUpdate";
+import AdminSidebar from "./components/admin/AdminSidebar";
+import AdminDashboardNave, {
+  loader as AdminLoader,
+} from "./wrappers/AdminDashboardNave";
 
 const router = createBrowserRouter([
   {
@@ -61,6 +65,26 @@ const router = createBrowserRouter([
         element: <UserLogin />,
       },
       { path: "admins/login", element: <AdminLogin /> },
+    ],
+  },
+  {
+    path: "admins",
+    loader: AdminLoader,
+    element: <AdminDashboardNave />,
+    children: [
+      { path: "profile", element: <h1>Profile</h1> },
+      {
+        path: "users",
+        element: <h1>Users</h1>,
+      },
+      {
+        path: "contributions",
+        element: <h1>Contributions</h1>,
+      },
+      {
+        path: "dashboard",
+        element: <h1>dashboard</h1>,
+      },
     ],
   },
   {
