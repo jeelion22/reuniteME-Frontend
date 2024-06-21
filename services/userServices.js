@@ -90,6 +90,10 @@ const userServices = {
   resetPassword: async (userId, password) => {
     return await instance.put(`users/password/reset/${userId}`, password);
   },
+
+  userInfoUpdate: async (userInfo) => {
+    return await protectedInstance.put("/users/me", userInfo);
+  },
 };
 
 export default userServices;
