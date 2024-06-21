@@ -94,6 +94,16 @@ const userServices = {
   userInfoUpdate: async (userInfo) => {
     return await protectedInstance.put("/users/me", userInfo);
   },
+
+  adminLogin: async (adminCredentials) => {
+    return await protectedInstance.post("admins/login", adminCredentials);
+  },
+  getCurrentAdmin: async () => {
+    return await protectedInstance.get("admins/me");
+  },
+  adminLogout: async () => {
+    return await protectedInstance.get("/admins/logout");
+  },
 };
 
 export default userServices;
