@@ -9,11 +9,16 @@ const UserUpdate = () => {
   const { user } = useLoaderData();
   const [initialValues, setInitialValues] = useState(user.data.user);
 
+  console.log(initialValues);
+
   const navigate = useNavigate();
 
   const [selectedCategory, setSelectedCategory] = useState(
-    user.data.userCategory
+    user.data.user.userCategory
   );
+
+  console.log(selectedCategory);
+
   const [validationSchema, setValidationSchema] = useState(
     CommunityUploaderValidationSchema
   );
@@ -33,20 +38,19 @@ const UserUpdate = () => {
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      //   onSubmit={async (values, { resetForm }) => {
-      //     userServices
-      //       .register(values)
-      //       .then((response) => {
-      //         alert(response.data.message);
-      //         console.log(values);
+      onSubmit={async (values, { resetForm }) => {
+        userServices
+          .userInfoUpdate(values)
+          .then((response) => {
+            alert(response.data.message);
 
-      //         navigate("/");
-      //         resetForm();
-      //       })
-      //       .catch((error) => {
-      //         alert(error.response.data.message);
-      //       });
-      //   }}
+            navigate("/users/profile");
+            resetForm();
+          })
+          .catch((error) => {
+            alert(error.response.data.message);
+          });
+      }}
     >
       {(formik) => (
         <form onSubmit={formik.handleSubmit}>
@@ -137,7 +141,7 @@ const UserUpdate = () => {
                   </div>
                 </div>
 
-                <div className="row justify-content-center mt-3">
+                {/* <div className="row justify-content-center mt-3">
                   <div className="col-md-6">
                     <select
                       className="form-select"
@@ -164,7 +168,7 @@ const UserUpdate = () => {
                       </div>
                     ) : null}
                   </div>
-                </div>
+                </div> */}
 
                 {(selectedCategory === "reuniteSeeker" ||
                   selectedCategory === "both") && (
