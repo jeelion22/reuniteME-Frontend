@@ -33,7 +33,7 @@ const AdminLogin = () => {
                 resetForm();
 
                 setTimeout(() => {
-                  navigate("/admins/dashboard");
+                  navigate("/admins/profile");
                 }, 500);
               } else {
                 setIsLoading(false);
