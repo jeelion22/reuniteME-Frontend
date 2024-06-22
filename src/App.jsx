@@ -25,6 +25,9 @@ import AdminSidebar from "./components/admin/AdminSidebar";
 import AdminDashboardNave, {
   loader as AdminLoader,
 } from "./wrappers/AdminDashboardNave";
+import AdminProfile from "./components/admin/AdminProfile";
+import AdminLookupUsers from "./components/admin/AdminLookupUsers";
+import AdminUsersContributions from "./components/admin/AdminUsersContributions";
 
 const router = createBrowserRouter([
   {
@@ -72,14 +75,14 @@ const router = createBrowserRouter([
     loader: AdminLoader,
     element: <AdminDashboardNave />,
     children: [
-      { path: "profile", element: <h1>Profile</h1> },
+      { path: "profile", loader: AdminLoader, element: <AdminProfile /> },
       {
         path: "users",
-        element: <h1>Users</h1>,
+        element: <AdminLookupUsers />,
       },
       {
         path: "contributions",
-        element: <h1>Contributions</h1>,
+        element: <AdminUsersContributions />,
       },
       {
         path: "dashboard",
