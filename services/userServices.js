@@ -104,6 +104,13 @@ const userServices = {
   adminLogout: async () => {
     return await protectedInstance.get("/admins/logout");
   },
+
+  adminGetAllUsers: async ()=>{
+    return await protectedInstance.get("/admins/users")
+  },
+  adminGetAllContributions: async ()=>{
+    return await protectedInstance.get("/admins/users/all-contributions")
+  }
 };
 
 export default userServices;
