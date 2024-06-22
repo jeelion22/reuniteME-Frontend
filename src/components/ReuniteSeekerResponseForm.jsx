@@ -23,13 +23,12 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
 
   const navigate = useNavigate();
   const handleLocation = async (location) => {
-    console.log(location);
     try {
       const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
       window.location.href = url;
     } catch (error) {
       console.log("Error fetching Google Maps URL:", error);
-      alert(error.message);
+      alert(error.response.data.message);
     }
   };
   return (
