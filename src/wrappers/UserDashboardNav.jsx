@@ -19,16 +19,17 @@ const UserDashboardNav = () => {
 
   const { user } = useLoaderData();
 
-  const handleLogout = () => {
-    userServices
-      .logout()
-      .then((response) => {
+  const handleLogout = async () => {
+    try {
+      const response = await userServices.logout();
+
+      if (response) {
         alert(response.data.message);
         navigate("/");
-      })
-      .catch((error) => {
-        alert(error.response.data.message);
-      });
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
   };
 
   return (
@@ -61,9 +62,9 @@ const UserDashboardNav = () => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" onClick={handleLogout}>
+                  <button className="nav-link" onClick={handleLogout}>
                     Logout
-                  </Link>
+                  </button>
                 </li>
               </ul>
             </div>
