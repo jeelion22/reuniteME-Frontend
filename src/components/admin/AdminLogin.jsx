@@ -114,7 +114,7 @@ const AdminLogin = () => {
 
               <div className="row justify-content-center mt-3">
                 <div className="col-md-3">
-                  <Link to="/users/forgot-password">Forgot Password?</Link>
+                  <Link to="/admins/forgot-password">Forgot Password?</Link>
                 </div>
                 <div className="col-md-3">
                   <button type="submit" className="btn btn-primary float-end">
