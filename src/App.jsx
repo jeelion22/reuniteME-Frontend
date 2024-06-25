@@ -28,6 +28,8 @@ import AdminDashboardNave, {
 import AdminProfile from "./components/admin/AdminProfile";
 import AdminLookupUsers from "./components/admin/AdminLookupUsers";
 import AdminUsersContributions from "./components/admin/AdminUsersContributions";
+import AdminDashboard from "./components/admin/AdminDashboard";
+
 
 const router = createBrowserRouter([
   {
@@ -86,7 +88,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <h1>dashboard</h1>,
+        element: <AdminDashboard/>,
       },
     ],
   },
