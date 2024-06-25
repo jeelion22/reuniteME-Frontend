@@ -105,12 +105,15 @@ const userServices = {
     return await protectedInstance.get("/admins/logout");
   },
 
-  adminGetAllUsers: async ()=>{
-    return await protectedInstance.get("/admins/users")
+  adminGetAllUsers: async () => {
+    return await protectedInstance.get("/admins/users");
   },
-  adminGetAllContributions: async ()=>{
-    return await protectedInstance.get("/admins/users/all-contributions")
-  }
+  adminGetAllContributions: async () => {
+    return await protectedInstance.get("/admins/users/all-contributions");
+  },
+  getUsersPlotInfo: async (req, res) => {
+    return await protectedInstance.get("admins/users/plot-info");
+  },
 };
 
 export default userServices;
