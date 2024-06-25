@@ -29,7 +29,7 @@ import AdminProfile from "./components/admin/AdminProfile";
 import AdminLookupUsers from "./components/admin/AdminLookupUsers";
 import AdminUsersContributions from "./components/admin/AdminUsersContributions";
 import AdminDashboard from "./components/admin/AdminDashboard";
-
+import AdminForgotPassword from "./components/admin/AdminForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +70,10 @@ const router = createBrowserRouter([
         element: <UserLogin />,
       },
       { path: "admins/login", element: <AdminLogin /> },
+      {
+        path: "/admins/forgot-password",
+        element: <AdminForgotPassword />,
+      },
     ],
   },
   {
@@ -88,7 +92,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard",
-        element: <AdminDashboard/>,
+        element: <AdminDashboard />,
       },
     ],
   },
