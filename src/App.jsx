@@ -30,6 +30,8 @@ import AdminLookupUsers from "./components/admin/AdminLookupUsers";
 import AdminUsersContributions from "./components/admin/AdminUsersContributions";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminForgotPassword from "./components/admin/AdminForgotPassword";
+import AdminVerifyPasswordResetLink from "./components/admin/AdminVerifyPasswordResetLink";
+import AdminPasswordReset from "./components/admin/AdminPasswordReset";
 
 const router = createBrowserRouter([
   {
@@ -74,6 +76,14 @@ const router = createBrowserRouter([
         path: "/admins/forgot-password",
         element: <AdminForgotPassword />,
       },
+      {
+        path: "/admins/password/reset/verify/:activationId",
+        element: <AdminVerifyPasswordResetLink />,
+      },
+      {
+        path: "/admins/password/reset/verified/:adminId",
+        element: <AdminPasswordReset />,
+      },
     ],
   },
   {
@@ -84,6 +94,7 @@ const router = createBrowserRouter([
       { path: "profile", loader: AdminLoader, element: <AdminProfile /> },
       {
         path: "users",
+        loader: AdminLoader,
         element: <AdminLookupUsers />,
       },
       {
