@@ -12,7 +12,6 @@ const AdminProfile = () => {
 
   useEffect(() => {
     if (admin) {
-    
       setAdminInfo(admin);
     }
   }, [admin]);
@@ -77,7 +76,7 @@ const AdminProfile = () => {
 
                 <tr>
                   <td>Permissions</td>
-                  <td>{adminInfo.permissions}</td>
+                  <td>{adminInfo.permissions?.join(", ")}</td>
                 </tr>
                 <tr>
                   <td>Status</td>
