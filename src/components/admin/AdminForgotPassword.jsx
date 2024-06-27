@@ -46,7 +46,7 @@ const AdminForgotPassword = () => {
           onSubmit={async (values) => {
             try {
               setIsLoading(true);
-              const response = await userServices.forgotPassword(values);
+              const response = await userServices.adminForgotPasssword(values);
 
               if (response.status === 200) {
                 setIsLoading(false);
@@ -119,7 +119,7 @@ const AdminForgotPassword = () => {
                   <div className="create-account">
                     <span>For login your account? </span>
                     <span>
-                      <Link to={"/users/login"}>Click Here</Link>
+                      <Link to={"/admins/login"}>Click Here</Link>
                     </span>
                   </div>
                 </div>
