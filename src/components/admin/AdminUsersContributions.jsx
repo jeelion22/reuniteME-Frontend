@@ -88,7 +88,7 @@ const AdminUsersContributions = () => {
                             aria-labelledby={contribution._id.toString()}
                             aria-hidden="true"
                           >
-                            <div className="modal-dialog">
+                            <div className="modal-dialog modal-dialog-scrollable">
                               <div className="modal-content">
                                 <div className="modal-header">
                                   <h1
