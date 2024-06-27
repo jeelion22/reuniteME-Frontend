@@ -114,6 +114,31 @@ const userServices = {
   getUsersPlotInfo: async (req, res) => {
     return await protectedInstance.get("admins/users/plot-info");
   },
+
+  adminForgotPasssword: async (email) => {
+    return await instance.put("admins/password/reset", email);
+  },
+
+  adminVerifyPasswordResetLink: async (activationId) => {
+    return await instance.get(`admins/password/reset/verify/${activationId}`);
+  },
+
+  adminResetPassword: async (adminId, password) => {
+    return await instance.put(`admins/password/reset/${adminId}`, password);
+  },
+  adminEditUserData: async (userId, userData) => {
+    return await protectedInstance.put(
+      `admins/users/update/${userId}`,
+      userData
+    );
+  },
+  adminDeleteUser: async (userId) => {
+    return await protectedInstance.delete(`admins/users/${userId}`);
+  },
+
+  adminActivateUser: async (userId) => {
+    return await protectedInstance.get(`admins/users/activate/${userId}`);
+  },
 };
 
 export default userServices;
