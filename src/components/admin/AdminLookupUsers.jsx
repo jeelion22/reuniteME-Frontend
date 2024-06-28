@@ -32,8 +32,6 @@ const AdminLookupUsers = () => {
 
       alert("User deleted successfully");
       getAllUsers();
-
-      
     } catch (error) {
       alert(error.response.data.message);
     }
@@ -198,15 +196,6 @@ const AdminLookupUsers = () => {
                                         user={user}
                                         key={user._id.toString()}
                                       />
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button
-                                        type="button"
-                                        class="btn btn-secondary"
-                                        data-bs-dismiss="modal"
-                                      >
-                                        Close
-                                      </button>
                                     </div>
                                   </div>
                                 </div>
