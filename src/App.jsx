@@ -32,6 +32,8 @@ import AdminDashboard from "./components/admin/AdminDashboard";
 import AdminForgotPassword from "./components/admin/AdminForgotPassword";
 import AdminVerifyPasswordResetLink from "./components/admin/AdminVerifyPasswordResetLink";
 import AdminPasswordReset from "./components/admin/AdminPasswordReset";
+import CreateAdmin from "./components/admin/CreateAdmin";
+import AdminsList from "./components/admin/AdminsList";
 
 const router = createBrowserRouter([
   {
@@ -104,6 +106,15 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: <AdminDashboard />,
+      },
+      {
+        path: "create-admin",
+        element: <CreateAdmin />,
+      },
+      {
+        path: "admins-list",
+        loader: AdminLoader,
+        element: <AdminsList />,
       },
     ],
   },
