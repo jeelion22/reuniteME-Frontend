@@ -139,6 +139,23 @@ const userServices = {
   adminActivateUser: async (userId) => {
     return await protectedInstance.get(`admins/users/activate/${userId}`);
   },
+
+  createAdmin: async (adminInfo) => {
+    return await protectedInstance.post("admins/create-admin", adminInfo);
+  },
+
+  getAllAdmins: async () => {
+    return await protectedInstance.get("admins/get-all-admins");
+  },
+  updateAdmin: async (adminId, adminData) => {
+    return await protectedInstance.put(
+      `admins/update/admin/${adminId}`,
+      adminData
+    );
+  },
+  deleteAdmin: async (adminId) => {
+    return await protectedInstance.delete(`admins/delete/admin/${adminId}`);
+  },
 };
 
 export default userServices;
