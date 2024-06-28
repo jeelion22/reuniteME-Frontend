@@ -1,5 +1,7 @@
 import * as Yup from "yup";
 
+const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+
 export const userRegistrationValidationSchema = Yup.object({
   firstname: Yup.string()
     .min(3, "* First name must be atleast 3 characters.")
@@ -12,7 +14,9 @@ export const userRegistrationValidationSchema = Yup.object({
   email: Yup.string()
     .email("* Invalid email address.")
     .required("* Email address should not be empty."),
-  phone: Yup.string().required("* Phone number should not be empty"),
-  userCategory: Yup.string().required("* Please select user category"),
+
+  phone: Yup.string()
+    .transform((value, originalValue) => (originalValue === "" ? "NA" : value))
+    .matches(phoneRegex, "Phone number is not valid"),
   // .default("community uploader"),
 });
