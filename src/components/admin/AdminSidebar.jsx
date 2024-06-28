@@ -1,10 +1,29 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const AdminSidebar = () => {
-  const [active, setActive] = useState("Profile");
+const AdminSidebar = ({ admin }) => {
+  const [active, setActive] = useState("Dashboard");
 
-  const items = ["Profile", "Users", "Contributions", "Dashboard"];
+  const requiredPermissions = ["read", "write", "update", "delete"];
+
+  const isAdminAuthorized = requiredPermissions.every((permission) =>
+    admin.permissions.includes(permission)
+  );
+
+  let items;
+
+  if (isAdminAuthorized) {
+    items = [
+      "Dashboard",
+      "Contributions",
+      "Users",
+      "Create-Admin",
+      "Admins-List",
+      "Profile",
+    ];
+  } else {
+    items = ["Dashboard", "Contributions", "Users", "Profile"];
+  }
 
   return (
     <div className="list-group" style={{ maxHeight: 100 }}>
