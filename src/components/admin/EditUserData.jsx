@@ -51,7 +51,7 @@ const EditUserData = ({ user }) => {
                 className="col border rounded p-4"
                 style={{ backgroundColor: "#f8f9fa" }}
               >
-                <div className="row justify-content-center mt-4">
+                <div className="row justify-content-center mt-2">
                   <div className="col">
                     <input
                       type="text"
