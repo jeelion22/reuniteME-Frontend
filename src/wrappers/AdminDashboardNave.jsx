@@ -74,7 +74,7 @@ const AdminDashboardNave = () => {
 
       <div className="row mt-5">
         <div className="col-md-3">
-          <AdminSidebar />
+          <AdminSidebar admin = {admin} />
         </div>
         <div className="col">
           <Outlet />
