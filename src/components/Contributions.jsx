@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { Outlet, useLoaderData, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPenToSquare,
-  faTrashCan,
-  faRectangleXmark,
-} from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import userServices from "../../services/userServices";
 import EditSeekerData from "./EditSeekerData";
 import ReactPaginate from "react-paginate";
+import ImageDetails from "./ImageDetails";
 
 const Contributions = () => {
   const { user } = useLoaderData();
@@ -44,8 +41,9 @@ const Contributions = () => {
     <>
       <div className="container">
         <div className="row">
+          {/* <div className="col"> */}
           <div
-            className="col-md-12 border rounded text-center p-4"
+            className="border rounded text-center p-4"
             style={{ backgroundColor: "purple", color: "white" }}
           >
             <h5>To make a new contribution, please </h5>
@@ -57,87 +55,143 @@ const Contributions = () => {
             >
               Click ME!
             </button>
+            {/* </div> */}
           </div>
         </div>
 
         <div className="row">
-          <div className="col-md-12">
-            {contributions.length === 0 ? (
-              <div className="col-md-12 contribution-status text-center mt-5">
-                <p>***Not yet contributed***</p>
-              </div>
-            ) : (
-              <ol className="list-group  mt-2">
-                {paginatedContributions.map((contribution, index) => {
-                  const itemNumber = currentPage * itemsPerPage + index + 1;
-                  return (
-                    <>
-                      <li
-                        className="list-group-item d-flex justify-content-around align-items-center"
-                        key={contribution._id.toString()}
-                      >
-                        <span>{itemNumber}. </span>
-                        <Link to={`${contribution._id.toString()}`}>
-                          {contribution.key.split("/")[1]}
-                        </Link>
+          {/* <div className="col-md-12 col-sm-12"> */}
+          {contributions.length === 0 ? (
+            <div className="text-center mt-5">
+              <p>***Not yet contributed***</p>
+            </div>
+          ) : (
+            <div className="table-responsive">
+              <table className="table  table-hover  mt-2">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">File</th>
+                    <th scope="col">Size</th>
+                    <th scope="col">DoU</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Manage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {paginatedContributions.map((contribution, index) => {
+                    const itemNumber = currentPage * itemsPerPage + index + 1;
+                    return (
+                      <>
+                        <tr key={contribution._id.toString()}>
+                          <td scope="row">{itemNumber}</td>
+                          <td>
+                            <button
+                              type="button"
+                              className="btn btn-outline-primary"
+                              data-bs-toggle="modal"
+                              data-bs-target={`#${contribution._id.toString()}`}
+                            >
+                              {contribution.key.split("/")[1]}
+                            </button>
+                          </td>
+                          <td>
+                            {(contribution.fileSize / (1024 * 1024)).toFixed(2)}
+                            MB
+                          </td>
+                          <td>{contribution.uploadDate.split("T")[0]}</td>
+                          <td>{contribution.status}</td>
+                          <td>
+                            <div className="d-flex gap-2">
+                              <FontAwesomeIcon
+                                icon={faPenToSquare}
+                                type="button"
+                                className="btn btn-outline-primary"
+                                onClick={() => {
+                                  setEdit(contribution._id.toString());
+                                }}
+                              />
+                              <FontAwesomeIcon
+                                className="btn btn-outline-danger"
+                                icon={faTrashCan}
+                                type="button"
+                                onClick={() => {
+                                  handleDelete(contribution._id.toString());
+                                }}
+                              />
+                            </div>
+                          </td>
+                        </tr>
 
-                        <div className="d-flex justify-content-end gap-2">
-                          <FontAwesomeIcon
-                            icon={faPenToSquare}
-                            type="button"
-                            className="btn btn-outline-primary"
-                            onClick={() => {
-                              setEdit(contribution._id.toString());
-                            }}
-                          />
-
-                          <FontAwesomeIcon
-                            className="btn btn-outline-danger"
-                            icon={faTrashCan}
-                            type="button"
-                            onClick={() => {
-                              handleDelete(contribution._id.toString());
-                            }}
-                          />
+                        <div
+                          class="modal fade"
+                          id={contribution._id.toString()}
+                          tabIndex="-1"
+                          aria-labelledby={contribution._id.toString()}
+                          aria-hidden="true"
+                        >
+                          <div class="modal-dialog modal-dialog-scrollable rounded">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1
+                                  class="modal-title fs-5"
+                                  id={contribution._id.toString()}
+                                >
+                                  Details of Uploads
+                                </h1>
+                                <button
+                                  type="button"
+                                  class="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div class="modal-body">
+                                <ImageDetails
+                                  contributionId={contribution._id.toString()}
+                                  key={contribution._id.toString()}
+                                />
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </li>
-                      {edit === contribution._id.toString() && (
-                        <EditSeekerData
-                          setEdit={setEdit}
-                          contribution={contribution}
-                        />
-                      )}
-                    </>
-                  );
-                })}
-              </ol>
-            )}
-          </div>
-          <div className="col-md-6">
-            <Outlet />
-          </div>
-        </div>
 
-        <ReactPaginate
-          previousLabel="previous"
-          nextLabel="next"
-          breakLabel="..."
-          pageCount={Math.ceil(contributions.length / itemsPerPage)}
-          marginPagesDisplayed={2}
-          pageRangeDisplayed={3}
-          className="pagination justify-content-center mt-4"
-          pageClassName="page_item"
-          pageLinkClassName="page-link"
-          previousClassName="page-item"
-          previousLinkClassName="page-link"
-          nextClassName="page-item"
-          nextLinkClassName="page-link"
-          breakClassName="page-item"
-          breakLinkClassName="page-link"
-          activeClassName="active"
-          onPageChange={handlePageClick}
-        />
+                        {/* Uncomment below for inline editing */}
+                        {/* {edit === contribution._id.toString() && (
+                          <EditSeekerData
+                            setEdit={setEdit}
+                            contribution={contribution}
+                          />
+                        )} */}
+                      </>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+          {/* </div> */}
+        </div>
       </div>
+      <ReactPaginate
+        previousLabel="previous"
+        nextLabel="next"
+        breakLabel="..."
+        pageCount={Math.ceil(contributions.length / itemsPerPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        className="pagination justify-content-center mt-4"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        activeClassName="active"
+        onPageChange={handlePageClick}
+      />
     </>
   );
 };

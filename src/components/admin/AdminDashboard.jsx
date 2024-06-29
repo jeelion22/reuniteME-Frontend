@@ -35,13 +35,9 @@ const AdminDashboard = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-12 col-lg-6 col-sm-12">
+        <div className="col-sm-12 col-md-12 col-lg-6 p-2 border rounded">
           <div style={{ position: "relative" }}>
-            <ResponsiveContainer
-              className="border rounded pt-1"
-              width="100%"
-              height={400}
-            >
+            <ResponsiveContainer width="100%" height={400}>
               <BarChart
                 width={730}
                 height={250}
@@ -93,13 +89,9 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-12 col-lg-6 col-sm-12">
+        <div className="col-sm-12 col-md-12 col-lg-6 p-2 border rounded">
           <div style={{ position: "relative" }}>
-            <ResponsiveContainer
-              className="border rounded pt-1"
-              width="100%"
-              height={400}
-            >
+            <ResponsiveContainer width="100%" height={400}>
               <BarChart
                 width={730}
                 height={250}
@@ -137,8 +129,8 @@ const AdminDashboard = () => {
               className="text-body-secondary"
               style={{
                 position: "absolute",
-                top: 10,
-                right: 10,
+                top: 5,
+                right: 5,
                 padding: "10px",
                 backgroundColor: "white",
                 border: "1px solid #ccc",

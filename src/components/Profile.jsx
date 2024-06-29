@@ -23,7 +23,7 @@ const Profile = () => {
     <div className="container" style={{ backgroundColor: "#f8f9fa" }}>
       <div className="row justify-content-center ">
         <div
-          className="col-md-8 col-sm-12 border rounded p-4 m-4"
+          className="col-md-8 col-sm-12 border rounded p-4"
           style={{ backgroundColor: "white" }}
         >
           <div className="col-md-12 ">

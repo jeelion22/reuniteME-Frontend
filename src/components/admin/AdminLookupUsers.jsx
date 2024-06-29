@@ -85,142 +85,145 @@ const AdminLookupUsers = () => {
     <>
       <div className="container">
         <div className="row">
-          <div className="col">
-            <div className="table-responsive">
-              <table className="table align-middle">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Fullname</th>
-                    <th scope="col">Email</th>
+          <h4 className="text-center border rounded p-2">List of Users </h4>
+        </div>
 
-                    <th scope="col">Phone</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">isActive</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {paginatedUsersList.map((user, index) => {
-                    const itemNumber = currentPage * itemsPerPage + index + 1;
-                    return (
-                      <tr key={user._id.toString()}>
-                        <th scope="row">{itemNumber}</th>
-                        <td>
-                          {user.firstname} {user.lastname}
-                        </td>
-                        <td>
-                          {user.email}
-                          {user.isEmailVerified ? (
-                            <FontAwesomeIcon
-                              icon={faSquareCheck}
-                              className="text-success ms-1"
-                            />
-                          ) : (
-                            <FontAwesomeIcon
-                              icon={faRectangleXmark}
-                              className="text-danger ms-1"
-                            />
-                          )}
-                        </td>
+        <div className="row border rounded mt-2">
+          <div className="table-responsive ">
+            <table className="table table-hover align-middle">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fullname</th>
+                  <th scope="col">Email</th>
 
-                        <td>
-                          {user.phone}
-                          {user.isPhoneVerified ? (
+                  <th scope="col">Phone</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">isActive</th>
+                  <th scope="col">Manage</th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginatedUsersList.map((user, index) => {
+                  const itemNumber = currentPage * itemsPerPage + index + 1;
+                  return (
+                    <tr key={user._id.toString()}>
+                      <th scope="row">{itemNumber}</th>
+                      <td>
+                        {user.firstname} {user.lastname}
+                      </td>
+                      <td>
+                        {user.email}
+                        {user.isEmailVerified ? (
+                          <FontAwesomeIcon
+                            icon={faSquareCheck}
+                            className="text-success ms-1"
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={faRectangleXmark}
+                            className="text-danger ms-1"
+                          />
+                        )}
+                      </td>
+
+                      <td>
+                        {user.phone}
+                        {user.isPhoneVerified ? (
+                          <FontAwesomeIcon
+                            icon={faSquareCheck}
+                            className="text-success ms-1"
+                          />
+                        ) : (
+                          <FontAwesomeIcon
+                            icon={faRectangleXmark}
+                            className="text-danger ms-1"
+                          />
+                        )}
+                      </td>
+                      <td>{user.userCategory}</td>
+                      <td>
+                        {user.isActive.toString()}
+                        {user.isEmailVerified && !user.isActive && (
+                          <FontAwesomeIcon
+                            type="button"
+                            icon={faToggleOff}
+                            className="text-primary ms-1"
+                            onClick={() => {
+                              handleUserStatus(
+                                `${user.firstname} ${user.lastname}`,
+                                user._id.toString()
+                              );
+                            }}
+                          />
+                        )}
+                      </td>
+
+                      {adminInfo.permissions.includes(
+                        "write" || "delete" || "update"
+                      ) && (
+                        <td className="text-end">
+                          <div className="d-flex justify-content-end gap-2">
                             <FontAwesomeIcon
-                              icon={faSquareCheck}
-                              className="text-success ms-1"
-                            />
-                          ) : (
-                            <FontAwesomeIcon
-                              icon={faRectangleXmark}
-                              className="text-danger ms-1"
-                            />
-                          )}
-                        </td>
-                        <td>{user.userCategory}</td>
-                        <td>
-                          {user.isActive.toString()}
-                          {user.isEmailVerified && !user.isActive && (
-                            <FontAwesomeIcon
+                              icon={faPenToSquare}
                               type="button"
-                              icon={faToggleOff}
-                              className="text-primary ms-1"
-                              onClick={() => {
-                                handleUserStatus(
-                                  `${user.firstname} ${user.lastname}`,
-                                  user._id.toString()
-                                );
-                              }}
+                              className="btn btn-outline-primary"
+                              data-bs-toggle="modal"
+                              data-bs-target={`#${user._id.toString()}`}
                             />
-                          )}
-                        </td>
 
-                        {adminInfo.permissions.includes(
-                          "write" || "delete" || "update"
-                        ) && (
-                          <td className="text-end">
-                            <div className="d-flex justify-content-end gap-2">
-                              <FontAwesomeIcon
-                                icon={faPenToSquare}
-                                type="button"
-                                className="btn btn-outline-primary"
-                                data-bs-toggle="modal"
-                                data-bs-target={`#${user._id.toString()}`}
-                              />
-
-                              <div
-                                class="modal fade"
-                                id={user._id.toString()}
-                                tabIndex="-1"
-                                aria-labelledby={`${user._id.toString()}`}
-                                aria-hidden="true"
-                              >
-                                <div class="modal-dialog modal-dialog-scrollable">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h1
-                                        class="modal-title fs-5"
-                                        id={`${user._id.toString()}`}
-                                      >
-                                        User Profile Update
-                                      </h1>
-                                      <button
-                                        type="button"
-                                        class="btn-close"
-                                        data-bs-dismiss="modal"
-                                        aria-label="Close"
-                                      ></button>
-                                    </div>
-                                    <div class="modal-body">
-                                      <EditUserData
-                                        user={user}
-                                        key={user._id.toString()}
-                                      />
-                                    </div>
+                            <div
+                              class="modal fade"
+                              id={user._id.toString()}
+                              tabIndex="-1"
+                              aria-labelledby={`${user._id.toString()}`}
+                              aria-hidden="true"
+                            >
+                              <div class="modal-dialog modal-dialog-scrollable">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h1
+                                      class="modal-title fs-5"
+                                      id={`${user._id.toString()}`}
+                                    >
+                                      User Profile Update
+                                    </h1>
+                                    <button
+                                      type="button"
+                                      class="btn-close"
+                                      data-bs-dismiss="modal"
+                                      aria-label="Close"
+                                    ></button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <EditUserData
+                                      user={user}
+                                      key={user._id.toString()}
+                                    />
                                   </div>
                                 </div>
                               </div>
-
-                              <button
-                                className="btn btn-outline-danger"
-                                type="button"
-                                disabled={!user.isActive}
-                                aria-disabled="true"
-                                onClick={() => {
-                                  handleUserDelete(user._id.toString());
-                                }}
-                              >
-                                <FontAwesomeIcon icon={faTrashCan} />
-                              </button>
                             </div>
-                          </td>
-                        )}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+
+                            <button
+                              className="btn btn-outline-danger"
+                              type="button"
+                              disabled={!user.isActive}
+                              aria-disabled="true"
+                              onClick={() => {
+                                handleUserDelete(user._id.toString());
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faTrashCan} />
+                            </button>
+                          </div>
+                        </td>
+                      )}
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ const AdminSidebar = ({ admin }) => {
   }
 
   return (
-    <div className="list-group" style={{ maxHeight: 100 }}>
+    <div className="list-group mb-2">
       {items.map((item, index) => (
         <Link
           key={index}

@@ -48,9 +48,15 @@ const AdminUsersContributions = () => {
     <>
       <div className="container">
         <div className="row">
+          <h4 className="text-center border rounded p-2">
+            List of Contributions
+          </h4>
+        </div>
+
+        <div className="row border rounded">
           <div className="col">
             <div className="table-responsive">
-              <table className="table align-middle">
+              <table className="table table-hover align-middle">
                 <thead>
                   <tr>
                     <th scope="col">#</th>

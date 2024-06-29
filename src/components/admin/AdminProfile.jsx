@@ -20,7 +20,7 @@ const AdminProfile = () => {
     <div className="container" style={{ backgroundColor: "#f8f9fa" }}>
       <div className="row justify-content-center ">
         <div
-          className="col-md-8 col-sm-12 border rounded p-4 m-4"
+          className="col-md-8 col-sm-12 border rounded p-4 m-2"
           style={{ backgroundColor: "white" }}
         >
           <div className="col-md-12 ">
@@ -39,7 +39,7 @@ const AdminProfile = () => {
               </thead>
 
               <tbody>
-                <tr>
+                {/* <tr>
                   <td colSpan={3} className="text-end">
                     <FontAwesomeIcon
                       icon={faPenToSquare}
@@ -48,7 +48,7 @@ const AdminProfile = () => {
                       onClick={handleProfileUpdate}
                     />
                   </td>
-                </tr>
+                </tr> */}
 
                 <tr>
                   <td>Username</td>
