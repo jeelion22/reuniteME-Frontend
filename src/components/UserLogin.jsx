@@ -71,65 +71,75 @@ const UserLogin = () => {
 
           return (
             <form onSubmit={formik.handleSubmit}>
-              <div className="row justify-content-center text-center mt-4">
-                <div className="col-md-6">
-                  <h4>Log In</h4>
-                </div>
-              </div>
-
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-6">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
-                    aria-label="email"
-                    id="email"
-                    {...formik.getFieldProps("email")}
-                  />
-                  {formik.touched.email && formik.errors.email && (
-                    <div className="text-danger">{formik.errors.email}</div>
-                  )}
-                </div>
-              </div>
-
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-6">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    aria-label="password"
-                    id="password"
-                    {...formik.getFieldProps("password")}
-                  />
-                  {formik.touched.password && formik.errors.password && (
-                    <div className="text-danger">{formik.errors.password}</div>
-                  )}
-                </div>
-              </div>
-
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-3">
-                  <Link to="/users/forgot-password">Forgot Password?</Link>
-                </div>
-                <div className="col-md-3">
-                  <button type="submit" className="btn btn-primary float-end">
-                    Log in
-                  </button>
-                </div>
-              </div>
-
-              <div className="row justify-content-center mt-5">
-                <div className="col-md-6 text-center">
-                  <span>or</span>
-                </div>
-              </div>
-
-              <div className="row justify-content-center">
-                <div className="col-md-6 text-center">
-                  <span>For create an account </span>
-                  <Link to="/users/register">Click Here</Link>
+              <div className="container">
+                <div className="row  mt-2 p-2">
+                  <div className="col border rounded">
+                    <div className="row justify-content-center text-center mt-4">
+                      <div className="col-md-6">
+                        <h4>Log In</h4>
+                      </div>
+                    </div>
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-md-6">
+                        <input
+                          type="email"
+                          className="form-control"
+                          placeholder="Email"
+                          aria-label="email"
+                          id="email"
+                          {...formik.getFieldProps("email")}
+                        />
+                        {formik.touched.email && formik.errors.email && (
+                          <div className="text-danger">
+                            {formik.errors.email}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-md-6">
+                        <input
+                          type="password"
+                          className="form-control"
+                          placeholder="Password"
+                          aria-label="password"
+                          id="password"
+                          {...formik.getFieldProps("password")}
+                        />
+                        {formik.touched.password && formik.errors.password && (
+                          <div className="text-danger">
+                            {formik.errors.password}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-md-3">
+                        <Link to="/users/forgot-password">
+                          Forgot Password?
+                        </Link>
+                      </div>
+                      <div className="col-md-3">
+                        <button
+                          type="submit"
+                          className="btn btn-primary float-end"
+                        >
+                          Log in
+                        </button>
+                      </div>
+                    </div>
+                    <div className="row justify-content-center mt-4">
+                      <div className="col-md-6 text-center">
+                        <span>or</span>
+                      </div>
+                    </div>
+                    <div className="row justify-content-center mt-3 mb-3">
+                      <div className="col-md-6 text-center">
+                        <span>For create an account </span>{" "}
+                        <Link to="/users/register">Click Here</Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>

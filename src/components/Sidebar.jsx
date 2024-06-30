@@ -12,9 +12,10 @@ const Sidebar = ({ userType }) => {
   }
 
   return (
-    <div className="list-group mb-2">
+    <div className="list-group mb-2" id="user-list-scroll">
       {items.map((item, index) => (
         <Link
+          id={item.toLowerCase()}
           key={index}
           to={`${item.toLowerCase()}`}
           className={`list-group-item list-group-item-action ${

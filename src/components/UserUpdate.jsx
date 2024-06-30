@@ -54,7 +54,7 @@ const UserUpdate = () => {
     >
       {(formik) => (
         <form onSubmit={formik.handleSubmit}>
-          <div className="container-md-6">
+          <div className="container">
             <div className="row">
               <div
                 className="col border rounded p-4"
@@ -109,21 +109,6 @@ const UserUpdate = () => {
                     ) : null}
                   </div>
                 </div>
-                {/* <div className="row justify-content-center mt-3">
-                  <div className="col-md-6">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Email"
-                      aria-label="email"
-                      id="email"
-                      {...formik.getFieldProps("email")}
-                    />
-                    {formik.touched.email && formik.errors.email ? (
-                      <div className="text-danger">{formik.errors.email}</div>
-                    ) : null}
-                  </div>
-                </div> */}
 
                 <div className="row justify-content-center mt-3">
                   <div className="col-md-6">
@@ -140,35 +125,6 @@ const UserUpdate = () => {
                     ) : null}
                   </div>
                 </div>
-
-                {/* <div className="row justify-content-center mt-3">
-                  <div className="col-md-6">
-                    <select
-                      className="form-select"
-                      aria-label="category"
-                      {...formik.getFieldProps("userCategory")}
-                      onChange={(e) => {
-                        formik.handleChange(e);
-                        setSelectedCategory(e.target.value);
-                      }}
-                    >
-                      <option value="" disabled>
-                        Select category
-                      </option>
-                      <option value="communityUploader">
-                        Community Uploader
-                      </option>
-                      <option value="reuniteSeeker">Reunite Seeker</option>
-                      <option value="both">Both</option>
-                    </select>
-                    {formik.touched.userCategory &&
-                    formik.errors.userCategory ? (
-                      <div className="text-danger">
-                        {formik.errors.userCategory}
-                      </div>
-                    ) : null}
-                  </div>
-                </div> */}
 
                 {(selectedCategory === "reuniteSeeker" ||
                   selectedCategory === "both") && (

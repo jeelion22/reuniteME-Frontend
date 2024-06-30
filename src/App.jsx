@@ -34,6 +34,7 @@ import AdminVerifyPasswordResetLink from "./components/admin/AdminVerifyPassword
 import AdminPasswordReset from "./components/admin/AdminPasswordReset";
 import CreateAdmin from "./components/admin/CreateAdmin";
 import AdminsList from "./components/admin/AdminsList";
+import Footer from "./wrappers/Footer";
 
 const router = createBrowserRouter([
   {
@@ -165,7 +166,12 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <RouterProvider router={router} />
+      <Footer />
+    </>
+  );
 }
 
 export default App;

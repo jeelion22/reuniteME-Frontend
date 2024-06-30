@@ -52,17 +52,17 @@ const UserRegister = () => {
     >
       {(formik) => (
         <form onSubmit={formik.handleSubmit}>
-          <div className="container-md-6 p-5">
-            <div className="row">
+          <div className="container">
+            <div className="row border rounded p-4 mt-2 ">
               <div className="col">
-                <div className="row justify-content-center text-center mt-4">
-                  <div className="col-md-6">
+                <div className="row text-center">
+                  <div className="col">
                     <h4>Register</h4>
                   </div>
                 </div>
 
                 <div className="row justify-content-center mt-4">
-                  <div className="col-md-3">
+                  <div className="col">
                     <input
                       type="text"
                       className="form-control"
@@ -77,7 +77,7 @@ const UserRegister = () => {
                       </div>
                     ) : null}
                   </div>
-                  <div className="col-md-3">
+                  <div className="col">
                     <input
                       type="text"
                       className="form-control"
@@ -94,7 +94,7 @@ const UserRegister = () => {
                   </div>
                 </div>
                 <div className="row justify-content-center mt-3">
-                  <div className="col-md-6">
+                  <div className="col">
                     <input
                       type="email"
                       className="form-control"
@@ -110,7 +110,7 @@ const UserRegister = () => {
                 </div>
 
                 <div className="row justify-content-center mt-3">
-                  <div className="col-md-6">
+                  <div className="col">
                     <input
                       type="text"
                       className="form-control"
@@ -126,7 +126,7 @@ const UserRegister = () => {
                 </div>
 
                 <div className="row justify-content-center mt-3">
-                  <div className="col-md-6">
+                  <div className="col">
                     <select
                       className="form-select"
                       aria-label="category"
@@ -158,7 +158,7 @@ const UserRegister = () => {
                   selectedCategory === "both") && (
                   <>
                     <div className="row justify-content-center mt-3">
-                      <div className="col-md-6">
+                      <div className="col">
                         <input
                           type="text"
                           className="form-control"
@@ -176,7 +176,7 @@ const UserRegister = () => {
                     </div>
 
                     <div className="row justify-content-center mt-3">
-                      <div className="col-md-6">
+                      <div className="col">
                         <select
                           className="form-select"
                           aria-label="authorizedIdType"
@@ -203,7 +203,7 @@ const UserRegister = () => {
                       </div>
                     </div>
                     <div className="row justify-content-center mt-3">
-                      <div className="col-md-6">
+                      <div className="col">
                         <input
                           type="text"
                           className="form-control"
@@ -228,21 +228,18 @@ const UserRegister = () => {
                   </>
                 )}
 
-                <div className="row justify-content-center mt-3">
-                  <div className="col-md-3 d-flex">
-                    <div className="existing-account">
-                      <span>Already have an account? </span>
-                      <span>
-                        <Link to={"/users/login"}>Log In</Link>
-                      </span>
-                    </div>
+                <div className="row justify-content-around mt-3">
+                  <div className="col-auto p-1">
+                    <span>Already have an account? </span>
+                    <span>
+                      <Link to={"/users/login"}>Log In</Link>
+                    </span>
                   </div>
-                  <div className="col-md-3 justify-content-end">
-                    <div className=" d-flex justify-content-end">
-                      <button type="submit" className="btn btn-primary">
-                        Create An Account
-                      </button>
-                    </div>
+
+                  <div className="col-auto p-1">
+                    <button type="submit" className="btn btn-primary">
+                      Create An Account
+                    </button>
                   </div>
                 </div>
               </div>

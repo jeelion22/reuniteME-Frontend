@@ -33,14 +33,6 @@ const HelpNeeders = ({ contribution, userId }) => {
             setBtnDisable(false);
           }
         }
-
-        // if (response.data.message?.status === "rescued") {
-        //   setBtnDisable(true);
-        // }
-
-        // if (contribution.status === "rescued") {
-        //   setBtnDisable(true);
-        // }
       } catch (error) {
         console.log(error);
         alert(error.message);
@@ -50,12 +42,15 @@ const HelpNeeders = ({ contribution, userId }) => {
   }, [contribution._id]);
 
   return (
-    <div className="col" key={contribution._id}>
+    <div className="col " key={contribution._id}>
       <div className="card h-100">
         <img
           src={contribution.url}
           className="card-img-top img-thumbnail img-fluid"
-          alt="..."
+          type="button"
+          data-bs-toggle="modal"
+          data-bs-target={`#${contribution._id.toString()}`}
+          alt={contribution.name}
           style={{
             width: "100%",
             height: "200px",
@@ -103,21 +98,41 @@ const HelpNeeders = ({ contribution, userId }) => {
               <div className="modal-body">
                 <ReuniteSeekerResponseForm contribution={contribution} />
               </div>
-              {/* <div className="modal-footer">
-                          <button
-                            type="button"
-                            className="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                          >
-                            Close
-                          </button>
-                          <button type="button" className="btn btn-primary">
-                            Save changes
-                          </button>
-                        </div> */}
             </div>
           </div>
         </div>
+        {/* for img modal */}
+
+        <div
+          class="modal fade"
+          id={contribution._id}
+          tabIndex="-1"
+          aria-labelledby={contribution._id}
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id={contribution._id}>
+                  Picture of help needer
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <img
+                  src={contribution.url}
+                  className="img-thumbnail img-fluid"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="card-footer text-center">
           <button className="btn" disabled={btnDisable}>
             <FontAwesomeIcon

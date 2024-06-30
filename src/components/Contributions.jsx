@@ -66,7 +66,7 @@ const Contributions = () => {
               <p>***Not yet contributed***</p>
             </div>
           ) : (
-            <div className="table-responsive">
+            <div className="table-responsive border rounded mt-2">
               <table className="table  table-hover  mt-2">
                 <thead>
                   <tr>
@@ -123,6 +123,18 @@ const Contributions = () => {
                           </td>
                         </tr>
 
+                        {edit === contribution._id.toString() && (
+                          <tr>
+                            {" "}
+                            <td colSpan={6}>
+                              <EditSeekerData
+                                setEdit={setEdit}
+                                contribution={contribution}
+                              />
+                            </td>
+                          </tr>
+                        )}
+
                         <div
                           class="modal fade"
                           id={contribution._id.toString()}
@@ -155,14 +167,6 @@ const Contributions = () => {
                             </div>
                           </div>
                         </div>
-
-                        {/* Uncomment below for inline editing */}
-                        {/* {edit === contribution._id.toString() && (
-                          <EditSeekerData
-                            setEdit={setEdit}
-                            contribution={contribution}
-                          />
-                        )} */}
                       </>
                     );
                   })}
@@ -170,9 +174,9 @@ const Contributions = () => {
               </table>
             </div>
           )}
-          {/* </div> */}
         </div>
       </div>
+
       <ReactPaginate
         previousLabel="previous"
         nextLabel="next"

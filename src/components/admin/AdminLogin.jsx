@@ -74,52 +74,67 @@ const AdminLogin = () => {
 
           return (
             <form onSubmit={formik.handleSubmit}>
-              <div className="row justify-content-center text-center mt-4">
-                <div className="col-md-6">
-                  <h4>Admin Log In</h4>
-                </div>
-              </div>
+              <div className="container">
+                <div className="row mt-2 p-2 ">
+                  <div className="col border rounded">
+                    <div className="row justify-content-center text-center mt-4">
+                      <div className="col-md-6">
+                        <h4>Admin Log In</h4>
+                      </div>
+                    </div>
 
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-6">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
-                    aria-label="email"
-                    id="email"
-                    {...formik.getFieldProps("email")}
-                  />
-                  {formik.touched.email && formik.errors.email && (
-                    <div className="text-danger">{formik.errors.email}</div>
-                  )}
-                </div>
-              </div>
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-md-6">
+                        <input
+                          type="email"
+                          className="form-control"
+                          placeholder="Email"
+                          aria-label="email"
+                          id="email"
+                          {...formik.getFieldProps("email")}
+                        />
+                        {formik.touched.email && formik.errors.email && (
+                          <div className="text-danger">
+                            {formik.errors.email}
+                          </div>
+                        )}
+                      </div>
+                    </div>
 
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-6">
-                  <input
-                    type="password"
-                    className="form-control"
-                    placeholder="Password"
-                    aria-label="password"
-                    id="password"
-                    {...formik.getFieldProps("password")}
-                  />
-                  {formik.touched.password && formik.errors.password && (
-                    <div className="text-danger">{formik.errors.password}</div>
-                  )}
-                </div>
-              </div>
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-md-6">
+                        <input
+                          type="password"
+                          className="form-control"
+                          placeholder="Password"
+                          aria-label="password"
+                          id="password"
+                          {...formik.getFieldProps("password")}
+                        />
+                        {formik.touched.password && formik.errors.password && (
+                          <div className="text-danger">
+                            {formik.errors.password}
+                          </div>
+                        )}
+                      </div>
+                    </div>
 
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-3">
-                  <Link to="/admins/forgot-password">Forgot Password?</Link>
-                </div>
-                <div className="col-md-3">
-                  <button type="submit" className="btn btn-primary float-end">
-                    Log in
-                  </button>
+                    <div className="row justify-content-center mt-3 mb-4">
+                      <div className="col-md-3">
+                        <Link to="/admins/forgot-password">
+                          Forgot Password?
+                        </Link>
+                      </div>
+                      <div className="col-md-3">
+                        <button
+                          type="submit"
+                          className="btn btn-primary float-end"
+                        >
+                          Log in
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>

@@ -70,54 +70,52 @@ const UserForgotPassword = () => {
         >
           {(formik) => (
             <form onSubmit={formik.handleSubmit}>
-              <div className="row justify-content-center text-center mt-4">
-                <div className="col-md-6">
-                  <h4>Forgot Password?</h4>
-                </div>
-              </div>
+              <div className="container">
+                <div className="row  mt-4 p-4  justify-content-center">
+                  <div className="col border rounded">
+                    <h4 className="text-center mt-4">Forgot Password?</h4>
 
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-6">
-                  <input
-                    type="email"
-                    className="form-control"
-                    placeholder="Enter your registered email address"
-                    aria-label="email"
-                    id="email"
-                    {...formik.getFieldProps("email")}
-                  />
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-md-6">
+                        <input
+                          type="email"
+                          className="form-control"
+                          placeholder="Enter your registered email address"
+                          aria-label="email"
+                          id="email"
+                          {...formik.getFieldProps("email")}
+                        />
 
-                  {formik.touched.email && formik.errors.email ? (
-                    <div className="email mt-2 text-danger">
-                      {formik.errors.email}
+                        {formik.touched.email && formik.errors.email ? (
+                          <div className="email mt-2 text-danger">
+                            {formik.errors.email}
+                          </div>
+                        ) : null}
+                      </div>
                     </div>
-                  ) : null}
-                </div>
-              </div>
 
-              <div className="row justify-content-center mt-3">
-                <div className="col-md-6">
-                  <div className="d-flex justify-content-end">
-                    <button type="submit" className="btn btn-primary">
-                      Send Password Reset Link
-                    </button>
-                  </div>
-                </div>
-              </div>
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-md-6 col-sm-12 text-center">
+                        <button type="submit" className="btn btn-primary">
+                          Send Password Reset Link
+                        </button>
+                      </div>
+                    </div>
 
-              <div className="row justify-content-center mt-5">
-                <div className="col-md-6 text-center">
-                  <span>or</span>
-                </div>
-              </div>
+                    <div className="row justify-content-center mt-3">
+                      <div className="col-auto col-md-6 text-center">
+                        <span>or</span>
+                      </div>
+                    </div>
 
-              <div className="row justify-content-center mt-5">
-                <div className="col-md-3 d-flex">
-                  <div className="create-account">
-                    <span>For login your account? </span>
-                    <span>
-                      <Link to={"/users/login"}>Click Here</Link>
-                    </span>
+                    <div className="row justify-content-center mt-3 mb-3">
+                      <div className="col-md-6 text-center">
+                        <span>
+                          For login your account?{" "}
+                          <Link to={"/users/login"}>Click Here</Link>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
