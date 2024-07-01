@@ -1,0 +1,13 @@
+/* HomeNav.css */
+.navbar.home-dashboard-nav {
+    background-color: #7E8EF1;  
+}
+
+.navbar.home-dashboard-nav .navbar-brand,
+.navbar.home-dashboard-nav .nav-link {
+    color: #EEEEEE;  
+}
+
+.navbar.home-dashboard-nav .navbar-toggler-icon {
+    background-color: #EEEEEE;  
+}
