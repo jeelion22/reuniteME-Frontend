@@ -1,3 +1,4 @@
+import "../styles/UserRegister.css";
 import { Formik } from "formik";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
@@ -52,12 +53,12 @@ const UserRegister = () => {
     >
       {(formik) => (
         <form onSubmit={formik.handleSubmit}>
-          <div className="container">
-            <div className="row border rounded p-4 mt-2 ">
+          <div className="container ">
+            <div className="row border rounded p-4 mt-2 user-register">
               <div className="col">
                 <div className="row text-center">
                   <div className="col">
-                    <h4>Register</h4>
+                    <h4 className="user-register-header">Register</h4>
                   </div>
                 </div>
 
@@ -237,7 +238,7 @@ const UserRegister = () => {
                   </div>
 
                   <div className="col-auto p-1">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className="btn btn-outline-primary">
                       Create An Account
                     </button>
                   </div>

@@ -1,9 +1,9 @@
+import "../styles/HomeNav.css";
 import { Link, Outlet } from "react-router-dom";
-
 const HomeNav = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg home-dashboard-nav">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             ReUniteME
@@ -23,7 +23,7 @@ const HomeNav = () => {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link
-                  className="nav-link active"
+                  className="nav-link active "
                   aria-current="page"
                   to="/users/register"
                 >

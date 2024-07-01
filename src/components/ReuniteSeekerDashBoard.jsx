@@ -62,8 +62,8 @@ export const ReuniteSeekerDashBoard = () => {
             pageCount={Math.ceil(contributions.length / itemsPerPage)}
             marginPagesDisplayed={2}
             pageRangeDisplayed={3}
-            className="pagination justify-content-center mt-4"
-            pageClassName="page_item"
+            className="pagination justify-content-center mt-4 "
+            pageClassName="page_item "
             pageLinkClassName="page-link"
             previousClassName="page-item"
             previousLinkClassName="page-link"

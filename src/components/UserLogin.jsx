@@ -1,3 +1,4 @@
+import "../styles/UserLogin.css";
 import { Formik } from "formik";
 import { useState } from "react";
 import { useNavigate, Link, useAsyncError } from "react-router-dom";
@@ -73,10 +74,10 @@ const UserLogin = () => {
             <form onSubmit={formik.handleSubmit}>
               <div className="container">
                 <div className="row  mt-2 p-2">
-                  <div className="col border rounded">
+                  <div className="col border rounded user-login">
                     <div className="row justify-content-center text-center mt-4">
                       <div className="col-md-6">
-                        <h4>Log In</h4>
+                        <h4 className="user-login-header">Log In</h4>
                       </div>
                     </div>
                     <div className="row justify-content-center mt-3">
@@ -122,7 +123,7 @@ const UserLogin = () => {
                       <div className="col-md-3">
                         <button
                           type="submit"
-                          className="btn btn-primary float-end"
+                          className="btn btn-outline-primary float-end"
                         >
                           Log in
                         </button>

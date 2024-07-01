@@ -1,3 +1,4 @@
+import "../styles/UserDashboardNav.css";
 import React, { useEffect } from "react";
 import userServices from "../../services/userServices";
 import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
@@ -33,10 +34,10 @@ const UserDashboardNav = () => {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
+    <div className="container-fluid ">
+      <div className="row user-dashboard-nav">
         <div className="col">
-          <nav className="navbar navbar-expand-lg bg-body-tertiary">
+          <nav className="navbar navbar-expand-lg">
             <Link className="navbar-brand ps-2" to="/">
               ReUniteMe
             </Link>

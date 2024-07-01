@@ -1,3 +1,4 @@
+import "../styles/Profile.css";
 import React, { useState, useEffect } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,19 +27,14 @@ const Profile = () => {
           className="col-md-8 col-sm-12 border rounded p-4"
           style={{ backgroundColor: "white" }}
         >
-          <div className="col">
+          <div className="col ">
             <FontAwesomeIcon
               icon={faPenToSquare}
               type="button"
-              className="btn btn-outline-primary float-end"
+              className="btn btn-outline-secondary m-2  float-end"
               onClick={handleProfileUpdate}
             />
-            <h3
-              className="text-center border-bottom pb-1"
-              style={{ color: "#343a40" }}
-            >
-              Profile
-            </h3>
+            <h3 className="text-center  p-2  border-bottom ">Profile</h3>
           </div>
 
           <div className="col-md-12 table-responsive">

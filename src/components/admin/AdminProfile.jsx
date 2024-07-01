@@ -17,7 +17,7 @@ const AdminProfile = () => {
   }, [admin]);
 
   return (
-    <div className="container" style={{ backgroundColor: "#f8f9fa" }}>
+    <div className="container pb-5">
       <div className="row justify-content-center ">
         <div
           className="col-md-8 col-sm-12 border rounded p-4 m-2"

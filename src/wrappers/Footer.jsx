@@ -25,11 +25,11 @@ const Footer = () => {
   };
 
   return (
-    <footer className="footer bg-light py-4" style={{ marginTop: "100px" }}>
-      <div className="container">
-        <div className="row">
+    <footer className="footer custom-footer py-4 ">
+      <div className="container p-4 text-center mt-2 ">
+        <div className="row ">
           <div className="col-md-2 col-sm-6">
-            <div type="button" onClick={handleAbout} className="borderless">
+            <div type="button" onClick={handleAbout}>
               <h6>About Us</h6>
             </div>
 

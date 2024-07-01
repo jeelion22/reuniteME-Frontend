@@ -73,7 +73,7 @@ const UserUpdate = () => {
 
                 <div className="row justify-content-center text-center mt-4">
                   <div className="col-md-6">
-                    <h4>Profile Update</h4>
+                    <h4 className="border-bottom pb-3">Profile Update</h4>
                   </div>
                 </div>
 
@@ -203,7 +203,10 @@ const UserUpdate = () => {
                 <div className="row justify-content-center mt-3">
                   <div className="col-md-3">
                     <div className=" d-flex justify-content-center">
-                      <button type="submit" className="btn btn-primary">
+                      <button
+                        type="submit"
+                        className="btn btn-outline-secondary rounded-pill"
+                      >
                         update
                       </button>
                     </div>

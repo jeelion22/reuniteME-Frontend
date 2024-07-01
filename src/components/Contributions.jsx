@@ -1,3 +1,4 @@
+import "../styles/Contributions.css";
 import { useState } from "react";
 import { Outlet, useLoaderData, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,21 +42,16 @@ const Contributions = () => {
     <>
       <div className="container">
         <div className="row">
-          {/* <div className="col"> */}
-          <div
-            className="border rounded text-center p-4"
-            style={{ backgroundColor: "purple", color: "white" }}
-          >
+          <div className="border rounded text-center p-4 new-contribution">
             <h5>To make a new contribution, please </h5>
             <button
-              className="btn btn-primary btn-sm"
+              className="btn btn-outline-light btn-sm"
               onClick={() => {
                 navigate("/users/contributions/new");
               }}
             >
               Click ME!
             </button>
-            {/* </div> */}
           </div>
         </div>
 
@@ -66,7 +62,7 @@ const Contributions = () => {
               <p>***Not yet contributed***</p>
             </div>
           ) : (
-            <div className="table-responsive border rounded mt-2">
+            <div className="table-responsive border rounded mt-2 contribution-list">
               <table className="table  table-hover  mt-2">
                 <thead>
                   <tr>
@@ -86,14 +82,13 @@ const Contributions = () => {
                         <tr key={contribution._id.toString()}>
                           <td scope="row">{itemNumber}</td>
                           <td>
-                            <button
+                            <Link
                               type="button"
-                              className="btn btn-outline-primary"
                               data-bs-toggle="modal"
                               data-bs-target={`#${contribution._id.toString()}`}
                             >
                               {contribution.key.split("/")[1]}
-                            </button>
+                            </Link>
                           </td>
                           <td>
                             {(contribution.fileSize / (1024 * 1024)).toFixed(2)}

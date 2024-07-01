@@ -1,3 +1,4 @@
+import "../styles/UserForgotPassword.css";
 import { useState } from "react";
 import { userForgotPasswordValidationSchema } from "../validataionSchema/userForgotPasswordValidationScheme";
 import { Formik } from "formik";
@@ -72,7 +73,7 @@ const UserForgotPassword = () => {
             <form onSubmit={formik.handleSubmit}>
               <div className="container">
                 <div className="row  mt-4 p-4  justify-content-center">
-                  <div className="col border rounded">
+                  <div className="col border rounded user-forgot-password">
                     <h4 className="text-center mt-4">Forgot Password?</h4>
 
                     <div className="row justify-content-center mt-3">
@@ -96,7 +97,7 @@ const UserForgotPassword = () => {
 
                     <div className="row justify-content-center mt-3">
                       <div className="col-md-6 col-sm-12 text-center">
-                        <button type="submit" className="btn btn-primary">
+                        <button type="submit" className="btn btn-outline-primary">
                           Send Password Reset Link
                         </button>
                       </div>

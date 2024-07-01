@@ -1,3 +1,4 @@
+import "../styles/Sidebar.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const Sidebar = ({ userType }) => {
   }
 
   return (
-    <div className="list-group mb-2" id="user-list-scroll">
+    <div className="list-group mb-2">
       {items.map((item, index) => (
         <Link
           id={item.toLowerCase()}
