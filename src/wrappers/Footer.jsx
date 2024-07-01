@@ -57,7 +57,7 @@ const Footer = () => {
                   <a
                     href="https://www.linkedin.com/in/jeeva-madhaiyan-090860107"
                     target="_blank"
-                    className="link-underline link-underline-opacity-0 link-dark"
+                    className="link-underline link-underline-opacity-0 link-dark text-light"
                   >
                     LinkedIn
                   </a>
@@ -77,7 +77,7 @@ const Footer = () => {
                   <a
                     href="https://github.com/jeelion22"
                     target="_blank"
-                    className="link-underline link-underline-opacity-0 link-dark"
+                    className="link-underline link-underline-opacity-0 link-dark text-light"
                   >
                     GitHub
                   </a>
