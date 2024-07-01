@@ -1,3 +1,4 @@
+import "../../styles/AdminPasswordReset.css";
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
@@ -71,7 +72,7 @@ const AdminPasswordReset = () => {
           <form onSubmit={formik.handleSubmit}>
             <div className="container-md-6  p-5">
               <div className="row">
-                <div className="col">
+                <div className="col border rounded p-3 admin-password-reset">
                   <div className="row justify-content-center text-center mt-4">
                     <div className="col-md-6">
                       <h4>Create Password</h4>
@@ -114,7 +115,10 @@ const AdminPasswordReset = () => {
                   <div className="row justify-content-center mt-3">
                     <div className="col-md-6 justify-content-end">
                       <div className=" d-flex justify-content-end">
-                        <button type="submit" className="btn btn-primary">
+                        <button
+                          type="submit"
+                          className="btn btn-outline-primary"
+                        >
                           Submit
                         </button>
                       </div>
