@@ -54,8 +54,8 @@ const UserRegister = () => {
       {(formik) => (
         <form onSubmit={formik.handleSubmit}>
           <div className="container ">
-            <div className="row border rounded p-4 mt-2 user-register">
-              <div className="col">
+            <div className="row  justify-content-center p-4 mt-2 user-register">
+              <div className="col col-lg-8 border">
                 <div className="row text-center">
                   <div className="col">
                     <h4 className="user-register-header">Register</h4>
