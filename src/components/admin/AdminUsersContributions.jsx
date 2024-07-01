@@ -48,15 +48,15 @@ const AdminUsersContributions = () => {
     <>
       <div className="container">
         <div className="row">
-          <h4 className="text-center border rounded p-2">
+          <h4 className="text-center border-bottom  p-2 shadow-lg">
             List of Contributions
           </h4>
         </div>
 
-        <div className="row border rounded">
-          <div className="col">
-            <div className="table-responsive">
-              <table className="table table-hover align-middle">
+        <div className="row ">
+          <div className="col  border rounded bg-light">
+            <div className="table-responsive pt-2">
+              <table className="table borderless table-hover align-middle p-4">
                 <thead>
                   <tr>
                     <th scope="col">#</th>

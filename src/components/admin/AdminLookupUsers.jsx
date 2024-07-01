@@ -85,12 +85,14 @@ const AdminLookupUsers = () => {
     <>
       <div className="container">
         <div className="row">
-          <h4 className="text-center border rounded p-2">List of Users </h4>
+          <h4 className="text-center border-bottom p-2 shadow">
+            List of Users{" "}
+          </h4>
         </div>
 
-        <div className="row border rounded mt-2">
+        <div className="row border rounded pt-3  bg-light">
           <div className="table-responsive ">
-            <table className="table table-hover align-middle">
+            <table className="table table-hover align-middle pt-2">
               <thead>
                 <tr>
                   <th scope="col">#</th>

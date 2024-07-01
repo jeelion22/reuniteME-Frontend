@@ -68,10 +68,12 @@ const AdminsList = () => {
     <>
       <div className="container">
         <div className="row ">
-          <h4 className="text-center border rounded p-2 ">List of Admins</h4>
+          <h4 className="text-center border-bottom shadow p-2 ">
+            List of Admins
+          </h4>
         </div>
 
-        <div className="row border rounded mt-2">
+        <div className="row border rounded bg-light p-2  mt-2">
           <div className="table-responsive">
             <table className="table table-hover align-middle">
               <thead>

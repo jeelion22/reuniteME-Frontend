@@ -177,7 +177,7 @@ const EditUserData = ({ user }) => {
                 <div className="row justify-content-center mt-3">
                   <div className="col">
                     <div className=" d-flex justify-content-center">
-                      <button type="submit" className="btn btn-primary">
+                      <button type="submit" className="btn btn-outline-primary">
                         {isSubmitting ? (
                           <div class="d-flex justify-content-center">
                             <div class="spinner-border" role="status">

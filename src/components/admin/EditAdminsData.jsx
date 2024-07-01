@@ -255,7 +255,7 @@ const EditAdminsData = ({ admin, getAllAdmins }) => {
                   <div className="col-auto">
                     <button
                       type="submit"
-                      className="btn btn-primary"
+                      className="btn btn-outline-primary"
                       disabled={isLoading}
                     >
                       {isLoading ? (

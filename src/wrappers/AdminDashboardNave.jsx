@@ -1,3 +1,4 @@
+import "../styles/AdminDashboardNav.css";
 import React from "react";
 import { useNavigate, Link, Outlet, useLoaderData } from "react-router-dom";
 import AdminSidebar from "../components/admin/AdminSidebar";
@@ -34,9 +35,9 @@ const AdminDashboardNave = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col">
-          <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <div className="row ">
+        <div className="col admin-dashboard-nav">
+          <nav className="navbar navbar-expand-lg">
             <Link className="navbar-brand" to="/">
               ReUniteMe
             </Link>
@@ -74,7 +75,7 @@ const AdminDashboardNave = () => {
 
       <div className="row mt-5">
         <div className="col-md-3">
-          <AdminSidebar admin = {admin} />
+          <AdminSidebar admin={admin} />
         </div>
         <div className="col">
           <Outlet />

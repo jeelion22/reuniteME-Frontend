@@ -35,7 +35,7 @@ const AdminDashboard = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-sm-12 col-md-12 col-lg-6 p-2 border rounded">
+        <div className="col-md-12 col-sm-12 col-lg-6 border rounded">
           <div style={{ position: "relative" }}>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart
@@ -54,31 +54,31 @@ const AdminDashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="date"
-                  label={{ value: "Date", position: "insideBottom", offset: 0 }}
+                  // label={{ value: "Date", position: "insideBottom", offset: 0 }}
                 />
                 <YAxis
                   label={{
-                    value: "No. of users registered",
+                    value: "users",
                     angle: -90,
                     // position: "insideLeft",
                     offset: "0",
                   }}
                 />
                 <Tooltip />
-                <Legend verticalAlign="top" height={36} />
+                <Legend verticalAlign="bottom" height={36} />
 
                 <ReferenceLine y={0} stroke="#000" />
                 <Bar dataKey="count" fill="#8884d8" />
               </BarChart>
             </ResponsiveContainer>
             <div
-              className="text-body-secondary"
+              className="text-body-secondary top-0 end-0"
               style={{
                 position: "absolute",
                 top: 10,
-                right: 10,
+                right: 5,
                 padding: "10px",
-                backgroundColor: "white",
+                // backgroundColor: "white",
                 border: "1px solid #ccc",
                 borderRadius: "5px",
                 boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-12 col-lg-6 p-2 border rounded">
+        <div className="col-md-12 col-sm-12 col-lg-6 border rounded">
           <div style={{ position: "relative" }}>
             <ResponsiveContainer width="100%" height={400}>
               <BarChart
@@ -108,38 +108,38 @@ const AdminDashboard = () => {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
                   dataKey="date"
-                  label={{ value: "Date", position: "insideBottom", offset: 0 }}
+                  // label={{ value: "Date", position: "insideBottom", offset: 0 }}
                 />
                 <YAxis
                   label={{
-                    value: "No. of contributions by contributor",
+                    value: "contributions",
                     angle: -90,
                     // position: "insideLeft",
                     offset: "0",
                   }}
                 />
                 <Tooltip />
-                <Legend verticalAlign="top" height={36} />
+                <Legend verticalAlign="bottom" height={36} />
 
                 <ReferenceLine y={0} stroke="#000" />
                 <Bar dataKey="totalUploads" fill="#8884d8" />
               </BarChart>
             </ResponsiveContainer>
             <div
-              className="text-body-secondary"
+              className="text-body-secondary top-0 end-0"
               style={{
                 position: "absolute",
                 top: 5,
                 right: 5,
-                padding: "10px",
-                backgroundColor: "white",
+                padding: "5px",
+                // backgroundColor: "white",
                 border: "1px solid #ccc",
                 borderRadius: "5px",
                 boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
               }}
             >
-              <p>Total rescued: {data.totalRescued}</p>
-              <p>Total non-rescued: {data.totalNotRescued}</p>
+              <p>Rescued: {data.totalRescued}</p>
+              <p>Non-rescued: {data.totalNotRescued}</p>
             </div>
           </div>
         </div>

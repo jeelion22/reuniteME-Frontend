@@ -17,70 +17,44 @@ const AdminProfile = () => {
   }, [admin]);
 
   return (
-    <div className="container pb-5">
+    <div className="container">
       <div className="row justify-content-center ">
         <div
-          className="col-md-8 col-sm-12 border rounded p-4 m-2"
+          className="col-md-8 col-sm-12 border rounded p-4"
           style={{ backgroundColor: "white" }}
         >
-          <div className="col-md-12 ">
+          <div className="col ">
+            <h3 className="text-center  p-2  border-bottom ">Profile</h3>
+          </div>
+
+          <div className="col-md-12 table-responsive">
             <table className="table table-borderless ">
-              <thead>
-                <tr>
-                  <td colSpan={3}>
-                    <h3
-                      className="text-center border-bottom"
-                      style={{ color: "#343a40" }}
-                    >
-                      Profile
-                    </h3>
-                  </td>
-                </tr>
-              </thead>
-
               <tbody>
-                {/* <tr>
-                  <td colSpan={3} className="text-end">
-                    <FontAwesomeIcon
-                      icon={faPenToSquare}
-                      type="button"
-                      className="btn btn-outline-primary "
-                      onClick={handleProfileUpdate}
-                    />
-                  </td>
-                </tr> */}
-
                 <tr>
                   <td>Username</td>
                   <td>{admin.username}</td>
                 </tr>
-
                 <tr>
                   <td>Fullname</td>
                   <td>
-                    {adminInfo.firstname} {adminInfo.lastname}
+                    {admin.firstname} {admin.lastname}
                   </td>
                 </tr>
                 <tr>
                   <td>Email</td>
-                  <td>{adminInfo.email}</td>
+                  <td>{admin.email}</td>
                 </tr>
                 <tr>
                   <td>Phone</td>
-                  <td>{adminInfo.phone}</td>
+                  <td>{admin.phone}</td>
                 </tr>
-                <tr>
-                  <td>Role</td>
-                  <td>{adminInfo.role} </td>
-                </tr>
-
                 <tr>
                   <td>Permissions</td>
-                  <td>{adminInfo.permissions?.join(", ")}</td>
+                  <td>{admin.permissions?.join(", ")}</td>
                 </tr>
                 <tr>
                   <td>Status</td>
-                  <td>{adminInfo.status}</td>
+                  <td>{admin.status}</td>
                 </tr>
               </tbody>
             </table>
