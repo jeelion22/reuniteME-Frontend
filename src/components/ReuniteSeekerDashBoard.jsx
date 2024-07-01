@@ -40,7 +40,9 @@ export const ReuniteSeekerDashBoard = () => {
 
   return (
     <div className="container">
-      <h3 className="text-center border rounded p-3">Reunite Seekers</h3>
+      <h3 className="text-center border-bottom shadow-lg p-3">
+        Reunite Seekers
+      </h3>
       <div className="row">
         <div className="col-md-12  p-3 ">
           <div className="row row-cols-1 row-cols-md-3 g-4">
