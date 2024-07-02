@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const AdminSidebar = ({ admin }) => {
-  const [active, setActive] = useState("Dashboard");
+  const [active, setActive] = useState("Profile");
 
   const requiredPermissions = ["read", "write", "update", "delete"];
 
