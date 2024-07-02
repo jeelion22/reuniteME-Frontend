@@ -1,5 +1,5 @@
 import "../styles/UserPasswordReset.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { createPasswordValidationSchema } from "../validataionSchema/createPasswordValidationSchema";
@@ -14,6 +14,15 @@ const UserPasswordReset = () => {
   const { userId } = useParams();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isPasswordResetComplete = sessionStorage.getItem(
+      "passwordResetComplete"
+    );
+    if (isPasswordResetComplete) {
+      navigate("/users/login");
+    }
+  }, [navigate]);
 
   return (
     <Formik
@@ -31,6 +40,7 @@ const UserPasswordReset = () => {
             if (response.status == 200) {
               setPasswordStatus(false);
               setIsPasswordCreated(true);
+              sessionStorage.setItem("passwordResetComplete", "true");
               setTimeout(() => {
                 setPassword(""), setConfirmPassword("");
                 navigate("/users/login");
