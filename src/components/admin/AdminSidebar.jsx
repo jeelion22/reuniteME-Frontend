@@ -14,15 +14,15 @@ const AdminSidebar = ({ admin }) => {
 
   if (isAdminAuthorized) {
     items = [
+      "Profile",
       "Dashboard",
       "Contributions",
       "Users",
       "Create-Admin",
       "Admins-List",
-      "Profile",
     ];
   } else {
-    items = ["Dashboard", "Contributions", "Users", "Profile"];
+    items = ["Profile", "Dashboard", "Contributions", "Users"];
   }
 
   return (
