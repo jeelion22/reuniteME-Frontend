@@ -87,7 +87,7 @@ const Contributions = () => {
                               data-bs-toggle="modal"
                               data-bs-target={`#${contribution._id.toString()}`}
                             >
-                              {contribution.key.split("/")[1]}
+                              {contribution.fileName}
                             </Link>
                           </td>
                           <td>
