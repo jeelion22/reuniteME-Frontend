@@ -4,17 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 const AdminProfile = () => {
-  const [adminInfo, setAdminInfo] = useState({});
-
   const admin = useLoaderData();
-
-  const handleProfileUpdate = () => {};
-
-  useEffect(() => {
-    if (admin) {
-      setAdminInfo(admin);
-    }
-  }, [admin]);
 
   return (
     <div className="container">
