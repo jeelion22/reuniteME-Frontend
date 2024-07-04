@@ -118,7 +118,7 @@ const UserUpdate = () => {
                   </div>
 
                   <div className="row justify-content-center mt-3">
-                    <div className="col">
+                    <div className="col-md-6">
                       <PhoneInput
                         className="form-control d-flex border-0 phone-input-no-border"
                         placeholder="Enter phone number"
