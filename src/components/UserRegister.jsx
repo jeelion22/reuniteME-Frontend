@@ -245,14 +245,11 @@ const UserRegister = () => {
                     >
                       {isLoading ? (
                         <>
-                          {" "}
                           <span
-                            className="spinner-border spinner-border-sm"
+                            class="spinner-border spinner-border-sm"
                             aria-hidden="true"
                           ></span>
-                          <span className="visually-hidden" role="status">
-                            Loading...
-                          </span>
+                          <span role="status">Loading...</span>
                         </>
                       ) : (
                         "Create An Account"
