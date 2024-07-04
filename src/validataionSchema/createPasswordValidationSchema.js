@@ -9,9 +9,9 @@ export const createPasswordValidationSchema = Yup.object({
     .matches(/[A-Z]/, "Password requires a upercase letter")
     .matches(/[^\w]/, "Password requires a symbol"),
   confirmPassword: Yup.string()
-    .required("Confirm password should not be empty")
+    .required("* Confirm password should not be empty")
     .oneOf(
       [Yup.ref("password"), null],
-      "The passwords do not match. Please try again."
+      "* The passwords do not match. Please try again."
     ),
 });
