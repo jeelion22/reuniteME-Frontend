@@ -249,7 +249,7 @@ const UserRegister = () => {
                             class="spinner-border spinner-border-sm"
                             aria-hidden="true"
                           ></span>
-                          <span role="status">Loading...</span>
+                          <span role="status">Creating...</span>
                         </>
                       ) : (
                         "Create An Account"
