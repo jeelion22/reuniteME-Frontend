@@ -123,7 +123,10 @@ const AdminsList = () => {
                               data-bs-target={`#${admin._id.toString()}`}
                               disabled={admin.email === "jeelion22@gmail.com"}
                             >
-                              <FontAwesomeIcon icon={faPenToSquare} />
+                              <FontAwesomeIcon
+                                type="button"
+                                icon={faPenToSquare}
+                              />
                             </button>
 
                             <div
