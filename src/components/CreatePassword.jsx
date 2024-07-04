@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { createPasswordValidationSchema } from "../validataionSchema/createPasswordValidationSchema";
@@ -14,6 +14,14 @@ const CreatePassword = () => {
 
   const navigate = useNavigate();
 
+
+  useEffect(()=>{
+    const isPasswordCreated = sessionStorage.getItem("isPasswordCreated");
+
+    if (isPasswordCreated) {
+      navigate("/users/login")
+    }
+  }, [])
   return (
     <Formik
       initialValues={{
@@ -30,6 +38,7 @@ const CreatePassword = () => {
             if (response.status == 200) {
               setPasswordStatus(false);
               setIsPasswordCreated(true);
+              sessionStorage.setItem("isPasswordCreated", "true")
               setTimeout(() => {
                 setPassword(""), setConfirmPassword("");
                 navigate("/users/login");
@@ -88,7 +97,7 @@ const CreatePassword = () => {
                         {...formik.getFieldProps("password")}
                       />
                       {formik.touched.password && formik.errors.password ? (
-                        <div>{formik.errors.password}</div>
+                        <div className="text-danger">{formik.errors.password}</div>
                       ) : null}
                     </div>
                   </div>
@@ -105,7 +114,7 @@ const CreatePassword = () => {
                       />
                       {formik.touched.confirmPassword &&
                       formik.errors.confirmPassword ? (
-                        <div>{formik.errors.confirmPassword}</div>
+                        <div className="text-danger">{formik.errors.confirmPassword}</div>
                       ) : null}
                     </div>
                   </div>
