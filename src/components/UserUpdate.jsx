@@ -11,16 +11,13 @@ import PhoneInput from "react-phone-number-input";
 const UserUpdate = () => {
   const { user } = useLoaderData();
   const [initialValues, setInitialValues] = useState(user.data.user);
-
-  console.log(initialValues);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const [selectedCategory, setSelectedCategory] = useState(
     user.data.user.userCategory
   );
-
-  console.log(selectedCategory);
 
   const [validationSchema, setValidationSchema] = useState(
     CommunityUploaderValidationSchema
@@ -42,6 +39,8 @@ const UserUpdate = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async (values, { resetForm }) => {
+        setIsLoading(true);
+
         userServices
           .userInfoUpdate(values)
           .then((response) => {
@@ -51,6 +50,7 @@ const UserUpdate = () => {
             resetForm();
           })
           .catch((error) => {
+            setIsLoading(false);
             alert(error.response.data.message);
           });
       }}
@@ -212,8 +212,19 @@ const UserUpdate = () => {
                         <button
                           type="submit"
                           className="btn btn-outline-secondary rounded-pill"
+                          disabled={isLoading}
                         >
-                          update
+                          {isLoading ? (
+                            <>
+                              <span
+                                className="spinner-border spinner-border-sm"
+                                aria-hidden="true"
+                              ></span>
+                              <span role="status">Updating...</span>
+                            </>
+                          ) : (
+                            "update"
+                          )}
                         </button>
                       </div>
                     </div>
