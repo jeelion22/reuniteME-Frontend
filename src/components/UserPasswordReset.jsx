@@ -102,7 +102,9 @@ const UserPasswordReset = () => {
                         {...formik.getFieldProps("password")}
                       />
                       {formik.touched.password && formik.errors.password ? (
-                        <div>{formik.errors.password}</div>
+                        <div className="text-danger">
+                          {formik.errors.password}
+                        </div>
                       ) : null}
                     </div>
                   </div>
@@ -119,7 +121,9 @@ const UserPasswordReset = () => {
                       />
                       {formik.touched.confirmPassword &&
                       formik.errors.confirmPassword ? (
-                        <div>{formik.errors.confirmPassword}</div>
+                        <div className="text-danger">
+                          {formik.errors.confirmPassword}
+                        </div>
                       ) : null}
                     </div>
                   </div>
