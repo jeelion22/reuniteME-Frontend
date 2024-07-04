@@ -5,9 +5,12 @@ import { useNavigate, Link, useAsyncError } from "react-router-dom";
 import { userLoginValidation } from "../validataionSchema/userLoginValidation";
 import userServices from "../../services/userServices";
 
+const initialValues = {
+  email: "",
+  password: "",
+};
+
 const UserLogin = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [confirmLogin, setConfirmLogin] = useState(false);
 
@@ -16,7 +19,7 @@ const UserLogin = () => {
   return (
     <>
       <Formik
-        initialValues={{ email: email, password: password }}
+        initialValues={initialValues}
         validationSchema={userLoginValidation}
         onSubmit={async (values) => {
           try {
