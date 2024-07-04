@@ -26,8 +26,8 @@ const AdminLookupUsers = () => {
     setCurrentPage(data.selected);
   };
 
-  const handleUserDelete = async (userId) => {
-    if (confirm("Would you like to delete the user?")) {
+  const handleUserDelete = async (name, userId) => {
+    if (confirm(`Would you like to delete ${name}?`)) {
       try {
         await userServices.adminDeleteUser(userId);
 
@@ -215,7 +215,10 @@ const AdminLookupUsers = () => {
                               disabled={!user.isActive}
                               aria-disabled="true"
                               onClick={() => {
-                                handleUserDelete(user._id.toString());
+                                handleUserDelete(
+                                  `${user.firstname} ${user.lastname}`,
+                                  user._id.toString()
+                                );
                               }}
                             >
                               <FontAwesomeIcon icon={faTrashCan} />
