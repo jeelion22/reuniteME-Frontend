@@ -38,9 +38,7 @@ const AdminDashboardNave = () => {
       <div className="row ">
         <div className="col admin-dashboard-nav">
           <nav className="navbar navbar-expand-lg">
-            <Link className="navbar-brand" to="/">
-              ReUniteMe
-            </Link>
+            <Link className="navbar-brand">ReUniteMe</Link>
             <button
               className="navbar-toggler"
               type="button"
