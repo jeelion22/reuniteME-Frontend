@@ -25,7 +25,6 @@ const UserLogin = () => {
           userServices
             .login(email, password)
             .then((response) => {
-              console.log(response);
               if (response.status == 200) {
                 setIsLoading(false);
                 setConfirmLogin(true);
@@ -124,8 +123,16 @@ const UserLogin = () => {
                         <button
                           type="submit"
                           className="btn btn-outline-primary float-end"
+                          disabled={isLoading}
                         >
-                          Log in
+                          {isLoading ? (
+                            <span
+                              class="spinner-border spinner-border-sm"
+                              aria-hidden="true"
+                            ></span>
+                          ) : (
+                            "Log in"
+                          )}
                         </button>
                       </div>
                     </div>
