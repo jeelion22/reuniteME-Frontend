@@ -115,7 +115,10 @@ const Contributions = () => {
                                 icon={faTrashCan}
                                 type="button"
                                 onClick={() => {
-                                  handleDelete(contribution._id.toString());
+                                  handleDelete(
+                                    contribution.fileName,
+                                    contribution._id.toString()
+                                  );
                                 }}
                               />
                             </div>
