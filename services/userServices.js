@@ -13,12 +13,10 @@ const userServices = {
     });
   },
 
-  login: async (email, password) => {
-    return await instance.post(
-      "/users/login",
-      { email, password },
-      { withCredentials: true }
-    );
+  login: async (credentials) => {
+    return await instance.post("/users/login", credentials, {
+      withCredentials: true,
+    });
   },
 
   getCurrentUser: async () => {
