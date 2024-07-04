@@ -26,6 +26,7 @@ const AdminDashboardNave = () => {
 
       if (response.status === 204) {
         alert("Logged out successfully!");
+        navigate("/");
       }
     } catch (error) {
       alert(error.response.data.message);
