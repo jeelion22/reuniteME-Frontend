@@ -27,11 +27,6 @@ const UserDashboardNav = () => {
       if (response.status === 204) {
         alert("Logged out successfully!");
       }
-
-      if (response) {
-        alert(response.data.message);
-        navigate("/");
-      }
     } catch (error) {
       alert(error.response.data.message);
     }
