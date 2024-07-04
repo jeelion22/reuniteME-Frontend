@@ -39,7 +39,7 @@ import Footer from "./wrappers/Footer";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomeNav />,
+    element: [<HomeNav />, <Footer />],
     children: [
       { path: "/", element: <Home /> },
       {
@@ -169,7 +169,7 @@ function App() {
   return (
     <>
       <RouterProvider router={router} />
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
