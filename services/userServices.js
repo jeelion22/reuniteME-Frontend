@@ -23,7 +23,7 @@ const userServices = {
     return await protectedInstance.get("/users/me");
   },
   logout: async () => {
-    return await protectedInstance.get("/users/logout");
+    return await protectedInstance.post("/users/logout");
   },
 
   getImage: async (imageId) => {
@@ -100,7 +100,7 @@ const userServices = {
     return await protectedInstance.get("admins/me");
   },
   adminLogout: async () => {
-    return await protectedInstance.get("/admins/logout");
+    return await protectedInstance.post("/admins/logout");
   },
 
   adminGetAllUsers: async () => {

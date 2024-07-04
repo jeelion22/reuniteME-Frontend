@@ -24,6 +24,10 @@ const AdminDashboardNave = () => {
     try {
       const response = await userServices.adminLogout();
 
+      if (response.status === 204) {
+        alert("Logged out successfully!");
+      }
+
       if (response) {
         alert(response.data.message);
         navigate("/");
