@@ -1,5 +1,5 @@
 import "../styles/Contributions.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLoaderData, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
