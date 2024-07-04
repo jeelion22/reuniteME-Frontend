@@ -19,17 +19,14 @@ const Contributions = () => {
     if (confirm(`Would you like to delete ${fileName} contribution?`)) {
       try {
         const response = await userServices.deleteImage(imageId);
-        setRefresh((prev) => !prev);
 
-        // navigate(0);
+        navigate(0);
         alert(response.data.message);
       } catch (error) {
         alert(error.response.message);
       }
     }
   };
-
-  useEffect(() => {}, [refresh]);
 
   const handlePageClick = (data) => {
     setCurrentPage(data.selected);
