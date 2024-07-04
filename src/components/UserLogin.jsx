@@ -18,42 +18,41 @@ const UserLogin = () => {
       <Formik
         initialValues={{ email: email, password: password }}
         validationSchema={userLoginValidation}
-        onSubmit={(values) => {
-          setIsLoading(true);
-          const { email, password } = values;
+        onSubmit={async (values) => {
+          try {
+            setIsLoading(true);
+            const response = await userServices.login(values);
 
-          userServices
-            .login(email, password)
-            .then((response) => {
-              if (response.status == 200) {
-                setIsLoading(false);
-                setConfirmLogin(true);
-
-                setTimeout(() => {
-                  navigate("/users/dashboard");
-                }, 500);
-              } else {
-                setIsLoading(false);
-              }
-            })
-            .catch((error) => {
+            if (response) {
               setIsLoading(false);
+              setConfirmLogin(true);
 
-              alert(error.response.data.message);
-            });
+              setTimeout(() => {
+                navigate("/users/dashboard");
+              }, 500);
+            } else {
+              setIsLoading(false);
+            }
+          } catch (error) {
+            setIsLoading(false);
+
+            alert(error.response.data.message);
+          }
         }}
       >
         {(formik) => {
           if (isLoading) {
-            return (
-              <div className="container">
-                <div className="row text-center mt-5">
-                  <div className="col-md-12">
-                    Please wait, your account is being verified...
+            setTimeout(() => {
+              return (
+                <div className="container">
+                  <div className="row text-center mt-5">
+                    <div className="col-md-12">
+                      Please wait, your account is being verified...
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
+              );
+            }, 500);
           }
 
           if (confirmLogin) {
@@ -126,10 +125,13 @@ const UserLogin = () => {
                           disabled={isLoading}
                         >
                           {isLoading ? (
-                            <span
-                              class="spinner-border spinner-border-sm"
-                              aria-hidden="true"
-                            ></span>
+                            <>
+                              <span
+                                class="spinner-border spinner-border-sm"
+                                aria-hidden="true"
+                              ></span>
+                              <span role="status">Logging...</span>
+                            </>
                           ) : (
                             "Log in"
                           )}
