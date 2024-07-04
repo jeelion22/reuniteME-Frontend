@@ -39,20 +39,16 @@ const UserRegister = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async (values, { resetForm }) => {
-        userServices
-          .register(values)
-          .then((response) => {
-            setIsLoading(true);
-            alert(response.data.message);
-
-            navigate("/");
-            resetForm();
-          })
-          .catch((error) => {
-            setIsLoading(false);
-
-            alert(error.response.data.message);
-          });
+        try {
+          setIsLoading(true);
+          const response = userServices.register(values);
+          alert((await response).data.message);
+          navigate("/");
+          resetForm();
+        } catch (error) {
+          setIsLoading(false);
+          alert(error.response.data.message);
+        }
       }}
     >
       {(formik) => (
