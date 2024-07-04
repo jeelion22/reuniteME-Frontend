@@ -1,5 +1,5 @@
 import "../../styles/AdminPasswordReset.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { createPasswordValidationSchema } from "../../validataionSchema/createPasswordValidationSchema";
@@ -14,6 +14,13 @@ const AdminPasswordReset = () => {
   const { adminId } = useParams();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const isPasswordSet = sessionStorage.getItem("isPasswordSert");
+    if (isPasswordSet) {
+      navigate("/admins/login");
+    }
+  }, []);
 
   return (
     <Formik
@@ -31,6 +38,7 @@ const AdminPasswordReset = () => {
             if (response.status == 200) {
               setPasswordStatus(false);
               setIsPasswordCreated(true);
+              sessionStorage.setItem("isPasswordSet", true);
               setTimeout(() => {
                 setPassword(""), setConfirmPassword("");
                 navigate("/admins/login");
