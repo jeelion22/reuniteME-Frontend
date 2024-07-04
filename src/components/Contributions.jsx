@@ -13,21 +13,25 @@ const Contributions = () => {
   const navigate = useNavigate();
   const [edit, setEdit] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const [refresh, setRefresh] = useState(false);
 
-  const handleDelete = async (imageId) => {
-    try {
-      const response = await userServices.deleteImage(imageId);
-      console.log("Image deleted successfully:", response);
-      navigate(0);
-      alert(response.data.message);
-    } catch (error) {
-      console.log(error);
-      alert(error);
+  const handleDelete = async (fileName, imageId) => {
+    if (confirm(`Would you like to delete ${fileName} contribution?`)) {
+      try {
+        const response = await userServices.deleteImage(imageId);
+        setRefresh((prev) => !prev);
+
+        // navigate(0);
+        alert(response.data.message);
+      } catch (error) {
+        alert(error.response.message);
+      }
     }
   };
 
+  useEffect(() => {}, [refresh]);
+
   const handlePageClick = (data) => {
-    console.log(data.selected);
     setCurrentPage(data.selected);
   };
 
