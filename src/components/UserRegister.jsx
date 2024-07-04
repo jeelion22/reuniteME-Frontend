@@ -18,6 +18,8 @@ const initialValues = {
 };
 
 const UserRegister = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState("");
   const [validationSchema, setValidationSchema] = useState(
@@ -40,13 +42,15 @@ const UserRegister = () => {
         userServices
           .register(values)
           .then((response) => {
+            setIsLoading(true);
             alert(response.data.message);
-            console.log(values);
 
             navigate("/");
             resetForm();
           })
           .catch((error) => {
+            setIsLoading(false);
+
             alert(error.response.data.message);
           });
       }}
@@ -238,8 +242,19 @@ const UserRegister = () => {
                   </div>
 
                   <div className="col-auto p-1">
-                    <button type="submit" className="btn btn-outline-primary">
-                      Create An Account
+                    <button
+                      type="submit"
+                      className="btn btn-outline-primary"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? (
+                        <span
+                          class="spinner-border spinner-border-sm"
+                          aria-hidden="true"
+                        ></span>
+                      ) : (
+                        "Create An Account"
+                      )}
                     </button>
                   </div>
                 </div>
