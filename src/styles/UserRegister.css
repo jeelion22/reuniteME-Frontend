@@ -11,3 +11,8 @@
    border-radius: 25px;
 }
 
+
+.phone-input-no-border input {
+   border: none;
+   outline: none; 
+}
