@@ -92,7 +92,7 @@ const router = createBrowserRouter([
   {
     path: "admins",
     loader: AdminLoader,
-    element: <AdminDashboardNave />,
+    element: [<AdminDashboardNave />, <Footer />],
     children: [
       { path: "profile", loader: AdminLoader, element: <AdminProfile /> },
       {
@@ -122,7 +122,7 @@ const router = createBrowserRouter([
   {
     path: "users",
 
-    element: <UserDashboardNav />,
+    element: [<UserDashboardNav />, <Footer />],
     loader: UserLoader,
     children: [
       {
