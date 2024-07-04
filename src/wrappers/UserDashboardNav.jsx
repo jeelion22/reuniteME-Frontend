@@ -38,7 +38,7 @@ const UserDashboardNav = () => {
       <div className="row user-dashboard-nav">
         <div className="col">
           <nav className="navbar navbar-expand-lg">
-            <Link className="navbar-brand ps-2">ReUniteMe</Link>
+            <span className="navbar-brand ps-2">ReUniteMe</span>
             <button
               className="navbar-toggler"
               type="button"
