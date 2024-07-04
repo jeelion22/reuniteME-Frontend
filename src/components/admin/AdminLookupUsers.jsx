@@ -27,13 +27,15 @@ const AdminLookupUsers = () => {
   };
 
   const handleUserDelete = async (userId) => {
-    try {
-      await userServices.adminDeleteUser(userId);
+    if (confirm("Would you like to delete the user?")) {
+      try {
+        await userServices.adminDeleteUser(userId);
 
-      alert("User deleted successfully");
-      getAllUsers();
-    } catch (error) {
-      alert(error.response.data.message);
+        alert("The user was deleted successfully");
+        getAllUsers();
+      } catch (error) {
+        alert(error.response.data.message);
+      }
     }
   };
 
