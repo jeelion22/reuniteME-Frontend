@@ -61,7 +61,7 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
       >
         {(formik) => {
           const handlePhoneChange = (value) => {
-            formik.setFieldValue("phone", value);
+            formik.setFieldValue("contactNo", value);
           };
 
           spinner ? (
@@ -139,16 +139,16 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
                 <PhoneInput
                   className="form-control d-flex border-0 phone-input-no-border"
                   placeholder="Enter phone number"
-                  value={formik.values.phone}
+                  value={formik.values.contactNo}
                   onChange={handlePhoneChange}
                 />
 
-                <Field
+                {/* <Field
                   type="text"
                   name="contactNo"
                   className="form-control"
                   placeholder="Enter your contact number"
-                />
+                /> */}
                 <ErrorMessage
                   name="contactNo"
                   component="div"
