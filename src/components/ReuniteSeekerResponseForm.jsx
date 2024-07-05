@@ -1,3 +1,4 @@
+import "../styles/ReuniteSeekerResponseForm";
 import React, { useState } from "react";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 import { reuniteSeekerResponseValidationSchema } from "../validataionSchema/reuniteSeekerResponseValidationSchema";
@@ -5,6 +6,8 @@ import userServices from "../../services/userServices";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 const ReuniteSeekerResponseForm = ({ contribution }) => {
   const [spinner, setSpinner] = useState(false);
@@ -56,7 +59,11 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
           }
         }}
       >
-        {(formik) =>
+        {(formik) => {
+          const handlePhoneChange = (value) => {
+            formik.setFieldValue("phone", value);
+          };
+
           spinner ? (
             <div class="d-flex align-items-center">
               {!location & !loadLocation ? (
@@ -128,6 +135,14 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
                 <label htmlFor="contactNo" className="form-label">
                   Contact number
                 </label>
+
+                <PhoneInput
+                  className="form-control d-flex border-0 phone-input-no-border"
+                  placeholder="Enter phone number"
+                  value={formik.values.phone}
+                  onChange={handlePhoneChange}
+                />
+
                 <Field
                   type="text"
                   name="contactNo"
@@ -176,41 +191,6 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
                 />
               </div>
 
-              {/* <div className="mb-3">
-                <label htmlFor="willUpdate" className="form-label">
-                  Once you find them, will you update or inform us?
-                </label>
-                <div className="form-check">
-                  <Field
-                    className="form-check-input"
-                    type="radio"
-                    name="willUpdate"
-                    value="yes"
-                    id="willUpdateYes"
-                  />
-                  <label className="form-check-label" htmlFor="willUpdateYes">
-                    Yes
-                  </label>
-                </div>
-                <div className="form-check">
-                  <Field
-                    className="form-check-input"
-                    type="radio"
-                    name="willUpdate"
-                    value="no"
-                    id="willUpdateNo"
-                  />
-                  <label className="form-check-label" htmlFor="willUpdateNo">
-                    No
-                  </label>
-                </div>
-                <ErrorMessage
-                  name="willUpdate"
-                  component="div"
-                  className="text-danger"
-                />
-              </div> */}
-
               <div className="d-flex justify-content-end">
                 <button
                   type="submit"
@@ -224,8 +204,8 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
                 </button>
               </div>
             </Form>
-          )
-        }
+          );
+        }}
       </Formik>
     </div>
   );
