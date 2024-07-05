@@ -130,7 +130,7 @@ const UserLogin = () => {
                           {isLoading ? (
                             <>
                               <span
-                                class="spinner-border spinner-border-sm"
+                                className="spinner-border spinner-border-sm"
                                 aria-hidden="true"
                               ></span>
                               <span role="status">Logging...</span>

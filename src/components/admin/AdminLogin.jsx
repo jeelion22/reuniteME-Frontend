@@ -130,8 +130,19 @@ const AdminLogin = () => {
                         <button
                           type="submit"
                           className="btn btn-outline-primary  float-end"
+                          disabled={isLoading}
                         >
-                          Log in
+                          {isLoading ? (
+                            <>
+                              <span
+                                className="spinner-border spinner-border-sm"
+                                aria-hidden="true"
+                              ></span>
+                              <span>Logging...</span>
+                            </>
+                          ) : (
+                            "Log in"
+                          )}
                         </button>
                       </div>
                     </div>
