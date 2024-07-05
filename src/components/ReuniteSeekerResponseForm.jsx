@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import PhoneField from "./PhoneField";
 
 const ReuniteSeekerResponseForm = ({ contribution }) => {
   const [spinner, setSpinner] = useState(false);
@@ -60,11 +61,7 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
         }}
       >
         {(formik) => {
-          const handlePhoneChange = (value) => {
-            formik.setFieldValue("contactNo", value);
-          };
-
-          spinner ? (
+          return spinner ? (
             <div class="d-flex align-items-center">
               {!location & !loadLocation ? (
                 <strong role="status">Submitting your response...</strong>
@@ -132,23 +129,12 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
               </div>
 
               <div className="mb-3">
-                <label htmlFor="contactNo" className="form-label">
-                  Contact number
-                </label>
-
-                <PhoneInput
-                  className="form-control d-flex border-0 phone-input-no-border"
-                  placeholder="Enter phone number"
-                  value={formik.values.contactNo}
-                  onChange={handlePhoneChange}
-                />
-
-                {/* <Field
-                  type="text"
+                <Field
                   name="contactNo"
-                  className="form-control"
+                  component={PhoneField}
+                  className="form-control d-flex phone-input-no-border"
                   placeholder="Enter your contact number"
-                /> */}
+                />
                 <ErrorMessage
                   name="contactNo"
                   component="div"
