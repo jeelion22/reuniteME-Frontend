@@ -124,7 +124,7 @@ const CreateAdmin = () => {
                   <div className="row justify-content-center mt-3">
                     <div className="col">
                       <PhoneInput
-                        className="form-control d-flex border-0 phone-input-no-border"
+                        className="form-control d-flex phone-input-no-border"
                         placeholder="Enter phone number"
                         value={formik.values.phone}
                         onChange={handlePhoneChange}

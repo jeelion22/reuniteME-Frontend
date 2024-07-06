@@ -129,16 +129,13 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
               </div>
 
               <div className="mb-3">
+                <label htmlFor="contactNo" className="form-label">
+                  Enter your contact number
+                </label>
                 <Field
                   name="contactNo"
                   component={PhoneField}
                   className="form-control d-flex phone-input-no-border"
-                  placeholder="Enter your contact number"
-                />
-                <ErrorMessage
-                  name="contactNo"
-                  component="div"
-                  className="text-danger"
                 />
               </div>
 

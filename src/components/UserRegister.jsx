@@ -1,12 +1,12 @@
 import "../styles/UserRegister.css";
-import { Formik, useFormik } from "formik";
+import { Formik, Form, Field, ErrorMessage, useFormik } from "formik";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import userServices from "../../services/userServices";
 import { CommunityUploaderValidationSchema } from "../validataionSchema/CommunityUploaderValidationSchema";
 import { reuniteSeekerValidationSchema } from "../validataionSchema/reuniteSeekerValidationSchema";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
+
+import PhoneField from "./PhoneField";
 
 const initialValues = {
   firstname: "",
@@ -54,12 +54,8 @@ const UserRegister = () => {
       }}
     >
       {(formik) => {
-        const handlePhoneChange = (value) => {
-          formik.setFieldValue("phone", value);
-        };
-
         return (
-          <form onSubmit={formik.handleSubmit}>
+          <Form onSubmit={formik.handleSubmit}>
             <div className="container ">
               <div className="row  justify-content-center p-4 mt-2 user-register">
                 <div className="col col-lg-8 border">
@@ -71,64 +67,52 @@ const UserRegister = () => {
 
                   <div className="row justify-content-center mt-4">
                     <div className="col">
-                      <input
-                        type="text"
+                      <Field
+                        name="firstname"
                         className="form-control"
-                        placeholder="First name"
-                        aria-label="firstname"
-                        id="firstname"
-                        {...formik.getFieldProps("firstname")}
+                        placeholder="Firstname"
                       />
-                      {formik.touched.firstname && formik.errors.firstname ? (
-                        <div className="text-danger">
-                          {formik.errors.firstname}
-                        </div>
-                      ) : null}
+                      <ErrorMessage
+                        className="text-danger"
+                        name="firstname"
+                        component="div"
+                      />
                     </div>
                     <div className="col">
-                      <input
-                        type="text"
+                      <Field
+                        name="lastname"
+                        placeholder="Lastname"
                         className="form-control"
-                        placeholder="Last name"
-                        aria-label="lastname"
-                        id="lastname"
-                        {...formik.getFieldProps("lastname")}
                       />
-                      {formik.touched.lastname && formik.errors.lastname ? (
-                        <div className="text-danger">
-                          {formik.errors.lastname}
-                        </div>
-                      ) : null}
+                      <ErrorMessage
+                        name="lastname"
+                        component="div"
+                        className="text-danger"
+                      />
                     </div>
                   </div>
                   <div className="row justify-content-center mt-3">
                     <div className="col">
-                      <input
-                        type="email"
+                      <Field
+                        name="email"
                         className="form-control"
                         placeholder="Email"
-                        aria-label="email"
-                        id="email"
-                        {...formik.getFieldProps("email")}
                       />
-                      {formik.touched.email && formik.errors.email ? (
-                        <div className="text-danger">{formik.errors.email}</div>
-                      ) : null}
+                      <ErrorMessage
+                        name="email"
+                        component="div"
+                        className="text-danger"
+                      />
                     </div>
                   </div>
 
                   <div className="row justify-content-center mt-3">
                     <div className="col">
-                      <PhoneInput
-                        className="form-control d-flex border-0 phone-input-no-border"
-                        placeholder="Enter phone number"
-                        value={formik.values.phone}
-                        onChange={handlePhoneChange}
+                      <Field
+                        name="phone"
+                        className="form-control d-flex phone-input-no-border"
+                        component={PhoneField}
                       />
-
-                      {formik.touched.phone && formik.errors.phone ? (
-                        <div className="text-danger">{formik.errors.phone}</div>
-                      ) : null}
                     </div>
                   </div>
 
@@ -266,7 +250,7 @@ const UserRegister = () => {
                 </div>
               </div>
             </div>
-          </form>
+          </Form>
         );
       }}
     </Formik>

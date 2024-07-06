@@ -1,12 +1,15 @@
 import React from "react";
 import { Field, ErrorMessage } from "formik";
-import PhoneInput from "react-phone-number-input/input";
 import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 const PhoneField = ({ field, form, ...props }) => {
   return (
     <div>
       <PhoneInput
+        placeholder="Enter your contact number"
+        defaultCountry="IN"
+        international
         {...field}
         {...props}
         value={field.value}

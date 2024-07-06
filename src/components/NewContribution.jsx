@@ -2,13 +2,14 @@ import "../styles/NewContribution.css";
 
 import { useState } from "react";
 import { contributionValidationSchema } from "../validataionSchema/contributionValidation";
-import { Formik } from "formik";
+import { Formik, Field, ErrorMessage } from "formik";
 import userServices from "../../services/userServices";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner, faRectangleXmark } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import PhoneField from "./PhoneField";
 
 const NewContribution = () => {
   const [loading, setLoading] = useState(false);
@@ -124,17 +125,11 @@ const NewContribution = () => {
 
                       <div className="row mt-3">
                         <div className="col-md-12">
-                          <PhoneInput
-                            className="form-control d-flex border-0 phone-input-no-border"
-                            placeholder="Enter phone number"
-                            value={formik.values.phone}
-                            onChange={handlePhoneChange}
+                          <Field
+                            name="phone"
+                            className="form-control d-flex phone-input-no-border"
+                            component={PhoneField}
                           />
-                          {formik.touched.phone && formik.errors.phone ? (
-                            <div className="text-danger">
-                              {formik.errors.phone}
-                            </div>
-                          ) : null}
                         </div>
                       </div>
 

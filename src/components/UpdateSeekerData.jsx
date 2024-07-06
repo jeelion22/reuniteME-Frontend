@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Formik } from "formik";
+import { Field, Formik } from "formik";
 import { updateContributionValidationSchema } from "../validataionSchema/updateContributionValidationSchema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRectangleXmark, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import userServices from "../../services/userServices";
+import PhoneField from "./PhoneField";
 
 const UpdateSeekerData = () => {
   const [loading, setLoading] = useState(false);
@@ -137,20 +138,11 @@ const UpdateSeekerData = () => {
                             {field === "phone" && (
                               <div className="row mt-3">
                                 <div className="col-md-12">
-                                  <input
-                                    type="text"
-                                    className="form-control"
-                                    placeholder="Phone e.g. +919677061448"
-                                    aria-label="phone"
-                                    id="phone"
-                                    {...formik.getFieldProps("phone")}
+                                  <Field
+                                    className="form-control d-flex phone-input-no-border"
+                                    name="phone"
+                                    component={PhoneField}
                                   />
-                                  {formik.touched.phone &&
-                                  formik.errors.phone ? (
-                                    <div className="text-danger">
-                                      {formik.errors.phone}
-                                    </div>
-                                  ) : null}
                                 </div>
                               </div>
                             )}
