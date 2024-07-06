@@ -15,8 +15,8 @@ export const reuniteSeekerValidationSchema = Yup.object({
     .email("* Invalid email address.")
     .required("* Email address should not be empty."),
   phone: Yup.string()
-    .transform((value, originalValue) => (originalValue === "" ? "NA" : value))
-    .matches(phoneRegex, "Phone number is not valid"),
+    .required("* Phone number is required")
+    .matches(phoneRegex, "* Phone number is not valid"),
   userCategory: Yup.string().required("* Please select user category"),
   address: Yup.string().required("* Please enter full address"),
   authorizedIdType: Yup.string().required("* Please select ID Type"),

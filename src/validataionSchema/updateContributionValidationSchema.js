@@ -21,12 +21,8 @@ export const updateContributionValidationSchema = (fields) => {
     name: Yup.string().default("NA"),
     address: Yup.string().default("NA"),
     phone: Yup.string()
-
-      .transform((value, originalValue) =>
-        originalValue === "" ? "NA" : value
-      )
-
-      .matches(phoneRegex, "Phone number is not valid"),
+      .required("* Phone number is required")
+      .matches(phoneRegex, "* Phone number is not valid"),
 
     description: Yup.string().default("NA"),
     file: fileSchema,

@@ -1,5 +1,7 @@
 import * as Yup from "yup";
 
+const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+
 export const reuniteSeekerResponseValidationSchema = Yup.object().shape({
   relationship: Yup.string().required(
     "Please specify your relationship with the person"
@@ -10,14 +12,10 @@ export const reuniteSeekerResponseValidationSchema = Yup.object().shape({
   purpose: Yup.string().required("Describe your purpose"),
 
   contactNo: Yup.string()
-    .required("Your contact number is required for further communication")
-    .matches(/^[0-9]{10}$/, "Contact number must be 10 digits"),
+    .required("** Your contact number is required for further communication")
+    .matches(phoneRegex, "* Invalid contact number."),
 
   meetingDate: Yup.date().required("Meeting date must be entered"),
 
   willUpdate: Yup.bool().oneOf([true]),
-
-  // willUpdate: Yup.string()
-  //   .oneOf(["yes", "no"], "You must select whether you will update or not")
-  //   .required("You must select whether you will update or not"),
 });
