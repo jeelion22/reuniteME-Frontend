@@ -134,7 +134,7 @@ const UserRegister = () => {
                           Community Uploader
                         </option>
                         <option value="reuniteSeeker">Reunite Seeker</option>
-                        <option value="both">Both</option>
+                        {/* <option value="both">Both</option> */}
                       </select>
                       {formik.touched.userCategory &&
                       formik.errors.userCategory ? (
