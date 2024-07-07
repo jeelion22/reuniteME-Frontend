@@ -21,7 +21,6 @@ export const ReuniteSeekerDashBoard = () => {
         const response = await userServices.getAllContributions();
         setContributions(response.data);
       } catch (error) {
-        console.log(error);
         alert(error.response.data.message);
       }
     }

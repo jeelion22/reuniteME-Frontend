@@ -9,7 +9,7 @@ export const adminCreateValidationSchema = Yup.object({
     .required("* Username must be required."),
   firstname: Yup.string()
     .min(3, "* First name must be atleast 3 characters.")
-    .max(12, "* Last name should not exceed 12 characters.")
+    .max(12, "* Firstname name should not exceed 12 characters.")
     .required("* First name should not empty."),
   lastname: Yup.string()
     .min(1, "* Last name should be at least 1 character.")

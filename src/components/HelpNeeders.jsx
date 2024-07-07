@@ -34,8 +34,7 @@ const HelpNeeders = ({ contribution, userId }) => {
           }
         }
       } catch (error) {
-        console.log(error);
-        alert(error.message);
+        alert(error.response.data.message);
       }
     };
     handleStatus(contribution._id);

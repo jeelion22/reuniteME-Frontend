@@ -31,7 +31,6 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
       const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
       window.location.href = url;
     } catch (error) {
-      console.log("Error fetching Google Maps URL:", error);
       alert(error.response.data.message);
     }
   };
@@ -50,13 +49,11 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
             );
             resetForm();
             if (response.status === 200) {
-              // navigate("");
-              // setSpinner(false);
               setLocation(true);
               setLoadLocation(true);
             }
           } catch (error) {
-            console.log(error);
+            alert(error.response.data.message);
           }
         }}
       >

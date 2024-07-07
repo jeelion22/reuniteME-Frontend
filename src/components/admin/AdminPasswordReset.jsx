@@ -45,6 +45,7 @@ const AdminPasswordReset = () => {
               }, 5000);
             } else {
               alert(response.data.message);
+              setPasswordStatus(false);
             }
           })
           .catch((error) => {
