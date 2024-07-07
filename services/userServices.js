@@ -39,7 +39,7 @@ const userServices = {
   },
 
   deleteImage: async (imageId) => {
-    return await protectedInstance.get(`/users/images/delete/${imageId}`, {});
+    return await protectedInstance.delete(`/users/images/delete/${imageId}`);
   },
 
   getMapUrl: async (imageId) => {
