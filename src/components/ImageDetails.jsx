@@ -22,8 +22,7 @@ const ImageDetails = ({ contributionId }) => {
         const response = await userServices.getImage(imageId);
         setImageUrl(response.data.url);
       } catch (error) {
-        console.log("Error fetching image URL:", error);
-        alert(error.message);
+        alert(error.response.data.message);
       }
     };
     fetchImageUrl();
@@ -35,8 +34,7 @@ const ImageDetails = ({ contributionId }) => {
       const { url } = response.data;
       window.location.href = url;
     } catch (error) {
-      console.log("Error fetching Google Maps URL:", error);
-      alert(error.message);
+      alert(error.response.data.message);
     }
   };
 
