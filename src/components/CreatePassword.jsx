@@ -14,14 +14,13 @@ const CreatePassword = () => {
 
   const navigate = useNavigate();
 
-
-  useEffect(()=>{
+  useEffect(() => {
     const isPasswordCreated = sessionStorage.getItem("isPasswordCreated");
 
     if (isPasswordCreated) {
-      navigate("/users/login")
+      navigate("/users/login");
     }
-  }, [])
+  }, []);
   return (
     <Formik
       initialValues={{
@@ -30,15 +29,14 @@ const CreatePassword = () => {
       }}
       validationSchema={createPasswordValidationSchema}
       onSubmit={(values) => {
-        const pass = values.confirmPassword;
         setPasswordStatus(true);
         userServices
-          .createPassword(userId, { password: pass })
+          .createPassword(userId, values.confirmPassword)
           .then((response) => {
             if (response.status == 200) {
               setPasswordStatus(false);
               setIsPasswordCreated(true);
-              sessionStorage.setItem("isPasswordCreated", "true")
+              sessionStorage.setItem("isPasswordCreated", "true");
               setTimeout(() => {
                 setPassword(""), setConfirmPassword("");
                 navigate("/users/login");
@@ -97,7 +95,9 @@ const CreatePassword = () => {
                         {...formik.getFieldProps("password")}
                       />
                       {formik.touched.password && formik.errors.password ? (
-                        <div className="text-danger">{formik.errors.password}</div>
+                        <div className="text-danger">
+                          {formik.errors.password}
+                        </div>
                       ) : null}
                     </div>
                   </div>
@@ -114,7 +114,9 @@ const CreatePassword = () => {
                       />
                       {formik.touched.confirmPassword &&
                       formik.errors.confirmPassword ? (
-                        <div className="text-danger">{formik.errors.confirmPassword}</div>
+                        <div className="text-danger">
+                          {formik.errors.confirmPassword}
+                        </div>
                       ) : null}
                     </div>
                   </div>
