@@ -18,12 +18,12 @@ const Contributions = () => {
   const handleDelete = async (fileName, imageId) => {
     if (confirm(`Would you like to delete ${fileName} contribution?`)) {
       try {
-        const response = await userServices.deleteImage(imageId);
+        await userServices.deleteImage(imageId);
 
+        alert(`${fileName} deleted successfully!`);
         navigate(0);
-        alert(response.data.message);
       } catch (error) {
-        alert(error.response.message);
+        alert(error.response.data.message);
       }
     }
   };
