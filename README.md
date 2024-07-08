@@ -6,7 +6,7 @@ ReuniteME is a web-based platform designed to facilitate the reunion of mentally
 ## Table of Contents
 
 - [Introduction](#introduction)
-- [Contributions](#contributions)
+- [Users of the Application](#contributions)
 - [Technolgies Used](#technologies-used)
 - [Application Link](#application-link)
 - [Application Images](#application-images)
@@ -21,7 +21,7 @@ ReuniteME is a web-based platform designed to facilitate the reunion of mentally
 
 The application supports two types of user registrations: Community Contributor and Reunite Seeker (families and friends searching for lost family members).
 
-## Contributions
+## Users of the application
 
 #### Community Contributor
 
