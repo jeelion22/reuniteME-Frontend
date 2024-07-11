@@ -16,9 +16,8 @@ const Home = () => {
                       {" "}
                       "ReuniteMe"{" "}
                     </span>{" "}
-                    is a web-based platform that enables users to upload and tag
-                    photos with the locations of mentally ill individuals found
-                    wandering.{" "}
+                    is an that enables users to upload and tag photos with the
+                    locations of person with mental health issues.{" "}
                   </li>
                   <li>
                     The application ensures privacy with a detailed registration
