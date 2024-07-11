@@ -1,7 +1,7 @@
 # ReUniteME (Frontend)
 
 
-ReuniteME is a web-based platform designed to facilitate the reunion of mentally ill individuals and individuals in endangered situations with their families.
+ReuniteME is a web-based platform designed to facilitate the reunion of person with mental health issues and individuals in endangered situations with their families.
 
 ## Table of Contents
 
@@ -25,7 +25,7 @@ The application supports two types of user registrations: Community Contributor 
 
 #### Community Contributor
 
-To create an account as a Community Contributor, users need to provide basic details including their official names, a valid email address, and phone number. Upon successful registration, users can take a picture of a person who needs to be reunited (such as mentally ill individuals and those in endangered situations), ensuring that location services are enabled in the camera settings. The size of the uploaded picture should not exceed 5MB. It's important to note that uploads from social media shared photographs should be avoided as they do not contain location metadata.
+To create an account as a Community Contributor, users need to provide basic details including their official names, a valid email address, and phone number. Upon successful registration, users can take a picture of a person who needs to be reunited (such as person with mental health issues and those in endangered situations), ensuring that location services are enabled in the camera settings. The size of the uploaded picture should not exceed 5MB. It's important to note that uploads from social media shared photographs should be avoided as they do not contain location metadata.
 
 Community Contributors can perform CRUD operations on their contributions while respecting the privacy of individuals involved.
 
