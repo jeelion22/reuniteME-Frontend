@@ -1,7 +1,6 @@
 # ReUniteME (Frontend)
 
-
-ReuniteME is a web-based platform designed to facilitate the reunion of person with mental health issues and individuals in endangered situations with their families.
+ReuniteME is a web application designed to facilitate the reunion of person with mental health issues and individuals in endangered situations with their families.
 
 ## Table of Contents
 
@@ -15,8 +14,6 @@ ReuniteME is a web-based platform designed to facilitate the reunion of person w
 - [Usage](#usage)
 - [License](#license)
 
-
-
 ## Introduction
 
 The application supports two types of user registrations: Community Contributor and Reunite Seeker (families and friends searching for lost family members).
@@ -29,7 +26,7 @@ To create an account as a Community Contributor, users need to provide basic det
 
 Community Contributors can perform CRUD operations on their contributions while respecting the privacy of individuals involved.
 
-#### Reunite Seeker 
+#### Reunite Seeker
 
 To create an account as a Reunite Seeker, users must provide additional information such as a valid current address, a type of government-approved ID, and the ID number. This information helps verify their identity and enables officials to contact them regarding the individuals in need.
 
@@ -38,7 +35,6 @@ Upon successful registration, users can access information about individuals in 
 #### Admins
 
 The application includes admins with varying permission levels. The root admin has full accessibility to the application, including creating new admins, updating user information, and managing contributions. Other admins have restricted permissions based on their assigned levels of access.
-
 
 ## Technologies Used
 
@@ -84,14 +80,19 @@ The below images are about how our web application looks like.
    git clone https://github.com/jeelion22/reuniteME-Frontend.git
    cd ReuniteME-Frontend
 
+   ```
+
 2. **Install dependencies**
-    ```bash
-    npm install
+
+   ```bash
+   npm install
+
+   ```
 
 3. **Run the application**
-    ```bash
-    npm run dev
-
+   ```bash
+   npm run dev
+   ```
 
 ## Contributing
 
@@ -117,7 +118,6 @@ Contributions are crucial to enhancing the security, reliability, and functional
 - **Quality Assurance**: Follow best practices for code quality, security, and performance.
 
 Your contributions are valued and essential in making ReuniteME a secure and reliable platform for reuniting families and ensuring the well-being of individuals in need.
-
 
 ## License
 

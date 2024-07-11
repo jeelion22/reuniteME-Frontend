@@ -16,7 +16,10 @@ const Home = () => {
                       {" "}
                       "ReuniteMe"{" "}
                     </span>{" "}
-                    is an that enables users to upload and tag photos with the
+                    is a web application designed to facilitate the reunion of
+                    person with mental health issues and individuals in
+                    endangered situations with their families. The application
+                    enables users to upload and tag photos with the
                     locations of person with mental health issues.{" "}
                   </li>
                   <li>
