@@ -11,6 +11,9 @@ export async function loader() {
     return { user };
   } catch (error) {
     alert(error.response.data.message);
+    if (error.response.data.message === "Unauthorized") {
+      window.location.replace("/");
+    }
     return null;
   }
 }
@@ -27,12 +30,11 @@ const UserDashboardNav = () => {
       if (response.status === 204) {
         alert("Logged out successfully!");
         navigate("/");
-        navigator(0);
       } else {
         response.data.message;
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       alert(error.response.data.message);
     }
   };
