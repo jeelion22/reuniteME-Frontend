@@ -44,7 +44,7 @@ const UserDashboardNav = () => {
       <div className="row user-dashboard-nav">
         <div className="col">
           <nav className="navbar navbar-expand-lg">
-            <span className="navbar-brand ps-2">ReUniteMe</span>
+            <h4 className="navbar-brand ps-2">ReUniteMe</h4>
             <button
               className="navbar-toggler"
               type="button"
@@ -63,12 +63,15 @@ const UserDashboardNav = () => {
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <a className="nav-link disabled" aria-disabled="true">
-                    Welcome {user.data.user.firstname} {user.data.user.lastname}
+                    <h6>
+                      Welcome {user.data.user.firstname}{" "}
+                      {user.data.user.lastname}
+                    </h6>
                   </a>
                 </li>
                 <li className="nav-item">
                   <button className="nav-link" onClick={handleLogout}>
-                    Logout
+                    <h6>Logout</h6>
                   </button>
                 </li>
               </ul>
