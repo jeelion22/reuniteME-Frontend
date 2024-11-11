@@ -1,5 +1,9 @@
 .footer {
-    margin-top: 25vh;
+    /* margin-top: 40vh; */
     background-color: #7E8EF1;
     color: #EEEEEE;
+}
+
+.about-btn, .quicklinks-btn, .contact-btn, .follow-btn, .dev-btn, .policy-btn {
+    cursor: pointer;
 }
