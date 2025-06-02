@@ -14,23 +14,19 @@ const userServices = {
   },
 
   login: async (credentials) => {
-    const response = await instance.post("/users/login", credentials, );
-
-    localStorage.setItem("token", response.data.token)
-
-    return response
+    return await instance.post("/users/login", credentials, {
+      withCredentials: true,
+    });
   },
 
   getCurrentUser: async () => {
     return await protectedInstance.get("/users/me");
   },
   logout: async () => {
-    localStorage.removeItem("token")
     return await protectedInstance.get("/users/logout");
   },
 
   getImage: async (imageId) => {
-
     return await protectedInstance.get(`/users/images/${imageId}`);
   },
 

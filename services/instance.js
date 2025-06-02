@@ -19,16 +19,7 @@ const protectedInstance = axios.create({
   // headers: {
   //   "Content-Type": "application/json",
   // },
-  // withCredentials: true,
+  withCredentials: true,
 });
-
-protectedInstance.interceptors.request.use((config)=>{
-  const token = localStorage.getItem("token");
-  if (token) {
-    config.headers.Authorization = `Barer ${token}`
-  }
-
-  return config
-})
 
 export { instance, protectedInstance };
