@@ -39,7 +39,7 @@ const UserLogin = () => {
           } catch (error) {
             setIsLoading(false);
 
-            alert(error.response.data.message);
+            alert(error?.response?.data?.message ?? error.message);
           }
         }}
       >
