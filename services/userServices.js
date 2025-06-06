@@ -14,15 +14,25 @@ const userServices = {
   },
 
   login: async (credentials) => {
-    return await instance.post("/users/login", credentials, {
-      withCredentials: true,
+
+
+     return await instance.post("/users/login", credentials, {
+   
     });
+    // const response = await instance.post("/users/login", credentials, {
+   
+    // });
+
+    // localStorage.setItem("token", response?.data?.token)
+
+    // return response
   },
 
   getCurrentUser: async () => {
     return await protectedInstance.get("/users/me");
   },
   logout: async () => {
+    // localStorage.removeItem("token")
     return await protectedInstance.get("/users/logout");
   },
 
@@ -94,8 +104,16 @@ const userServices = {
   },
 
   adminLogin: async (adminCredentials) => {
-    return await protectedInstance.post("admins/login", adminCredentials);
+
+    const response =  await protectedInstance.post("admins/login", adminCredentials);
+
+  // const response =  await protectedInstance.post("admins/login", adminCredentials);
+  
+  if (response.data.token){  localStorage.setItem("token", `Bearer ${response.data.message.token}`)
+} return response
   },
+
+  
   getCurrentAdmin: async () => {
     return await protectedInstance.get("admins/me");
   },
