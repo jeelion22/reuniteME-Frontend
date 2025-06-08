@@ -7,7 +7,7 @@ const baseURL = "https://reuniteme-backend.onrender.com/api";
 // create an axios instance
 const instance = axios.create({
   baseURL,
-  timeout: 50000,
+  // timeout: 50000,
   headers: {
     "Content-Type": "application/json",
   },
