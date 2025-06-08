@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const baseURL = "https://reuniteme-backend.onrender.com/api";
+// const baseURL = "https://reuniteme-backend.onrender.com/api";
 
-// const baseURL = "http://localhost:5001/api";
+const baseURL = "http://localhost:5001/api";
 
 // create an axios instance
 const instance = axios.create({
@@ -19,19 +19,19 @@ const protectedInstance = axios.create({
   // headers: {
   //   "Content-Type": "application/json",
   // },
-  withCredentials: true,
+  // withCredentials: true,
 });
 
-// protectedInstance.interceptors.request.use((config)=>{
-//   const token = localStorage.getItem("token");
+protectedInstance.interceptors.request.use((config)=>{
+  const token = localStorage.getItem("token");
 
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`
-//   }
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
 
-//   return config;
+  return config;
 
 
-// })
+})
 
 export { instance, protectedInstance };

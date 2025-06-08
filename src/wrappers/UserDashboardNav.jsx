@@ -27,6 +27,8 @@ const UserDashboardNav = () => {
     try {
       const response = await userServices.logout();
 
+    
+
       if (response.status === 204) {
         alert("Logged out successfully!");
         navigate("/");
