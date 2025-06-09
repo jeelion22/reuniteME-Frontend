@@ -22,16 +22,14 @@ const protectedInstance = axios.create({
   // withCredentials: true,
 });
 
-protectedInstance.interceptors.request.use((config)=>{
+protectedInstance.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+    config.headers.Authorization = `Bearer ${token}`;
   }
 
   return config;
-
-
-})
+});
 
 export { instance, protectedInstance };

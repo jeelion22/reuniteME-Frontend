@@ -14,30 +14,25 @@ const userServices = {
   },
 
   login: async (credentials) => {
-
-
     //  return await instance.post("/users/login", credentials, {
-   
+
     // });
-    const response = await instance.post("/users/login", credentials, {
-   
-    });
+    const response = await instance.post("/users/login", credentials, {});
 
-    localStorage.setItem("token", response?.data?.token)
+    localStorage.setItem("token", response?.data?.token);
 
-    return response
+    return response;
   },
 
   getCurrentUser: async () => {
     return await protectedInstance.get("/users/me");
   },
   logout: async () => {
-   
     const response = await protectedInstance.get("/users/logout");
 
-     localStorage.removeItem("token")
+    localStorage.removeItem("token");
 
-     return response;
+    return response;
   },
 
   getImage: async (imageId) => {
@@ -108,24 +103,28 @@ const userServices = {
   },
 
   adminLogin: async (adminCredentials) => {
-
     // const response =  await protectedInstance.post("admins/login", adminCredentials);
 
-  const response =  await protectedInstance.post("admins/login", adminCredentials);
-  
-  if (response.data.token){  localStorage.setItem("token", `Bearer ${response.data.message.token}`)
-} return response
+    const response = await protectedInstance.post(
+      "admins/login",
+      adminCredentials
+    );
 
-
-return response
+    if (response?.data?.token) {
+      localStorage.setItem("token", response.data.token);
+    }
+    return response;
   },
 
-  
   getCurrentAdmin: async () => {
     return await protectedInstance.get("admins/me");
   },
   adminLogout: async () => {
-    return await protectedInstance.get("/admins/logout");
+    const response = await protectedInstance.get("/admins/logout");
+
+    localStorage.removeItem("token");
+
+    return response;
   },
 
   adminGetAllUsers: async () => {

@@ -57,7 +57,7 @@ const AdminDashboardNave = () => {
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <a className="nav-link disabled" aria-disabled="true">
-                    Welcome {admin.firstname} {admin.lastname}
+                    Welcome {admin?.firstname} {admin?.lastname}
                   </a>
                 </li>
                 <li className="nav-item">
