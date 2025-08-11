@@ -1,5 +1,6 @@
 import "../styles/Home.css";
 import React from "react";
+// import Loader from "./Loader";
 
 const Home = () => {
   return (
@@ -19,8 +20,8 @@ const Home = () => {
                     is a web application designed to facilitate the reunion of
                     person with mental health issues and individuals in
                     endangered situations with their families. The application
-                    enables users to upload and tag photos with the
-                    locations of person with mental health issues.{" "}
+                    enables users to upload and tag photos with the locations of
+                    person with mental health issues.{" "}
                   </li>
                   <li>
                     The application ensures privacy with a detailed registration
@@ -33,6 +34,8 @@ const Home = () => {
               </div>
             </div>
           </div>
+
+          {/* <Loader /> */}
         </div>
       </div>
     </div>

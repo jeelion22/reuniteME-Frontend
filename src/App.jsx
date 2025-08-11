@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomeNav from "./wrappers/HomeNav";
@@ -170,12 +170,15 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <Suspense fallback={<Loader />}>
-      <RouterProvider router={router} />
-      {/* <Footer /> */}
-    </Suspense>
-  );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 1500);
+  }, []);
+
+  if (loading) return <Loader />;
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
