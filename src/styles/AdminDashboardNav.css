@@ -1,5 +1,8 @@
 .admin-dashboard-nav {
-    background-color: #7E8EF1 ;
+    /* background-color: #7E8EF1 ;
+     */
+         background: linear-gradient(270deg, rgb(176, 150, 194), rgb(98, 62, 165), rgb(83, 21, 133));
+
 }
 
 .col.admin-dashboard-nav .navbar-brand,
