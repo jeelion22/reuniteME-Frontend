@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import "./App.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomeNav from "./wrappers/HomeNav";
@@ -35,13 +35,17 @@ import AdminPasswordReset from "./components/admin/AdminPasswordReset";
 import CreateAdmin from "./components/admin/CreateAdmin";
 import AdminsList from "./components/admin/AdminsList";
 import Footer from "./wrappers/Footer";
+import Loader from "./components/Loader";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: [<HomeNav />, <Footer />],
     children: [
-      { path: "/", element: <Home /> },
+      {
+        path: "/",
+        element: <Home />,
+      },
       {
         path: "users/register",
         element: <UserRegister />,
@@ -167,10 +171,10 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <RouterProvider router={router} />
       {/* <Footer /> */}
-    </>
+    </Suspense>
   );
 }
 
