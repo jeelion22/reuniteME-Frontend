@@ -8,3 +8,13 @@
   min-height: 100vh;
 }
 
+
+.btn-primary {
+  background-color:  #7414bd  !important;
+  border-color: #8d19e6 !important;
+}
+
+.btn-primary:hover {
+  background-color: #7414bd !important; /* slightly darker shade */
+  border-color: #7414bd !important;
+}
