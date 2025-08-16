@@ -6,7 +6,8 @@
 
 .row.user-dashboard-nav .navbar-brand,
  .nav-item .nav-link{
-    color: #EEEEEE;  
+    /* color: #EEEEEE;   */
+     color: #282629; 
 }
 
  .navbar-toggler-icon {

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import userServices from "../../services/userServices";
 import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import reuniteMeLogo from "../assets/reuniteme_logo.svg";
 
 export async function loader() {
   try {
@@ -44,7 +45,7 @@ const UserDashboardNav = () => {
       <div className="row user-dashboard-nav">
         <div className="col">
           <nav className="navbar navbar-expand-lg">
-            <h4 className="navbar-brand ps-2">ReUniteMe</h4>
+            <img src={reuniteMeLogo} alt="ReUniteME Logo" />
             <button
               className="navbar-toggler"
               type="button"
