@@ -106,7 +106,7 @@ const EditSeekerData = ({ setEdit, contribution }) => {
 
             <button
               type="submit"
-              class="btn btn-outline-primary"
+              class="btn btn-primary"
               disabled={Object.values(formik.values).every(
                 (value) => value === false
               )}

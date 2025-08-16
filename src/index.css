@@ -1,7 +1,8 @@
 #root {
 
   /* background-color:rgb(238, 238, 238); */
-  background: linear-gradient(270deg, rgb(176, 150, 194, 0.8), rgb(98, 62, 165, 0.3), rgb(83, 21, 133, 0.5));
+  /* background: linear-gradient(270deg, rgba(210, 207, 212, 0.8), rgb(98, 62, 165, 0.3), rgb(83, 21, 133, 0.5)); */
+  background-color: whitesmoke;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -9,12 +10,12 @@
 }
 
 
-.btn-primary {
-  background-color:  #7414bd  !important;
-  border-color: #8d19e6 !important;
+.btn-primary, .btn-primary {
+  background-color:  #8061a0  !important;
+  border-color: #e4e2e6 !important;
 }
 
 .btn-primary:hover {
-  background-color: #7414bd !important; /* slightly darker shade */
+  background-color: #4d1e70 !important; /* slightly darker shade */
   border-color: #7414bd !important;
 }

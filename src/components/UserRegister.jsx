@@ -56,8 +56,8 @@ const UserRegister = () => {
       {(formik) => {
         return (
           <Form onSubmit={formik.handleSubmit}>
-            <div className="container ">
-              <div className="row  justify-content-center p-4 mt-2 user-register">
+            <div className="container  ">
+              <div className="row   justify-content-center rounded p-4 m-4 user-register">
                 <div className="col col-lg-8 border">
                   <div className="row text-center">
                     <div className="col">
@@ -230,7 +230,7 @@ const UserRegister = () => {
                     <div className="col-auto p-1">
                       <button
                         type="submit"
-                        className="btn btn-outline-primary"
+                        className="btn btn-primary"
                         disabled={isLoading}
                       >
                         {isLoading ? (

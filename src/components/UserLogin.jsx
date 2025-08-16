@@ -124,7 +124,7 @@ const UserLogin = () => {
                       <div className="col-md-3">
                         <button
                           type="submit"
-                          className="btn btn-outline-primary float-end"
+                          className="btn btn-primary float-end"
                           disabled={isLoading}
                         >
                           {isLoading ? (

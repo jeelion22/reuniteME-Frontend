@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "../styles/HomeNav.css";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import reuniteMeLogo from "../assets/reuniteme_logo.svg";
+
 const HomeNav = () => {
   const location = useLocation();
   const [active, setActive] = useState("");
@@ -18,7 +20,7 @@ const HomeNav = () => {
       <nav className="navbar navbar-expand-lg home-dashboard-nav">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            <h4> ReUniteME</h4>
+            <img src={reuniteMeLogo} alt="ReUniteME Logo" />
           </Link>
           <button
             className="navbar-toggler"

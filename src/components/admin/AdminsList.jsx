@@ -118,7 +118,7 @@ const AdminsList = () => {
                           <div className="d-flex justify-content-end gap-2">
                             <button
                               type="button"
-                              className="btn btn-outline-primary"
+                              className="btn btn-primary"
                               data-bs-toggle="modal"
                               data-bs-target={`#${admin._id.toString()}`}
                               disabled={admin.email === "jeelion22@gmail.com"}

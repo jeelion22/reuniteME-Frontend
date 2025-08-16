@@ -97,7 +97,7 @@ const UserForgotPassword = () => {
 
                     <div className="row justify-content-center mt-3">
                       <div className="col-md-6 col-sm-12 text-center">
-                        <button type="submit" className="btn btn-outline-primary">
+                        <button type="submit" className="btn btn-primary">
                           Send Password Reset Link
                         </button>
                       </div>

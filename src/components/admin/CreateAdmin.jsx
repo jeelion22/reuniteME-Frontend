@@ -265,7 +265,7 @@ const CreateAdmin = () => {
 
                   <div className="row justify-content-center mt-3">
                     <div className="col-auto">
-                      <button type="submit" className="btn btn-outline-primary">
+                      <button type="submit" className="btn btn-primary">
                         Create Admin
                       </button>
                     </div>

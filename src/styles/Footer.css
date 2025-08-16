@@ -1,8 +1,8 @@
 .footer {
     /* margin-top: 40vh; */
     /* background-color: #7E8EF1; */
-    background: linear-gradient(270deg, rgb(138, 36, 211), rgb(98, 62, 165), rgb(83, 21, 133));
-    color: #EEEEEE;
+    background: linear-gradient(270deg, rgb(149, 135, 175), rgb(200, 196, 209), rgb(255, 255, 255));
+    color: #1d1c1c;
 }
 
 .about-btn, .quicklinks-btn, .contact-btn, .follow-btn, .dev-btn, .policy-btn {

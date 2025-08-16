@@ -171,7 +171,7 @@ const AdminLookupUsers = () => {
                             <FontAwesomeIcon
                               icon={faPenToSquare}
                               type="button"
-                              className="btn btn-outline-primary"
+                              className="btn btn-primary"
                               data-bs-toggle="modal"
                               data-bs-target={`#${user._id.toString()}`}
                             />

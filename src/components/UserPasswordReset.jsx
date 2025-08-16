@@ -131,10 +131,7 @@ const UserPasswordReset = () => {
                   <div className="row justify-content-center mt-3 mb-4">
                     <div className="col-md-6 justify-content-end">
                       <div className=" d-flex justify-content-end">
-                        <button
-                          type="submit"
-                          className="btn btn-outline-primary"
-                        >
+                        <button type="submit" className="btn btn-primary">
                           Submit
                         </button>
                       </div>

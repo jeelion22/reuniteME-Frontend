@@ -71,7 +71,7 @@ const Home = () => {
 
                 <button
                   type="button"
-                  class="btn btn-light btn-transparent"
+                  class="btn btn-light btn-transparent rounded"
                   onClick={() => navigate("/users/login")}
                 >
                   Search
@@ -83,9 +83,9 @@ const Home = () => {
                   src={humanity}
                   className="w-50"
                   alt="humanity-image"
-                  style={{
-                    animation: "spin 24s linear infinite",
-                  }}
+                  // style={{
+                  //   animation: "spin 24s linear infinite",
+                  // }}
                 />
                 <style>
                   {`

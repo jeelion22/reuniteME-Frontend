@@ -102,7 +102,7 @@ const Contributions = () => {
                               <FontAwesomeIcon
                                 icon={faPenToSquare}
                                 type="button"
-                                className="btn btn-outline-primary"
+                                className="btn btn-primary"
                                 onClick={() => {
                                   setEdit(contribution._id.toString());
                                 }}
