@@ -3,11 +3,11 @@ import * as Yup from "yup";
 const phoneRegex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
 const fileSchema = Yup.mixed()
-  .test(
-    "fileSize",
-    "File is too large",
-    (value) => !value || value.size <= 5 * 1024 * 1024
-  ) // 5MB limit
+  // .test(
+  //   "fileSize",
+  //   "File is too large",
+  //   (value) => !value || value.size <= 5 * 1024 * 1024
+  // ) // 5MB limit
   .test(
     "fileType",
     "Unsupported file format",
