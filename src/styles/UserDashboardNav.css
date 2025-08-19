@@ -13,3 +13,14 @@
  .navbar-toggler-icon {
     background-color: #EEEEEE;  
 }
+
+.user-logged {
+    color: #42236F;
+    font-weight: bold;
+}
+
+
+.logout {
+    color: #42236F;
+    
+}

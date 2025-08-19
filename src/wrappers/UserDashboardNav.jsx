@@ -19,6 +19,20 @@ export async function loader() {
   }
 }
 
+export const getUserCategoryLabel = (category) => {
+  switch (category) {
+    case "communityUploader":
+      return "Reunite Contributor";
+    case "reuniteSeeker":
+      return "Reunite Seeker";
+    case "admin":
+      return "Admin";
+
+    default:
+      return category;
+  }
+};
+
 const UserDashboardNav = () => {
   const navigate = useNavigate();
 
@@ -63,8 +77,11 @@ const UserDashboardNav = () => {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link disabled" aria-disabled="true">
-                    <h6>
+                  <a
+                    className="nav-link disabled user-logged"
+                    aria-disabled="true"
+                  >
+                    <h6 className="user-logged">
                       Welcome {user.data.user.firstname}{" "}
                       {user.data.user.lastname}
                     </h6>
@@ -72,13 +89,17 @@ const UserDashboardNav = () => {
                 </li>
                 <li className="nav-item">
                   <button className="nav-link" onClick={handleLogout}>
-                    <h6>Logout</h6>
+                    <h6 className="logout">Logout</h6>
                   </button>
                 </li>
               </ul>
             </div>
           </nav>
         </div>
+      </div>
+
+      <div className="mt-4 text-end user-logged">
+        {getUserCategoryLabel(user.data.user.userCategory)}
       </div>
 
       <div className="row mt-5">

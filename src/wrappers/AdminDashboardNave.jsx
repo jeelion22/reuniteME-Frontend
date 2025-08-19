@@ -3,6 +3,8 @@ import React from "react";
 import { useNavigate, Link, Outlet, useLoaderData } from "react-router-dom";
 import AdminSidebar from "../components/admin/AdminSidebar";
 import userServices from "../../services/userServices";
+import { getUserCategoryLabel } from "./UserDashboardNav";
+import reuniteMeLogo from "../assets/reuniteme_logo.svg";
 
 export async function loader() {
   try {
@@ -38,7 +40,7 @@ const AdminDashboardNave = () => {
       <div className="row ">
         <div className="col admin-dashboard-nav">
           <nav className="navbar navbar-expand-lg">
-            <span className="navbar-brand">ReUniteMe</span>
+            <img src={reuniteMeLogo} alt="ReUniteME Logo" />
             <button
               className="navbar-toggler"
               type="button"
@@ -56,19 +58,25 @@ const AdminDashboardNave = () => {
             >
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link disabled" aria-disabled="true">
-                    Welcome {admin?.firstname} {admin?.lastname}
+                  <a className="nav-link disabled " aria-disabled="true">
+                    <h6 className="user-logged">
+                      Welcome {admin?.firstname} {admin?.lastname}
+                    </h6>
                   </a>
                 </li>
                 <li className="nav-item">
                   <button className="nav-link" onClick={handleLogout}>
-                    Logout
+                    <h6 className="logout">Logout</h6>
                   </button>
                 </li>
               </ul>
             </div>
           </nav>
         </div>
+      </div>
+
+      <div className="mt-4 text-end user-logged">
+        {getUserCategoryLabel(admin.role)}
       </div>
 
       <div className="row mt-5">

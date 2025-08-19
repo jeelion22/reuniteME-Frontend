@@ -133,7 +133,9 @@ const UserLogin = () => {
                                 className="spinner-border spinner-border-sm"
                                 aria-hidden="true"
                               ></span>
-                              <span role="status">Logging...</span>
+                              <span className="ps-2" role="status">
+                                Logging...
+                              </span>
                             </>
                           ) : (
                             "Log in"

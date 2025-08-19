@@ -28,7 +28,7 @@ const Footer = () => {
     <footer className="footer custom-footer py-4 ">
       <div className="container p-4 text-center mt-2 ">
         <div className="row ">
-          <div className="col-md-2 col-sm-6">
+          <div className="col-6 col-md-2">
             <div type="button" className="about-btn" onClick={handleAbout}>
               <h6>About Us</h6>
             </div>
@@ -40,13 +40,13 @@ const Footer = () => {
               </p>
             )}
           </div>
-          <div className="col-md-2 col-sm-6 quicklinks-btn">
+          <div className="col-6 col-md-2 quicklinks-btn">
             <h6>Quick Links</h6>
           </div>
-          <div className="col-md-2 col-sm-6 contact-btn">
+          <div className="col-6 col-md-2 contact-btn">
             <h6>Contact Us</h6>
           </div>
-          <div className="col-md-2 col-sm-6">
+          <div className="col-6 col-md-2">
             <div type="button" className="follow-btn" onClick={handleFollowUs}>
               <h6>Follow us</h6>
             </div>
@@ -65,7 +65,7 @@ const Footer = () => {
               </div>
             )}
           </div>
-          <div className="col-md-2 col-sm-6">
+          <div className="col-6 col-md-2">
             <div type="button" className="dev-btn" onClick={handleDeveloer}>
               <h6>Developers </h6>
             </div>
@@ -85,7 +85,7 @@ const Footer = () => {
               </ul>
             )}
           </div>
-          <div className="col-md-2 policy-btn ">
+          <div className="col-6 col-md-2 policy-btn ">
             <h6>Policies</h6>
           </div>
         </div>
