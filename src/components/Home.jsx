@@ -71,7 +71,7 @@ const Home = () => {
 
                 <button
                   type="button"
-                  class="btn btn-light btn-transparent rounded"
+                  class="btn  btn-outline-success rounded-pill"
                   onClick={() => navigate("/users/login")}
                 >
                   Search
