@@ -170,13 +170,13 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => setLoading(false), 1500);
+  // }, []);
 
-  if (loading) return <Loader />;
+  // if (loading) return <Loader />;
 
   return <RouterProvider router={router} />;
 }
