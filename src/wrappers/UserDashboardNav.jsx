@@ -11,10 +11,13 @@ export async function loader() {
 
     return { user };
   } catch (error) {
-    alert(error.response.data.message);
+    // alert(error.response.data.message);
     if (error.response.data.message === "Unauthorized") {
-      window.location.replace("/");
+      alert("Unauthorized");
     }
+
+    window.location.replace("/");
+
     return null;
   }
 }
