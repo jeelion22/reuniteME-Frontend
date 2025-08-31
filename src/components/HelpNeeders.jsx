@@ -133,7 +133,10 @@ const HelpNeeders = ({ contribution, userId }) => {
         </div>
 
         <div className="card-footer text-center">
-          <button className="btn border-0" disabled={btnDisable}>
+          <button
+            className="btn border-0"
+            disabled={!showResponse && btnDisable}
+          >
             <FontAwesomeIcon
               icon={faMapLocationDot}
               type="button"
