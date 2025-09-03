@@ -38,7 +38,25 @@ function isDefaultValues(currentValues, defaultValues) {
   );
 }
 
-const ReuniteSeekerResponseForm = ({ contribution }) => {
+const submit = async (values, { resetForm }) => {
+  setSpinner(true);
+  try {
+    const response = await userServices.addVisitor(contribution._id, values);
+    resetForm();
+    if (response.status === 200) {
+      setLocation(true);
+      setLoadLocation(true);
+    }
+  } catch (error) {
+    alert(error?.response?.data?.message);
+  }
+};
+
+const ReuniteSeekerResponseForm = ({
+  contribution,
+  setContributions,
+  handleStatus,
+}) => {
   const [spinner, setSpinner] = useState(false);
   const [location, setLocation] = useState(false);
   const [loadLocation, setLoadLocation] = useState(false);
@@ -51,13 +69,24 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
   const handleLocation = async (location) => {
     try {
       const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
-      window.location.href = url;
+      window.open(url, "_blank");
     } catch (error) {
       alert(error.response.data.message);
     }
   };
 
   const handleEdit = () => setIsEditable(true);
+
+  async function getAllContributions() {
+    try {
+      const response = await userServices.getAllContributions();
+      setContributions(response.data);
+      // setShowResponse(false);
+      // setLoading(false);
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  }
 
   useEffect(() => {
     const fetchFormData = async () => {
@@ -119,12 +148,15 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
                 contribution._id,
                 values
               );
+              await getAllContributions();
+              await handleStatus(contribution._id);
               resetForm();
-              if (response.status === 200) {
-                setLocation(true);
-                setLoadLocation(true);
-              }
+              // if (response.status === 200) {
+              setLocation(true);
+              setLoadLocation(true);
+              // }
             } catch (error) {
+              console.log(error);
               alert(error?.response?.data?.message);
             }
           }}
@@ -296,6 +328,22 @@ const ReuniteSeekerResponseForm = ({ contribution }) => {
           }}
         </Formik>
       </div>
+
+      {/* {!isDefaultValues(formInitialValues, initialValues) && !loadLocation && (
+        <strong role="status">
+          <div className=" text-center mt-4">
+            <span>Here is the location</span>
+            <FontAwesomeIcon
+              icon={faMapLocationDot}
+              type="button"
+              className="btn btn-outline-success ms-2"
+              onClick={() => {
+                handleLocation(contribution.location);
+              }}
+            />
+          </div>
+        </strong>
+      )} */}
     </div>
   );
 };

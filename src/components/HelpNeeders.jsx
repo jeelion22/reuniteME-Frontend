@@ -5,40 +5,44 @@ import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import UpdateReuniteSeekerStatus from "./UpdateReuniteSeekerStatus";
 import userServices from "../../services/userServices";
 
-const HelpNeeders = ({ contribution, userId }) => {
+const HelpNeeders = ({ contribution, userId, setContributions }) => {
   const [showResponse, setShowResponse] = useState(false);
   const [btnDisable, setBtnDisable] = useState(false);
 
-  useEffect(() => {
-    const handleStatus = async (contributionId) => {
-      try {
-        const response = await userServices.getStatus(contributionId);
+  const handleStatus = async (contributionId) => {
+    try {
+      const response = await userServices.getStatus(contributionId);
 
-        if (contribution.status === "rescued") {
-          setBtnDisable(true);
-          return;
-        }
-
-        if (
-          response.data?.message?.checking &&
-          response.data?.message?.status === "not-rescued"
-        ) {
-          if (response.data.message.visitorsId === userId) {
-            setShowResponse(true);
-            setBtnDisable(true);
-          } else if (response.data.message.visitorsId !== userId) {
-            setBtnDisable(true);
-          } else {
-            setShowResponse(false);
-            setBtnDisable(false);
-          }
-        }
-      } catch (error) {
-        alert(error.response.data.message);
+      if (contribution.status === "rescued") {
+        setBtnDisable(true);
+        return;
       }
-    };
+
+      if (
+        response.data?.message?.checking &&
+        response.data?.message?.status === "not-rescued"
+      ) {
+        if (response.data.message.visitorsId === userId) {
+          setShowResponse(true);
+          setBtnDisable(true);
+        } else if (response.data.message.visitorsId !== userId) {
+          setBtnDisable(true);
+        } else {
+          setShowResponse(false);
+          setBtnDisable(false);
+        }
+      } else {
+        setShowResponse(false);
+        setBtnDisable(false);
+      }
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  };
+
+  useEffect(() => {
     handleStatus(contribution._id);
-  }, [contribution._id]);
+  }, [contribution._id, contribution.status]);
 
   return (
     <div className="col " key={contribution._id}>
@@ -68,7 +72,12 @@ const HelpNeeders = ({ contribution, userId }) => {
         </div>
 
         {showResponse && (
-          <UpdateReuniteSeekerStatus contributionId={contribution._id} />
+          <UpdateReuniteSeekerStatus
+            contributionId={contribution._id}
+            setContributions={setContributions}
+            setShowResponse={setShowResponse}
+            handleStatus={handleStatus}
+          />
         )}
 
         <div
@@ -95,7 +104,11 @@ const HelpNeeders = ({ contribution, userId }) => {
                 ></button>
               </div>
               <div className="modal-body">
-                <ReuniteSeekerResponseForm contribution={contribution} />
+                <ReuniteSeekerResponseForm
+                  contribution={contribution}
+                  setContributions={setContributions}
+                  handleStatus={handleStatus}
+                />
               </div>
             </div>
           </div>

@@ -50,6 +50,7 @@ export const ReuniteSeekerDashBoard = () => {
                 key={contribution._id}
                 contribution={contribution}
                 userId={userId}
+                setContributions={setContributions}
               />
             ))}
           </div>

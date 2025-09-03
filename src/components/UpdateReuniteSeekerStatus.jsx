@@ -6,7 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-const UpdateReuniteSeekerStatus = ({ contributionId }) => {
+const UpdateReuniteSeekerStatus = ({
+  contributionId,
+  setContributions,
+  setShowResponse,
+  handleStatus,
+}) => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
@@ -21,6 +26,17 @@ const UpdateReuniteSeekerStatus = ({ contributionId }) => {
       .required("Status is required"),
   });
 
+  async function getAllContributions() {
+    try {
+      const response = await userServices.getAllContributions();
+
+      setContributions(response.data);
+      // setShowResponse(false);
+    } catch (error) {
+      alert(error.response.data.message);
+    }
+  }
+
   return (
     <Formik
       initialValues={initialValues}
@@ -28,21 +44,26 @@ const UpdateReuniteSeekerStatus = ({ contributionId }) => {
       onSubmit={async (values, { resetForm }) => {
         try {
           setLoading(true);
-          console.log(values);
+
           const response = await userServices.updateStatus(
             contributionId,
             values
           );
 
-          if (response.status === 200) {
-            alert(response.data.message);
-            navigate(0);
-          }
+          // if (response.status === 200) {
+          await getAllContributions();
+          await handleStatus(contributionId);
+
+          alert(response?.data?.message);
+          // navigate(0);
+          // }
 
           resetForm();
+          setLoading(false);
+          setShowResponse(false);
         } catch (error) {
           console.log(error);
-          alert(error.message);
+          alert(error.response.data.message);
         }
       }}
     >
