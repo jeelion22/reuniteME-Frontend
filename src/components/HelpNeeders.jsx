@@ -5,6 +5,18 @@ import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import UpdateReuniteSeekerStatus from "./UpdateReuniteSeekerStatus";
 import userServices from "../../services/userServices";
 
+const formatDate = (dateStr) => {
+  return new Date(dateStr).toLocaleString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    // second: "2-digit",
+    hour12: true,
+  });
+};
+
 const HelpNeeders = ({ contribution, userId, setContributions }) => {
   const [showResponse, setShowResponse] = useState(false);
   const [btnDisable, setBtnDisable] = useState(false);
@@ -64,7 +76,9 @@ const HelpNeeders = ({ contribution, userId, setContributions }) => {
           <h5 className="card-title">{contribution.name}</h5>
           <p className="card-text">{contribution.description}</p>
           <p className="card-text">
-            <small className="text-muted">{contribution.uploadDate}</small>
+            <small className="text-muted">
+              {formatDate(contribution.uploadDate)}
+            </small>
           </p>
           <p className="card-text">
             <small className="text-muted">Status: {contribution.status}</small>
