@@ -131,7 +131,7 @@ const UserRegister = () => {
                           Select category
                         </option>
                         <option value="communityUploader">
-                          Community Uploader
+                          Community Contributor
                         </option>
                         <option value="reuniteSeeker">Reunite Seeker</option>
                         {/* <option value="both">Both</option> */}
