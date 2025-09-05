@@ -178,6 +178,9 @@ const userServices = {
   deleteAdmin: async (adminId) => {
     return await protectedInstance.delete(`admins/delete/admin/${adminId}`);
   },
+  getReuniteSeekerFormResponse: async (contributionId) => {
+    return await protectedInstance.get(`users/logs/${contributionId}`);
+  },
 };
 
 export default userServices;
