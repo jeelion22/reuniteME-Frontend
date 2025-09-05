@@ -110,10 +110,7 @@ const ReuniteSeekerResponseForm = ({
 
         setFormInitialValues({ ...initialValues, ...filtered });
       } catch (error) {
-        console.log(
-          "Error fetching form response:",
-          error?.response?.data?.message
-        );
+        console.log("Error fetching form response:", error);
         setFormInitialValues(initialValues);
       }
     };
