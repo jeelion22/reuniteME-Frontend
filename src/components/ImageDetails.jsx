@@ -32,7 +32,7 @@ const ImageDetails = ({ contributionId }) => {
     try {
       const response = await userServices.getMapUrl(imageId);
       const { url } = response.data;
-      window.location.href = url;
+      window.open(url, "_blank");
     } catch (error) {
       alert(error.response.data.message);
     }
