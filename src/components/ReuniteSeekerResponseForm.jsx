@@ -130,7 +130,7 @@ const ReuniteSeekerResponseForm = ({
           <FontAwesomeIcon
             icon={faPenToSquare}
             type="button"
-            className="btn btn-outline-secondary m-2"
+            className="btn btn-primary m-2"
             onClick={handleEdit}
           />
         )}
