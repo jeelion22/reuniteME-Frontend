@@ -1,8 +1,8 @@
 import axios from "axios";
 
-// const baseURL = "https://reuniteme-backend.onrender.com/api";
+const baseURL = "https://reuniteme-backend.onrender.com/api";
 
-const baseURL = "http://localhost:5001/api";
+// const baseURL = "http://localhost:5001/api";
 
 // create an axios instance
 const instance = axios.create({
