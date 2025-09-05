@@ -95,6 +95,7 @@ const Footer = () => {
             &copy; {new Date().getUTCFullYear().toString()} ReUniteME. All
             rights reserved.
           </p>
+          <p>Version: 1.1</p>
         </div>
       </div>
     </footer>
