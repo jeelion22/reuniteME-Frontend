@@ -7,6 +7,7 @@ import { CommunityUploaderValidationSchema } from "../validataionSchema/Communit
 import { reuniteSeekerValidationSchema } from "../validataionSchema/reuniteSeekerValidationSchema";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { toast } from "react-toastify";
 
 const UserUpdate = () => {
   const { user } = useLoaderData();
@@ -44,14 +45,14 @@ const UserUpdate = () => {
         userServices
           .userInfoUpdate(values)
           .then((response) => {
-            alert(response.data.message);
+            toast.success(response.data.message);
 
             navigate("/users/profile");
             resetForm();
           })
           .catch((error) => {
             setIsLoading(false);
-            alert(error.response.data.message);
+            toast.error(error.response.data.message);
           });
       }}
     >

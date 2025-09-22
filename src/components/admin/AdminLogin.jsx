@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate, Link, useAsyncError } from "react-router-dom";
 import { userLoginValidation } from "../../validataionSchema/userLoginValidation";
 import userServices from "../../../services/userServices";
+import { toast } from "react-toastify";
 
 const AdminLogin = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -43,7 +44,7 @@ const AdminLogin = () => {
             .catch((error) => {
               setIsLoading(false);
 
-              alert(error.response.data.message);
+              toast.error(error.response.data.message);
             });
         }}
       >

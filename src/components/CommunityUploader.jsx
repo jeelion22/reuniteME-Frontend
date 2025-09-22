@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import { CommunityUploaderValidationSchema } from "../validataionSchema/CommunityUploaderValidationSchema";
 import userServices from "../../services/userServices";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const initialValuesForCommunityUploader = {
   firstname: "",
@@ -24,12 +25,12 @@ const CommunityUploader = () => {
 
         try {
           const response = await userServices.register(values);
-          alert(response.data.message);
+          toast.success(response.data.message);
           navigate("/users/login");
           navigate(0);
           resetForm();
         } catch (error) {
-          alert(error.response.data.message);
+          toast.error(error.response.data.message);
         } finally {
           setSubmitting(false);
         }

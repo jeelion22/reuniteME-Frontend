@@ -7,6 +7,7 @@ import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 
 import userServices from "../../../services/userServices";
+import { toast } from "react-toastify";
 
 const AdminForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -54,7 +55,7 @@ const AdminForgotPassword = () => {
                 setIsEmailVerified(true);
 
                 setTimeout(() => {
-                  alert(response.data.message);
+                  toast.success(response.data.message);
                   setEmail("");
                   navigate("/");
                 }, 5000);
@@ -65,9 +66,9 @@ const AdminForgotPassword = () => {
               console.log(error);
 
               if (error.response.data) {
-                alert(error.response.data.message);
+                toast.error(error.response.data.message);
               } else {
-                alert(error.message);
+                toast.error(error.message);
               }
             }
           }}

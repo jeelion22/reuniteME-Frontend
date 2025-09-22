@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import userServices from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const VerifyPasswordResetLink = () => {
   const [loading, setLoading] = useState(true);
@@ -40,7 +41,7 @@ const VerifyPasswordResetLink = () => {
 
   useEffect(() => {
     if (error) {
-      alert(error);
+      toast.error(error);
     }
   }, [error]);
 

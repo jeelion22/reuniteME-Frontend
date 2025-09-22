@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { createPasswordValidationSchema } from "../validataionSchema/createPasswordValidationSchema";
 import userServices from "../../services/userServices";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const VerifyAccount = () => {
   const [loading, setLoading] = useState(true);
@@ -22,11 +23,11 @@ const VerifyAccount = () => {
             navigate(`/users/verified/${response.data.redirectTo}`);
           }, 3000);
         } else {
-          alert(response.data.message);
+          toast.success(response.data.message);
           navigate("/");
         }
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
         navigate("/");
       } finally {
         setLoading(false);

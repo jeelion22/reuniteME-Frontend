@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate, Link, useAsyncError } from "react-router-dom";
 import { userLoginValidation } from "../validataionSchema/userLoginValidation";
 import userServices from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const initialValues = {
   email: "",
@@ -39,7 +40,7 @@ const UserLogin = () => {
           } catch (error) {
             setIsLoading(false);
 
-            alert(error?.response?.data?.message ?? error.message);
+            toast.error(error?.response?.data?.message ?? error.message);
           }
         }}
       >

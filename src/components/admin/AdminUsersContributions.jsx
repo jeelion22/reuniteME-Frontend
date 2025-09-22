@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import userServices from "../../../services/userServices";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AdminUsersContributions = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -20,7 +21,7 @@ const AdminUsersContributions = () => {
           setContributions(response.data.message);
         }
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     };
 
@@ -40,7 +41,7 @@ const AdminUsersContributions = () => {
       window.open(locationUrl, "_blank");
     } catch (error) {
       console.log("Error fetching Google Maps URL:", error);
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 

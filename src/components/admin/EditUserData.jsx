@@ -7,6 +7,7 @@ import { CommunityUploaderValidationSchema } from "../../validataionSchema/Commu
 import { reuniteSeekerValidationSchema } from "../../validataionSchema/reuniteSeekerValidationSchema";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { toast } from "react-toastify";
 
 const EditUserData = ({ user }) => {
   const [initialValues, setInitialValues] = useState(user);
@@ -36,11 +37,13 @@ const EditUserData = ({ user }) => {
             user._id.toString(),
             values
           );
-          alert(response.data.message);
+          toast.success(response.data.message);
           navigate(0);
           resetForm();
         } catch (error) {
-          alert(error.response ? error.response.data.message : error.message);
+          toast.error(
+            error.response ? error.response.data.message : error.message
+          );
         } finally {
           setIsSubmitting(false);
         }

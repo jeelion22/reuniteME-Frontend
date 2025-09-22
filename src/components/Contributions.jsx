@@ -7,6 +7,7 @@ import userServices from "../../services/userServices";
 import EditSeekerData from "./EditSeekerData";
 import ReactPaginate from "react-paginate";
 import ImageDetails from "./ImageDetails";
+import { toast } from "react-toastify";
 
 const Contributions = () => {
   const { user } = useLoaderData();
@@ -20,10 +21,10 @@ const Contributions = () => {
       try {
         await userServices.deleteImage(imageId);
 
-        alert(`${fileName} deleted successfully!`);
+        toast.success(`${fileName} deleted successfully!`);
         navigate(0);
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   };

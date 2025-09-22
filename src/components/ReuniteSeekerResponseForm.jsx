@@ -10,6 +10,7 @@ import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import PhoneField from "./PhoneField";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
 
 const initialValues = {
   relationship: "",
@@ -48,7 +49,7 @@ const submit = async (values, { resetForm }) => {
       setLoadLocation(true);
     }
   } catch (error) {
-    alert(error?.response?.data?.message);
+    toast.error(error?.response?.data?.message);
   }
 };
 
@@ -71,7 +72,7 @@ const ReuniteSeekerResponseForm = ({
       const url = `https://www.google.com/maps/search/?api=1&query=${location.latitude},${location.longitude}`;
       window.open(url, "_blank");
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -84,7 +85,7 @@ const ReuniteSeekerResponseForm = ({
       // setShowResponse(false);
       // setLoading(false);
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   }
 
@@ -110,7 +111,7 @@ const ReuniteSeekerResponseForm = ({
 
         setFormInitialValues({ ...initialValues, ...filtered });
       } catch (error) {
-        console.log("Error fetching form response:", error);
+        // console.log("Error fetching form response:", error);
         setFormInitialValues(initialValues);
       }
     };

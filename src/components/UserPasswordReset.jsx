@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { createPasswordValidationSchema } from "../validataionSchema/createPasswordValidationSchema";
 import userServices from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const UserPasswordReset = () => {
   const [password, setPassword] = useState("");
@@ -46,12 +47,12 @@ const UserPasswordReset = () => {
                 navigate("/users/login");
               }, 5000);
             } else {
-              alert(response.data.message);
+              toast.success(response.data.message);
             }
           })
           .catch((error) => {
-            console.log(error);
-            alert(error.response.data.message);
+            // console.log(error);
+            toast.error(error.response.data.message);
           });
       }}
     >
