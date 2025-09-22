@@ -8,6 +8,7 @@ import {
   faRectangleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const ImageDetails = ({ contributionId }) => {
   const imageId = contributionId;
@@ -22,7 +23,7 @@ const ImageDetails = ({ contributionId }) => {
         const response = await userServices.getImage(imageId);
         setImageUrl(response.data.url);
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     };
     fetchImageUrl();
@@ -34,7 +35,7 @@ const ImageDetails = ({ contributionId }) => {
       const { url } = response.data;
       window.open(url, "_blank");
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 

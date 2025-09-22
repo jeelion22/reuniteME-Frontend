@@ -12,6 +12,7 @@ import {
   Label,
 } from "recharts";
 import userServices from "../../../services/userServices";
+import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
   const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ const AdminDashboard = () => {
           setData(response.data);
         }
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     };
 

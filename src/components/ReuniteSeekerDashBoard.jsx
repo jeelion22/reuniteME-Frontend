@@ -6,6 +6,7 @@ import ReactPaginate from "react-paginate";
 import ReuniteSeekerResponseForm from "./ReuniteSeekerResponseForm";
 import HelpNeeders from "./HelpNeeders";
 import { useLoaderData } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const ReuniteSeekerDashBoard = () => {
   const [contributions, setContributions] = useState([]);
@@ -21,7 +22,7 @@ export const ReuniteSeekerDashBoard = () => {
         const response = await userServices.getAllContributions();
         setContributions(response.data);
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
     getAllContributions();

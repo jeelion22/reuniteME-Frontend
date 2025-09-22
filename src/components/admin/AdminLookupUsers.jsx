@@ -12,6 +12,7 @@ import {
 
 import { useLoaderData, useNavigate } from "react-router-dom";
 import EditUserData from "./EditUserData";
+import { toast } from "react-toastify";
 
 const AdminLookupUsers = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -31,10 +32,10 @@ const AdminLookupUsers = () => {
       try {
         await userServices.adminDeleteUser(userId);
 
-        alert("The user was deleted successfully");
+        toast.success("The user was deleted successfully");
         getAllUsers();
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -47,7 +48,7 @@ const AdminLookupUsers = () => {
         setUsersList(response.data.users);
       }
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -67,11 +68,11 @@ const AdminLookupUsers = () => {
         const response = await userServices.adminActivateUser(userId);
 
         if (response) {
-          alert(response.data.message);
+          toast.success(response.data.message);
           await getAllUsers();
         }
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   };

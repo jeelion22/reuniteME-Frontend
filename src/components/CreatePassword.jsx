@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Formik } from "formik";
 import { createPasswordValidationSchema } from "../validataionSchema/createPasswordValidationSchema";
 import userServices from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const CreatePassword = () => {
   const [password, setPassword] = useState("");
@@ -42,11 +43,11 @@ const CreatePassword = () => {
                 navigate("/users/login");
               }, 5000);
             } else {
-              alert(response.data.message);
+              toast.success(response.data.message);
             }
           })
           .catch((error) => {
-            alert(error.response.data.message);
+            toast.error(error.response.data.message);
           });
       }}
     >

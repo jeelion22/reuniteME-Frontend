@@ -5,6 +5,7 @@ import userServices from "../../services/userServices";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateReuniteSeekerStatus = ({
   contributionId,
@@ -33,7 +34,7 @@ const UpdateReuniteSeekerStatus = ({
       setContributions(response.data);
       // setShowResponse(false);
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   }
 
@@ -54,7 +55,7 @@ const UpdateReuniteSeekerStatus = ({
           await getAllContributions();
           await handleStatus(contributionId);
 
-          alert(response?.data?.message);
+          toast.success(response?.data?.message);
           // navigate(0);
           // }
 
@@ -63,7 +64,7 @@ const UpdateReuniteSeekerStatus = ({
           setShowResponse(false);
         } catch (error) {
           console.log(error);
-          alert(error.response.data.message);
+          toast.error(error.response.data.message);
         }
       }}
     >

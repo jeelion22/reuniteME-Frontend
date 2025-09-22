@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import PhoneField from "./PhoneField";
+import { toast } from "react-toastify";
 
 const NewContribution = () => {
   const [loading, setLoading] = useState(false);
@@ -40,12 +41,11 @@ const NewContribution = () => {
           const response = await userServices.uploadImage(formData);
           console.log(response.data);
 
-          alert(response.data.message);
+          toast.success(response.data.message);
           resetForm();
           navigate("/users/contributions");
         } catch (error) {
-          console.log(error);
-          alert(error.response.data.message);
+          toast.error(error.response.data.message);
         } finally {
           setLoading(false);
           resetForm();

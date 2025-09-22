@@ -6,6 +6,7 @@ import userServices from "../../../services/userServices";
 import { adminEditValidationSchema } from "../../validataionSchema/adminEditValidationSchema";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { toast } from "react-toastify";
 
 const EditAdminsData = ({ admin, getAllAdmins }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,11 +27,11 @@ const EditAdminsData = ({ admin, getAllAdmins }) => {
 
           getAllAdmins();
 
-          alert(response.data.message);
+          toast.success(response.data.message);
           resetForm();
           navigate(0);
         } catch (error) {
-          alert(error.response.data.message);
+          toast.error(error.response.data.message);
         } finally {
           setIsLoading(false);
         }

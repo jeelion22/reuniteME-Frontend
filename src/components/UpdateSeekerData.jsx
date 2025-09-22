@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRectangleXmark, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import userServices from "../../services/userServices";
 import PhoneField from "./PhoneField";
+import { toast } from "react-toastify";
 
 const UpdateSeekerData = () => {
   const [loading, setLoading] = useState(false);
@@ -48,12 +49,12 @@ const UpdateSeekerData = () => {
               formData
             );
 
-            alert(response.data.message);
+            toast.success(response.data.message);
 
             navigate("/users/contributions");
           } catch (error) {
-            console.log(error);
-            alert(error.response.data.message);
+            // console.log(error);
+            toast.error(error.response.data.message);
           } finally {
             setLoading(false);
             resetForm();

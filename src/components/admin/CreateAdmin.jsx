@@ -6,6 +6,7 @@ import userServices from "../../../services/userServices";
 import { adminCreateValidationSchema } from "../../validataionSchema/adminCreateValidationSchema";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import { toast } from "react-toastify";
 
 const initialValues = {
   username: "",
@@ -31,12 +32,11 @@ const CreateAdmin = () => {
 
         try {
           const response = await userServices.createAdmin(adminValues);
-          console.log(adminValues);
 
-          alert(response.data.message);
+          toast.success(response.data.message);
           resetForm();
         } catch (error) {
-          alert(error.response.data.message);
+          toast.error(error.response.data.message);
         }
       }}
     >

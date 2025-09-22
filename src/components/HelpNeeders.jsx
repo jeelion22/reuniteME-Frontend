@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import UpdateReuniteSeekerStatus from "./UpdateReuniteSeekerStatus";
 import userServices from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const formatDate = (dateStr) => {
   return new Date(dateStr).toLocaleString("en-US", {
@@ -48,7 +49,7 @@ const HelpNeeders = ({ contribution, userId, setContributions }) => {
         setBtnDisable(false);
       }
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 

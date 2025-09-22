@@ -10,6 +10,7 @@ import {
 
 import { useLoaderData } from "react-router-dom";
 import EditAdminsData from "./EditAdminsData";
+import { toast } from "react-toastify";
 
 const AdminsList = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -28,7 +29,7 @@ const AdminsList = () => {
 
       setAdminsList(response.data);
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -48,11 +49,11 @@ const AdminsList = () => {
         const response = await userServices.deleteAdmin(adminId);
 
         if (response) {
-          alert("Admin was deleted successfully!");
+          toast.success("Admin was deleted successfully!");
           await getAllAdmins();
         }
       } catch (error) {
-        alert(error.response.data.message);
+        toast.error(error.response.data.message);
       }
     }
   };
