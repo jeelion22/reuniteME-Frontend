@@ -5,6 +5,7 @@ import AdminSidebar from "../components/admin/AdminSidebar";
 import userServices from "../../services/userServices";
 import { getUserCategoryLabel } from "./UserDashboardNav";
 import reuniteMeLogo from "../assets/reuniteme_logo.svg";
+import { toast } from "react-toastify";
 
 export async function loader() {
   try {
@@ -27,11 +28,11 @@ const AdminDashboardNave = () => {
       const response = await userServices.adminLogout();
 
       if (response.status === 204) {
-        alert("Logged out successfully!");
+        toast.error("Logged out successfully!");
         navigate("/");
       }
     } catch (error) {
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 

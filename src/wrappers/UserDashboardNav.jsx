@@ -4,6 +4,7 @@ import userServices from "../../services/userServices";
 import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import reuniteMeLogo from "../assets/reuniteme_logo.svg";
+import { toast } from "react-toastify";
 
 export async function loader() {
   try {
@@ -13,7 +14,7 @@ export async function loader() {
   } catch (error) {
     // alert(error.response.data.message);
     if (error.response.data.message === "Unauthorized") {
-      alert("Unauthorized");
+      toast.warning("Unauthorized");
     }
 
     window.location.replace("/");
@@ -46,14 +47,14 @@ const UserDashboardNav = () => {
       const response = await userServices.logout();
 
       if (response.status === 204) {
-        alert("Logged out successfully!");
+        toast.success("Logged out successfully!");
         navigate("/");
       } else {
         response.data.message;
       }
     } catch (error) {
       // console.log(error);
-      alert(error.response.data.message);
+      toast.error(error?.response?.data?.message || "An error occured");
     }
   };
 
