@@ -56,7 +56,7 @@ const UserRegister = () => {
             resetForm();
           } catch (error) {
             setIsLoading(false);
-            toast.error(error.response.data.message || "An Error Occured");
+            toast.error(error?.response?.data?.message || "An Error Occured");
           }
         }}
       >
