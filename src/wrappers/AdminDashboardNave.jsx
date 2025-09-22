@@ -28,7 +28,7 @@ const AdminDashboardNave = () => {
       const response = await userServices.adminLogout();
 
       if (response.status === 204) {
-        toast.error("Logged out successfully!");
+        toast.success("Logged out successfully!");
         navigate("/");
       }
     } catch (error) {
