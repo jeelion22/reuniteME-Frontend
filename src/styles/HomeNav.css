@@ -6,9 +6,29 @@
     background: linear-gradient(270deg, rgb(149, 135, 175), rgb(200, 196, 209), rgb(255, 255, 255));
 }
 
-.navbar.home-dashboard-nav .navbar-brand,
+.navbar.home-dashboard-nav .nav-item, .navbar-brand,
 .navbar.home-dashboard-nav .nav-link {
-    color: #282629;  
+    color: #282629;    
+    height: auto;   
+    
+}
+
+
+
+
+.navbar.home-dashboard-nav .nav-link.active h6 {
+    
+  color: rgb(90, 29, 114);
+  background-color: rgb(216, 210, 224);
+  transition: background-color 1s ease-in-out;
+  width: fit-content;
+  border-radius: 0.3rem;
+  align-items: center;
+  padding: 0.5rem;
+  
+ 
+ 
+  
 }
 
 .navbar.home-dashboard-nav .navbar-toggler-icon {

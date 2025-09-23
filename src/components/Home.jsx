@@ -44,15 +44,13 @@ const Home = () => {
             <div className="text-center p-4">
               <div
                 style={{
-                  fontFamily: "Plus Jakarta Sans",
-                  fontWeight: "bold",
-                  fontSize: "28px",
-                  lineHeight: "35px",
+                  fontWeight: "900",
                   marginBottom: "8px",
                   color: "rgb(83, 20, 134)",
+                  letterSpacing: "0.5rem",
                 }}
               >
-                Help reunite missing with families
+                <h1> Help reunite missing with families</h1>
               </div>
 
               <div style={{ color: "rgb(74, 73, 75)" }}>
