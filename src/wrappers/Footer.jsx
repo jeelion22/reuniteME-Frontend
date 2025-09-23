@@ -71,7 +71,7 @@ const Footer = () => {
             </div>
 
             {showDeveloper && (
-              <ul class="list-unstyled">
+              <ul className="list-unstyled">
                 <li>
                   <FontAwesomeIcon icon={faGithub} />{" "}
                   <a
@@ -91,7 +91,7 @@ const Footer = () => {
         </div>
         <div className="row mt-4"></div>
         <div className="col-md-12 text-center">
-          <p class="mb-0">
+          <p className="mb-0">
             &copy; {new Date().getUTCFullYear().toString()} ReUniteME. All
             rights reserved.
           </p>

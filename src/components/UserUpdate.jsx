@@ -72,7 +72,7 @@ const UserUpdate = () => {
                     <div className="col-auto">
                       <button
                         type="button"
-                        class="btn-close"
+                        className="btn-close"
                         aria-label="Close"
                         onClick={handleClose}
                       ></button>

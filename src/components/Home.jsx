@@ -61,7 +61,7 @@ const Home = () => {
               <div className="d-flex mt-4 gap-4 justify-content-center">
                 <button
                   type="button"
-                  class="btn btn-primary "
+                  className="btn btn-primary "
                   onClick={() => navigate("/users/register")}
                 >
                   Contribute
@@ -69,7 +69,7 @@ const Home = () => {
 
                 <button
                   type="button"
-                  class="btn  btn-outline-success rounded-pill"
+                  className="btn  btn-outline-success rounded-pill"
                   onClick={() => navigate("/users/login")}
                 >
                   Search

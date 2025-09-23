@@ -43,70 +43,70 @@ const EditSeekerData = ({ setEdit, contribution }) => {
             <div className="d-flex justify-content-between">
               <p> Which of the following field(s) to be updated?</p>
             </div>
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="name"
                 {...formik.getFieldProps("name")}
               />
-              <label class="form-check-label" htmlFor="name">
+              <label className="form-check-label" htmlFor="name">
                 Name
               </label>
             </div>
 
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="address"
                 {...formik.getFieldProps("address")}
               />
 
-              <label class="form-check-label" htmlFor="address">
+              <label className="form-check-label" htmlFor="address">
                 Address
               </label>
             </div>
 
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="phone"
                 {...formik.getFieldProps("phone")}
               />
-              <label class="form-check-label" htmlFor="phone">
+              <label className="form-check-label" htmlFor="phone">
                 Phone
               </label>
             </div>
 
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="description"
                 {...formik.getFieldProps("description")}
               />
-              <label class="form-check-label" htmlFor="description">
+              <label className="form-check-label" htmlFor="description">
                 Description
               </label>
             </div>
 
-            <div class="form-check form-check-inline">
+            <div className="form-check form-check-inline">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 id="photograph"
                 {...formik.getFieldProps("photograph")}
               />
-              <label class="form-check-label" htmlFor="photograph">
+              <label className="form-check-label" htmlFor="photograph">
                 Photograph
               </label>
             </div>
 
             <button
               type="submit"
-              class="btn btn-primary"
+              className="btn btn-primary"
               disabled={Object.values(formik.values).every(
                 (value) => value === false
               )}

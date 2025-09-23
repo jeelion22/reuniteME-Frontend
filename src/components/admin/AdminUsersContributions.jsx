@@ -200,15 +200,15 @@ const AdminUsersContributions = () => {
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         className="pagination justify-content-center mt-4"
-        pageClassName="page_item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        activeClassName="active"
+        pageclassName="page_item"
+        pageLinkclassName="page-link"
+        previousclassName="page-item"
+        previousLinkclassName="page-link"
+        nextclassName="page-item"
+        nextLinkclassName="page-link"
+        breakclassName="page-item"
+        breakLinkclassName="page-link"
+        activeclassName="active"
         onPageChange={handlePageClick}
       />
     </>

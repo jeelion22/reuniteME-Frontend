@@ -20,3 +20,65 @@
   background-color: #4d1e70 !important; /* slightly darker shade */
   border-color: #7414bd !important;
 }
+
+
+.navbar.home-dashboard-nav {
+    background: linear-gradient(270deg, rgb(149, 135, 175), rgb(200, 196, 209), rgb(255, 255, 255));
+}
+
+.navbar.home-dashboard-nav .nav-item, .navbar-brand,
+.navbar.home-dashboard-nav .nav-link {
+    color: #282629;    
+  
+    
+}
+
+
+
+
+.navbar.home-dashboard-nav .nav-link.active h6 {
+    
+  color: rgb(90, 29, 114);
+  background-color: rgb(216, 210, 224);
+  transition: background-color 0.5s ease-in-out;
+  width: fit-content;
+  border-radius: 0.3rem;
+  align-items: center;
+  padding: 0.5rem;
+  
+ 
+ 
+  
+}
+
+.navbar.home-dashboard-nav .navbar-toggler-icon {
+    background-color: #EEEEEE;  
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  
+}
+
+.hamburger-icon .line {
+  stroke: #282629;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: all 0.4s ease;
+}
+
+/* Middle line fades out when expanded */
+.nav-toggle.open .line.middle {
+  
+  transform: translateX(-20px);
+}
+
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none !important;
+  box-shadow: none !important;
+}

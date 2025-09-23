@@ -269,10 +269,10 @@ const EditAdminsData = ({ admin, getAllAdmins }) => {
                       >
                         {isLoading ? (
                           <div
-                            class="spinner-border fs-5 text-light "
+                            className="spinner-border fs-5 text-light "
                             role="status"
                           >
-                            <span class="visually-hidden">Loading...</span>
+                            <span className="visually-hidden">Loading...</span>
                           </div>
                         ) : (
                           "Save changes"

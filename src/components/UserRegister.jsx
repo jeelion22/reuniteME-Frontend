@@ -243,7 +243,7 @@ const UserRegister = () => {
                           {isLoading ? (
                             <>
                               <span
-                                class="spinner-border spinner-border-sm"
+                                className="spinner-border spinner-border-sm"
                                 aria-hidden="true"
                               ></span>
                               <span className="ps-2" role="status">

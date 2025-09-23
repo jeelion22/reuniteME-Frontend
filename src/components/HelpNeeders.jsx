@@ -131,26 +131,26 @@ const HelpNeeders = ({ contribution, userId, setContributions }) => {
         {/* for img modal */}
 
         <div
-          class="modal fade"
+          className="modal fade"
           id={contribution._id}
           tabIndex="-1"
           aria-labelledby={contribution._id}
           aria-hidden="true"
         >
-          <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id={contribution._id}>
+          <div className="modal-dialog modal-dialog-scrollable">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="modal-title fs-5" id={contribution._id}>
                   Picture of help needer
                 </h1>
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <img
                   src={contribution.url}
                   className="img-thumbnail img-fluid"

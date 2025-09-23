@@ -161,7 +161,7 @@ const ReuniteSeekerResponseForm = ({
         >
           {(formik) => {
             return spinner ? (
-              <div class="d-flex align-items-center">
+              <div className="d-flex align-items-center">
                 {!location & !loadLocation ? (
                   <strong role="status">Submitting your response...</strong>
                 ) : (

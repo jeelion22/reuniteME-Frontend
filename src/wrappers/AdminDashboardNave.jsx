@@ -1,5 +1,5 @@
 import "../styles/AdminDashboardNav.css";
-import React from "react";
+import { useState } from "react";
 import { useNavigate, Link, Outlet, useLoaderData } from "react-router-dom";
 import AdminSidebar from "../components/admin/AdminSidebar";
 import userServices from "../../services/userServices";
@@ -20,6 +20,7 @@ export async function loader() {
 
 const AdminDashboardNave = () => {
   const navigate = useNavigate();
+  const [isAreaExpanded, setIsAreaExpanded] = useState(false);
 
   const admin = useLoaderData();
 
@@ -36,38 +37,52 @@ const AdminDashboardNave = () => {
     }
   };
 
+  const handleNavButton = () => {
+    setIsAreaExpanded((prev) => !prev);
+  };
+
   return (
-    <div className="container-fluid">
-      <div className="row ">
-        <div className="col admin-dashboard-nav">
-          <nav className="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <div class="row ">
+        <div class="col admin-dashboard-nav">
+          <nav class="navbar navbar-expand-lg">
             <img src={reuniteMeLogo} alt="ReUniteME Logo" />
             <button
-              className="navbar-toggler"
+              class={`navbar-toggler border-0 nav-toggle ${
+                isAreaExpanded ? "open" : ""
+              }`}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
-              aria-expanded="false"
+              aria-expanded={isAreaExpanded}
               aria-label="Toggle navigation"
+              onClick={handleNavButton}
             >
-              <span className="navbar-toggler-icon"></span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="42"
+                height="42"
+                viewBox="0 0 100 100"
+                class="hamburger-icon"
+              >
+                <line class="line top" x1="20" y1="30" x2="80" y2="30" />
+                <line class="line middle" x1="20" y1="50" x2="80" y2="50" />
+                <line class="line bottom" x1="20" y1="70" x2="80" y2="70" />
+              </svg>
             </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li className="nav-item">
-                  <a className="nav-link disabled " aria-disabled="true">
-                    <h6 className="user-logged">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link disabled " aria-disabled="true">
+                    <h6 class="user-logged">
                       Welcome {admin?.firstname} {admin?.lastname}
                     </h6>
                   </a>
                 </li>
-                <li className="nav-item">
-                  <button className="nav-link" onClick={handleLogout}>
-                    <h6 className="logout">Logout</h6>
+                <li class="nav-item">
+                  <button class="nav-link" onClick={handleLogout}>
+                    <h6 class="logout">Logout</h6>
                   </button>
                 </li>
               </ul>
@@ -76,15 +91,15 @@ const AdminDashboardNave = () => {
         </div>
       </div>
 
-      <div className="mt-4 text-end user-logged">
+      <div class="mt-4 text-end user-logged">
         {getUserCategoryLabel(admin.role)}
       </div>
 
-      <div className="row mt-5">
-        <div className="col-md-3">
+      <div class="row mt-5">
+        <div class="col-md-3">
           <AdminSidebar admin={admin} />
         </div>
-        <div className="col">
+        <div class="col">
           <Outlet />
         </div>
       </div>

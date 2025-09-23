@@ -178,29 +178,29 @@ const AdminLookupUsers = () => {
                             />
 
                             <div
-                              class="modal fade"
+                              className="modal fade"
                               id={user._id.toString()}
                               tabIndex="-1"
                               aria-labelledby={`${user._id.toString()}`}
                               aria-hidden="true"
                             >
-                              <div class="modal-dialog modal-dialog-scrollable">
-                                <div class="modal-content">
-                                  <div class="modal-header">
+                              <div className="modal-dialog modal-dialog-scrollable">
+                                <div className="modal-content">
+                                  <div className="modal-header">
                                     <h1
-                                      class="modal-title fs-5"
+                                      className="modal-title fs-5"
                                       id={`${user._id.toString()}`}
                                     >
                                       User Profile Update
                                     </h1>
                                     <button
                                       type="button"
-                                      class="btn-close"
+                                      className="btn-close"
                                       data-bs-dismiss="modal"
                                       aria-label="Close"
                                     ></button>
                                   </div>
-                                  <div class="modal-body">
+                                  <div className="modal-body">
                                     <EditUserData
                                       user={user}
                                       key={user._id.toString()}
@@ -244,15 +244,15 @@ const AdminLookupUsers = () => {
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         className="pagination justify-content-center mt-4"
-        pageClassName="page_item"
-        pageLinkClassName="page-link"
-        previousClassName="page-item"
-        previousLinkClassName="page-link"
-        nextClassName="page-item"
-        nextLinkClassName="page-link"
-        breakClassName="page-item"
-        breakLinkClassName="page-link"
-        activeClassName="active"
+        pageclassName="page_item"
+        pageLinkclassName="page-link"
+        previousclassName="page-item"
+        previousLinkclassName="page-link"
+        nextclassName="page-item"
+        nextLinkclassName="page-link"
+        breakclassName="page-item"
+        breakLinkclassName="page-link"
+        activeclassName="active"
         onPageChange={handlePageClick}
       />
     </>

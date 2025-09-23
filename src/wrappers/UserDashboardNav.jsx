@@ -1,5 +1,5 @@
 import "../styles/UserDashboardNav.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import userServices from "../../services/userServices";
 import { Link, Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
@@ -39,6 +39,7 @@ export const getUserCategoryLabel = (category) => {
 
 const UserDashboardNav = () => {
   const navigate = useNavigate();
+  const [isAreaExpanded, setIsAreaExpanded] = useState(false);
 
   const { user } = useLoaderData();
 
@@ -58,6 +59,10 @@ const UserDashboardNav = () => {
     }
   };
 
+  const handleNavButton = () => {
+    setIsAreaExpanded((prev) => !prev);
+  };
+
   return (
     <div className="container-fluid ">
       <div className="row user-dashboard-nav">
@@ -65,15 +70,28 @@ const UserDashboardNav = () => {
           <nav className="navbar navbar-expand-lg">
             <img src={reuniteMeLogo} alt="ReUniteME Logo" />
             <button
-              className="navbar-toggler"
+              className={`navbar-toggler border-0 nav-toggle ${
+                isAreaExpanded ? "open" : ""
+              }`}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
-              aria-expanded="false"
+              aria-expanded={isAreaExpanded}
               aria-label="Toggle navigation"
+              onClick={handleNavButton}
             >
-              <span className="navbar-toggler-icon"></span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="42"
+                height="42"
+                viewBox="0 0 100 100"
+                className="hamburger-icon"
+              >
+                <line className="line top" x1="20" y1="30" x2="80" y2="30" />
+                <line className="line middle" x1="20" y1="50" x2="80" y2="50" />
+                <line className="line bottom" x1="20" y1="70" x2="80" y2="70" />
+              </svg>
             </button>
             <div
               className="collapse navbar-collapse"
