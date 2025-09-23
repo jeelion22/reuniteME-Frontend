@@ -2,6 +2,7 @@
 
   /* background-color:rgb(238, 238, 238); */
   /* background: linear-gradient(270deg, rgba(210, 207, 212, 0.8), rgb(98, 62, 165, 0.3), rgb(83, 21, 133, 0.5)); */
+  font-family: "Inter", sans-serif;
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
