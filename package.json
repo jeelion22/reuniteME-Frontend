@@ -13,6 +13,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
+    "@popperjs/core": "^2.11.8",
     "axios": "^1.7.4",
     "bootstrap": "^5.3.3",
     "formik": "^2.4.6",
@@ -36,6 +37,7 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "sass": "^1.93.2",
     "vite": "^7.1.1"
   }
 }
