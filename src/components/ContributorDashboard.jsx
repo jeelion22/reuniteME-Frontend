@@ -19,11 +19,11 @@ const ContributorDashboard = ({ userInfo }) => {
   const COLORS = ["#0088FE", "#FF8042"];
 
   return (
-    <div className="container glassy-container">
+    <div className="container  glassy-container">
       <div className="row mb-2">
         <div className="col-md-12 text-center p-4 border rounded glassy-header shadow-lg">
-          <h2>Welcome, {userInfo.firstname}</h2>
-          <p>Here is the summary of your contributions.</p>
+          <h2 className="display-6">Welcome, {userInfo.firstname}</h2>
+          <p className="fw-bold">Here is the summary of your contributions.</p>
         </div>
       </div>
 

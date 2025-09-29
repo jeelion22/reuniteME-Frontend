@@ -35,19 +35,35 @@ import AdminPasswordReset from "./components/admin/AdminPasswordReset";
 import CreateAdmin from "./components/admin/CreateAdmin";
 import AdminsList from "./components/admin/AdminsList";
 import Footer from "./wrappers/Footer";
-import Loader from "./components/Loader";
+import Footer1 from "./wrappers/Footer1";
+import HomeNav1 from "./wrappers/HomeNav1";
+import HomeMain from "./components/HomeMain";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: [<HomeNav />, <Footer />],
+    element: [<HomeNav1 />, <Footer1 />],
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home />,
       },
       {
-        path: "users/register",
+        path: "about-us",
+        element: <Home />,
+      },
+      { path: "how-it-works", element: <Home /> },
+      {
+        path: "why-reuniteme",
+        element: <Home />,
+      },
+      {
+        path: "contact",
+        element: <Home />,
+      },
+
+      {
+        path: "users/signup",
         element: <UserRegister />,
       },
       {
@@ -96,7 +112,7 @@ const router = createBrowserRouter([
   {
     path: "admins",
     loader: AdminLoader,
-    element: [<AdminDashboardNave />, <Footer />],
+    element: [<AdminDashboardNave />, <Footer1 />],
     children: [
       { path: "profile", loader: AdminLoader, element: <AdminProfile /> },
       {
@@ -126,7 +142,7 @@ const router = createBrowserRouter([
   {
     path: "users",
 
-    element: [<UserDashboardNav />, <Footer />],
+    element: [<UserDashboardNav />, <Footer1 />],
     loader: UserLoader,
     children: [
       {
