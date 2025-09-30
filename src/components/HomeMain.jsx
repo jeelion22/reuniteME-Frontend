@@ -91,23 +91,8 @@ const HomeMain = () => {
           <div className="row g-4 g-lg-5">
             <div className="col-md-4">
               <div className="card h-100 text-center p-4">
-                <div className="icon-circle mx-auto mb-4">
-                  <span className="material-symbols-outlined d-flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      fill="currentColor"
-                      className="bi bi-pencil-square"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
-                      />
-                    </svg>
-                  </span>
+                <div class="icon-circle mx-auto mb-4">
+                  <span class="material-symbols-outlined">edit_document</span>
                 </div>
                 <h3 className="h5 fw-bold">Contribute Details</h3>
                 <p className="text-muted">
@@ -119,19 +104,8 @@ const HomeMain = () => {
 
             <div className="col-md-4">
               <div className="card h-100 text-center p-4">
-                <div className="icon-circle mx-auto mb-4">
-                  <span className="material-symbols-outlined d-flex">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      fill="currentColor"
-                      className="bi bi-search"
-                      viewBox="0 0 16 16"
-                    >
-                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                    </svg>
-                  </span>
+                <div class="icon-circle mx-auto mb-4">
+                  <span class="material-symbols-outlined">search</span>
                 </div>
                 <h3 className="h5 fw-bold">Search Our Database</h3>
                 <p className="text-muted">
@@ -143,22 +117,8 @@ const HomeMain = () => {
 
             <div className="col-md-4">
               <div className="card h-100 text-center p-4">
-                <div className="icon-circle mx-auto mb-4">
-                  <span className="material-symbols-outlined d-flex ">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="32"
-                      height="32"
-                      fill="currentColor"
-                      className="bi bi-lock"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
-                      />
-                    </svg>
-                  </span>
+                <div class="icon-circle mx-auto mb-4">
+                  <span class="material-symbols-outlined">lock</span>
                 </div>
                 <h3 className="h5 fw-bold">Reconnect Securely</h3>
                 <p className="text-muted">
@@ -397,10 +357,16 @@ const HomeMain = () => {
                 Join our community and be a part of the solution. Start now.
               </p>
               <div className="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                <button className="btn btn-primary btn-lg px-4">
+                <button
+                  className="btn btn-primary btn-lg px-4"
+                  onClick={handleContribution}
+                >
                   Contribute Now
                 </button>
-                <button className="btn btn-outline-primary btn-lg px-4">
+                <button
+                  className="btn btn-outline-primary btn-lg px-4"
+                  onClick={handleSearch}
+                >
                   Start a Search
                 </button>
               </div>

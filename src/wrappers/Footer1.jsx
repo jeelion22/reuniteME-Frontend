@@ -89,19 +89,13 @@ const Footer1 = () => {
             <h3 className="h6">Connect</h3>
             <div className="d-flex mt-3 gap-3 footer-social-links">
               <a href="#">
-                <svg className="bi" height="24" width="24">
-                  <use xlinkHref="#twitter"></use>
-                </svg>
+                <i class="bi bi-twitter"></i>
               </a>
               <a href="#">
-                <svg className="bi" height="24" width="24">
-                  <use xlinkHref="#instagram"></use>
-                </svg>
+                <i class="bi bi-instagram"></i>
               </a>
               <a href="#">
-                <svg className="bi" height="24" width="24">
-                  <use xlinkHref="#facebook"></use>
-                </svg>
+                <i class="bi bi-facebook"></i>
               </a>
             </div>
           </div>
