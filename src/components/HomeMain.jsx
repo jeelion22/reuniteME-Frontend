@@ -1,8 +1,17 @@
 import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const HomeMain = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleContribution = () => {
+    navigate("/users/login");
+  };
+
+  const handleSearch = () => {
+    navigate("/users/signup");
+  };
 
   useEffect(() => {
     if (location.pathname === "/") {
@@ -33,10 +42,16 @@ const HomeMain = () => {
                 can make a world of difference.
               </p>
               <div className="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                <button className="btn btn-primary btn-lg px-4">
+                <button
+                  className="btn btn-primary btn-lg px-4"
+                  onClick={handleContribution}
+                >
                   Contribute Information
                 </button>
-                <button className="btn btn-outline-primary btn-lg px-4">
+                <button
+                  className="btn btn-outline-primary btn-lg px-4"
+                  onClick={handleSearch}
+                >
                   Search Missing Persons
                 </button>
               </div>
@@ -83,12 +98,12 @@ const HomeMain = () => {
                       width="32"
                       height="32"
                       fill="currentColor"
-                      class="bi bi-pencil-square"
+                      className="bi bi-pencil-square"
                       viewBox="0 0 16 16"
                     >
                       <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
                       />
                     </svg>
@@ -111,7 +126,7 @@ const HomeMain = () => {
                       width="32"
                       height="32"
                       fill="currentColor"
-                      class="bi bi-search"
+                      className="bi bi-search"
                       viewBox="0 0 16 16"
                     >
                       <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
@@ -135,11 +150,11 @@ const HomeMain = () => {
                       width="32"
                       height="32"
                       fill="currentColor"
-                      class="bi bi-lock"
+                      className="bi bi-lock"
                       viewBox="0 0 16 16"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M8 0a4 4 0 0 1 4 4v2.05a2.5 2.5 0 0 1 2 2.45v5a2.5 2.5 0 0 1-2.5 2.5h-7A2.5 2.5 0 0 1 2 13.5v-5a2.5 2.5 0 0 1 2-2.45V4a4 4 0 0 1 4-4M4.5 7A1.5 1.5 0 0 0 3 8.5v5A1.5 1.5 0 0 0 4.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 11.5 7zM8 1a3 3 0 0 0-3 3v2h6V4a3 3 0 0 0-3-3"
                       />
                     </svg>
@@ -257,106 +272,109 @@ const HomeMain = () => {
       </section>
 
       {/* contact Section */}
-      <section class="section" id="contact">
-        <div class="container px-4">
-          <div class="row justify-content-center text-center mb-5">
-            <div class="col-lg-8">
-              <h2 class="display-5 fw-bold">Contact Us</h2>
-              <p class="lead text-muted mt-3">
+      <section className="section" id="contact">
+        <div className="container px-4">
+          <div className="row justify-content-center text-center mb-5">
+            <div className="col-lg-8">
+              <h2 className="display-5 fw-bold">Contact Us</h2>
+              <p className="lead text-muted mt-3">
                 We are here to help. Reach out with any questions or concerns,
                 and our team will get back to you as soon as possible.
               </p>
             </div>
           </div>
-          <div class="row g-5">
-            <div class="col-lg-6">
-              <div class="card p-4 p-md-5 h-100">
+          <div className="row g-5">
+            <div className="col-lg-6">
+              <div className="card p-4 p-md-5 h-100">
                 <form>
-                  <div class="mb-3">
-                    <label class="form-label" for="contact-name">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="contact-name">
                       Name
                     </label>
                     <input
-                      class="form-control"
+                      className="form-control"
                       id="contact-name"
                       placeholder="Your Name"
                       type="text"
                     />
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label" for="contact-email">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="contact-email">
                       Email address
                     </label>
                     <input
-                      class="form-control"
+                      className="form-control"
                       id="contact-email"
                       placeholder="you@example.com"
                       type="email"
                     />
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label" for="contact-subject">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="contact-subject">
                       Subject
                     </label>
                     <input
-                      class="form-control"
+                      className="form-control"
                       id="contact-subject"
                       placeholder="How can we help?"
                       type="text"
                     />
                   </div>
-                  <div class="mb-4">
-                    <label class="form-label" for="contact-message">
+                  <div className="mb-4">
+                    <label className="form-label" htmlFor="contact-message">
                       Message
                     </label>
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       id="contact-message"
                       placeholder="Your message..."
                       rows="4"
                     ></textarea>
                   </div>
-                  <div class="d-flex gap-2">
-                    <button class="btn btn-primary px-4" type="submit">
+                  <div className="d-flex gap-2">
+                    <button className="btn btn-primary px-4" type="submit">
                       Submit
                     </button>
-                    <button class="btn btn-outline-secondary px-4" type="reset">
+                    <button
+                      className="btn btn-outline-secondary rounded-pill  px-4"
+                      type="reset"
+                    >
                       Reset
                     </button>
                   </div>
                 </form>
               </div>
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex flex-column h-100">
-                <div class="card p-4 mb-4">
-                  <h3 class="h5 fw-bold mb-3">Contact Information</h3>
-                  <p class="text-muted d-flex align-items-center mb-2">
-                    <span class="material-symbols-outlined me-2 text-primary">
+            <div className="col-lg-6">
+              <div className="d-flex flex-column h-100">
+                <div className="card p-4 mb-4">
+                  <h3 className="h5 fw-bold mb-3">Contact Information</h3>
+                  <p className="text-muted d-flex align-items-center mb-2">
+                    <span className="material-symbols-outlined me-2 text-primary">
                       email
                     </span>
-                    contact@reuniteme.org
+                    jeelion22@gmail.com
                   </p>
-                  <p class="text-muted d-flex align-items-center mb-2">
-                    <span class="material-symbols-outlined me-2 text-primary">
+                  <p className="text-muted d-flex align-items-center mb-2">
+                    <span className="material-symbols-outlined me-2 text-primary">
                       phone
                     </span>
-                    +1 (555) 123-4567
+                    +91-9677061448
                   </p>
-                  <p class="text-muted d-flex align-items-center mb-0">
-                    <span class="material-symbols-outlined me-2 text-primary">
+                  <p className="text-muted d-flex align-items-center mb-0">
+                    <span className="material-symbols-outlined me-2 text-primary">
                       location_on
                     </span>
-                    123 Hope Avenue, Unity City, 12345
+                    Dharmapuri, Tamilnadu
                   </p>
                 </div>
-                <div class="map-container flex-grow-1">
+                <div className="map-container flex-grow-1">
                   <iframe
-                    allowfullscreen=""
+                    allowFullScreen=""
                     height="100%"
                     loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.610225131481!2d-73.98784408459423!3d40.74844047932801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9a99b2b51%3A0x6b5c2a12b0e68f3!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1684344488888!5m2!1sen!2sus"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6361.4953704565!2d78.54387882001204!3d12.18253163386553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bac6743e8aabd5d%3A0x8e3ba9340f9f55c0!2sHanumantheertham%2C%20Tamil%20Nadu%20636902!5e0!3m2!1sen!2sin!4v1759240806221!5m2!1sen!2sin"
                     style={{ border: 0 }}
                     width="100%"
                   ></iframe>

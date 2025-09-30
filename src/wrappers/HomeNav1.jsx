@@ -34,12 +34,12 @@ const HomeNav1 = () => {
               <path
                 d="M75 9C116.421 9 150 42.5786 150 84C150 125.421 116.421 159 75 159C33.5786 159 0 125.421 0 84C0 42.5786 33.5786 9 75 9Z"
                 fill="#5C0DAB"
-                fill-opacity="0.12"
+                fillOpacity="0.12"
               />
               <path
                 d="M85 0C126.421 3.87444e-05 160 33.5787 160 75C160 116.421 126.421 150 85 150C43.5786 150 10 116.421 10 75C10 33.5786 43.5786 0 85 0Z"
                 fill="#5C0DAB"
-                fill-opacity="0.2"
+                fillOpacity="0.2"
               />
               <path
                 d="M63 92V45.4545H83.0909C86.5455 45.4545 89.5682 46.0833 92.1591 47.3409C94.75 48.5985 96.7652 50.4091 98.2045 52.7727C99.6439 55.1364 100.364 57.9697 100.364 61.2727C100.364 64.6061 99.6212 67.4167 98.1364 69.7045C96.6667 71.9924 94.5985 73.7197 91.9318 74.8864C89.2803 76.053 86.1818 76.6364 82.6364 76.6364H70.6364V66.8182H80.0909C81.5758 66.8182 82.8409 66.6364 83.8864 66.2727C84.947 65.8939 85.7576 65.2955 86.3182 64.4773C86.8939 63.6591 87.1818 62.5909 87.1818 61.2727C87.1818 59.9394 86.8939 58.8561 86.3182 58.0227C85.7576 57.1742 84.947 56.553 83.8864 56.1591C82.8409 55.75 81.5758 55.5455 80.0909 55.5455H75.6364V92H63ZM90.2727 70.6364L101.909 92H88.1818L76.8182 70.6364H90.2727Z"
@@ -63,25 +63,23 @@ const HomeNav1 = () => {
             data-bs-toggle="collapse"
             type="button"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
           <div className="collapse navbar-collapse gap-4" id="navbarNav">
             <ul className="navbar-nav mx-auto">
-              {navLinks.map((navLink) => {
-                return (
-                  <li className="nav-item" key={navLink.path}>
-                    <NavLink
-                      className={({ isActive }) =>
-                        `nav-link ${isActive ? "active" : ""}`
-                      }
-                      to={navLink.path}
-                    >
-                      {navLink.label}
-                    </NavLink>
-                  </li>
-                );
-              })}
+              {navLinks.map((navLink) => (
+                <li className="nav-item" key={navLink.path}>
+                  <NavLink
+                    className={({ isActive }) =>
+                      `nav-link ${isActive ? "active" : ""}`
+                    }
+                    to={navLink.path}
+                  >
+                    {navLink.label}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
             <div className="d-flex gap-2">
               <button

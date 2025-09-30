@@ -5,6 +5,7 @@ import {
   Link,
   NavLink,
   Outlet,
+  redirect,
   useLoaderData,
   useNavigate,
 } from "react-router-dom";
@@ -18,14 +19,9 @@ export async function loader() {
 
     return { user };
   } catch (error) {
-    // alert(error.response.data.message);
-    if (error.response.data.message === "Unauthorized") {
-      toast.warning("Unauthorized");
-    }
+    toast.error(error.response.data.message);
 
-    window.location.replace("/");
-
-    return null;
+    return redirect("/");
   }
 }
 

@@ -1,11 +1,12 @@
 import "../styles/AdminDashboardNav.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   useNavigate,
   Link,
   Outlet,
   useLoaderData,
   NavLink,
+  redirect,
 } from "react-router-dom";
 import AdminSidebar from "../components/admin/AdminSidebar";
 import userServices from "../../services/userServices";
@@ -19,8 +20,8 @@ export async function loader() {
 
     return { ...response.data.admin };
   } catch (error) {
-    alert(error.response.data.message);
-    return null;
+    toast.error(error.response.data.message);
+    return redirect("/");
   }
 }
 
