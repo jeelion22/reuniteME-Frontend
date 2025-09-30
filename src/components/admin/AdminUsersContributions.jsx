@@ -47,15 +47,15 @@ const AdminUsersContributions = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container-flex border rounded p-4">
         <div className="row">
-          <h4 className="text-center border-bottom  p-2 shadow-lg">
+          <h4 className="text-center border-bottom  p-2 shadow-sm">
             List of Contributions
           </h4>
         </div>
 
-        <div className="row ">
-          <div className="col  border rounded bg-light">
+        <div className="row shadow-sm ">
+          <div className="col  border rounded">
             <div className="table-responsive pt-2">
               <table className="table borderless table-hover align-middle p-4">
                 <thead>
@@ -152,17 +152,17 @@ const AdminUsersContributions = () => {
                                     </div>
                                   </div>
                                 </div>
-                                <div className="modal-footer">
-                                  <button
+                                <div className="modal-footer justify-content-center m-0">
+                                  {/* <button
                                     type="button"
-                                    className="btn btn-secondary"
+                                    className="btn btn-outline-danger rounded-pill"
                                     data-bs-dismiss="modal"
                                   >
-                                    Close
-                                  </button>
+                                    Cancel
+                                  </button> */}
                                   <button
                                     type="button"
-                                    className="btn btn-primary"
+                                    className="btn btn-outline-success rounded-pill"
                                     onClick={() => {
                                       handleLocation(contribution.location);
                                     }}

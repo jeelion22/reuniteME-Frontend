@@ -86,14 +86,14 @@ const AdminLookupUsers = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container-flex border rounded p-4">
         <div className="row">
-          <h4 className="text-center border-bottom p-2 shadow">
-            List of Users{" "}
+          <h4 className="text-center border-bottom py-4 shadow-sm">
+            List of Users
           </h4>
         </div>
 
-        <div className="row border rounded pt-3  bg-light">
+        <div className="row border rounded pt-3  shadow-sm">
           <div className="table-responsive ">
             <table className="table table-hover align-middle pt-2">
               <thead>
@@ -114,37 +114,39 @@ const AdminLookupUsers = () => {
                   return (
                     <tr key={user._id.toString()}>
                       <th scope="row">{itemNumber}</th>
+                      <td>{`${user.firstname} ${user.lastname}`}</td>
                       <td>
-                        {user.firstname} {user.lastname}
-                      </td>
-                      <td>
-                        {user.email}
-                        {user.isEmailVerified ? (
-                          <FontAwesomeIcon
-                            icon={faSquareCheck}
-                            className="text-success ms-1"
-                          />
-                        ) : (
-                          <FontAwesomeIcon
-                            icon={faRectangleXmark}
-                            className="text-danger ms-1"
-                          />
-                        )}
+                        <div className="d-flex gap-2">
+                          {user.email}
+                          {user.isEmailVerified ? (
+                            <FontAwesomeIcon
+                              icon={faSquareCheck}
+                              className="text-success ms-1"
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={faRectangleXmark}
+                              className="text-danger ms-1"
+                            />
+                          )}
+                        </div>
                       </td>
 
                       <td>
-                        {user.phone}
-                        {user.isPhoneVerified ? (
-                          <FontAwesomeIcon
-                            icon={faSquareCheck}
-                            className="text-success ms-1"
-                          />
-                        ) : (
-                          <FontAwesomeIcon
-                            icon={faRectangleXmark}
-                            className="text-danger ms-1"
-                          />
-                        )}
+                        <div className="d-flex gap-2">
+                          {user.phone}
+                          {user.isPhoneVerified ? (
+                            <FontAwesomeIcon
+                              icon={faSquareCheck}
+                              className="text-success ms-1"
+                            />
+                          ) : (
+                            <FontAwesomeIcon
+                              icon={faRectangleXmark}
+                              className="text-danger ms-1"
+                            />
+                          )}
+                        </div>
                       </td>
                       <td>{user.userCategory}</td>
                       <td>
@@ -168,14 +170,29 @@ const AdminLookupUsers = () => {
                         "write" || "delete" || "update"
                       ) && (
                         <td className="text-end">
-                          <div className="d-flex justify-content-end gap-2">
+                          <div className="d-flex justify-content-end align-items-center gap-4">
                             <FontAwesomeIcon
                               icon={faPenToSquare}
                               type="button"
-                              className="btn btn-primary"
+                              className="btn btn-outline-primary"
                               data-bs-toggle="modal"
                               data-bs-target={`#${user._id.toString()}`}
                             />
+
+                            <button
+                              className="btn btn-outline-danger"
+                              type="button"
+                              disabled={!user.isActive}
+                              aria-disabled="true"
+                              onClick={() => {
+                                handleUserDelete(
+                                  `${user.firstname} ${user.lastname}`,
+                                  user._id.toString()
+                                );
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faTrashCan} />
+                            </button>
 
                             <div
                               className="modal fade"
@@ -209,21 +226,6 @@ const AdminLookupUsers = () => {
                                 </div>
                               </div>
                             </div>
-
-                            <button
-                              className="btn btn-outline-danger"
-                              type="button"
-                              disabled={!user.isActive}
-                              aria-disabled="true"
-                              onClick={() => {
-                                handleUserDelete(
-                                  `${user.firstname} ${user.lastname}`,
-                                  user._id.toString()
-                                );
-                              }}
-                            >
-                              <FontAwesomeIcon icon={faTrashCan} />
-                            </button>
                           </div>
                         </td>
                       )}

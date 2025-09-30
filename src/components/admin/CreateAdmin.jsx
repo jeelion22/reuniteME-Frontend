@@ -47,7 +47,7 @@ const CreateAdmin = () => {
         return (
           <form onSubmit={formik.handleSubmit}>
             <div className="container">
-              <div className="row p-4 border bg-light rounded">
+              <div className="row p-4 border  rounded">
                 <div className="col">
                   <div className="row justify-content-center text-center mt-4">
                     <div className="col border-bottom shadow-sm p-2">
@@ -265,7 +265,7 @@ const CreateAdmin = () => {
 
                   <div className="row justify-content-center mt-3">
                     <div className="col-auto">
-                      <button type="submit" className="btn btn-primary">
+                      <button type="submit" className="btn btn-outline-primary">
                         Create Admin
                       </button>
                     </div>

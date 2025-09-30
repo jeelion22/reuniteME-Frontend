@@ -1,4 +1,4 @@
-import React, { PureComponent, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BarChart,
   Bar,
@@ -9,138 +9,119 @@ import {
   Legend,
   ReferenceLine,
   ResponsiveContainer,
-  Label,
 } from "recharts";
 import userServices from "../../../services/userServices";
 import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    usersCreatedAtCount: [],
+    contributionData: [],
+    totalActiveUsers: 0,
+    totalNonActiveUsers: 0,
+    totalRescued: 0,
+    totalNotRescued: 0,
+  });
 
   useEffect(() => {
     const getUsersChartData = async () => {
       try {
         const response = await userServices.getUsersPlotInfo();
-
         if (response) {
           setData(response.data);
         }
       } catch (error) {
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data?.message || "Failed to load data");
       }
     };
-
     getUsersChartData();
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-12 col-sm-12 col-lg-6 border rounded">
-          <div style={{ position: "relative" }}>
-            <ResponsiveContainer width="100%" height={400}>
-              <BarChart
-                width={730}
-                height={250}
-                data={data.usersCreatedAtCount}
-                barSize={50}
-                barGap={6}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="date"
-                  // label={{ value: "Date", position: "insideBottom", offset: 0 }}
-                />
-                <YAxis
-                  label={{
-                    value: "users",
-                    angle: -90,
-                    // position: "insideLeft",
-                    offset: "0",
-                  }}
-                />
-                <Tooltip />
-                <Legend verticalAlign="bottom" height={36} />
+    <div className="container-fluid">
+      <div className="row g-4">
+        {/* Users Chart */}
+        <div className="col-12 col-lg-6">
+          <div className="card shadow-sm border-0 h-100">
+            <div className="card-body">
+              <h5 className="card-title mb-4">User Registrations</h5>
+              <ResponsiveContainer width="100%" height={350}>
+                <BarChart
+                  data={data.usersCreatedAtCount}
+                  barSize={40}
+                  barGap={6}
+                  margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="date" />
+                  <YAxis
+                    label={{
+                      value: "Users",
+                      angle: -90,
+                      position: "insideLeft",
+                    }}
+                  />
+                  <Tooltip />
+                  <Legend verticalAlign="bottom" height={36} />
+                  <ReferenceLine y={0} stroke="#000" />
+                  <Bar dataKey="count" fill="#6f42c1" radius={[6, 6, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
 
-                <ReferenceLine y={0} stroke="#000" />
-                <Bar dataKey="count" fill="#8884d8" />
-              </BarChart>
-            </ResponsiveContainer>
-            <div
-              className="text-body-secondary top-0 end-0"
-              style={{
-                position: "absolute",
-                top: 10,
-                right: 5,
-                padding: "10px",
-                // backgroundColor: "white",
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <p>Active Users: {data.totalActiveUsers}</p>
-              <p>Inactive Users: {data.totalNonActiveUsers}</p>
+              {/* Stats */}
+              <div className="d-flex justify-content-around mt-3">
+                <span className="badge bg-success px-3 py-2">
+                  Active: {data.totalActiveUsers}
+                </span>
+                <span className="badge bg-danger px-3 py-2">
+                  Inactive: {data.totalNonActiveUsers}
+                </span>
+              </div>
             </div>
           </div>
         </div>
-        <div className="col-md-12 col-sm-12 col-lg-6 border rounded">
-          <div style={{ position: "relative" }}>
-            <ResponsiveContainer width="100%" height={400}>
-              <BarChart
-                width={730}
-                height={250}
-                data={data.contributionData}
-                barSize={50}
-                barGap={6}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                  dataKey="date"
-                  // label={{ value: "Date", position: "insideBottom", offset: 0 }}
-                />
-                <YAxis
-                  label={{
-                    value: "contributions",
-                    angle: -90,
-                    // position: "insideLeft",
-                    offset: "0",
-                  }}
-                />
-                <Tooltip />
-                <Legend verticalAlign="bottom" height={36} />
 
-                <ReferenceLine y={0} stroke="#000" />
-                <Bar dataKey="totalUploads" fill="#8884d8" />
-              </BarChart>
-            </ResponsiveContainer>
-            <div
-              className="text-body-secondary top-0 end-0"
-              style={{
-                position: "absolute",
-                top: 5,
-                right: 5,
-                padding: "5px",
-                // backgroundColor: "white",
-                border: "1px solid #ccc",
-                borderRadius: "5px",
-                boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <p>Rescued: {data.totalRescued}</p>
-              <p>Non-rescued: {data.totalNotRescued}</p>
+        {/* Contributions Chart */}
+        <div className="col-12 col-lg-6">
+          <div className="card shadow-sm border-0 h-100">
+            <div className="card-body">
+              <h5 className="card-title mb-4">Contributions</h5>
+              <ResponsiveContainer width="100%" height={350}>
+                <BarChart
+                  data={data.contributionData}
+                  barSize={40}
+                  barGap={6}
+                  margin={{ top: 10, right: 20, left: 0, bottom: 20 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="date" />
+                  <YAxis
+                    label={{
+                      value: "Contributions",
+                      angle: -90,
+                      position: "insideLeft",
+                    }}
+                  />
+                  <Tooltip />
+                  <Legend verticalAlign="bottom" height={36} />
+                  <ReferenceLine y={0} stroke="#000" />
+                  <Bar
+                    dataKey="totalUploads"
+                    fill="#20c997"
+                    radius={[6, 6, 0, 0]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+
+              {/* Stats */}
+              <div className="d-flex justify-content-around mt-3">
+                <span className="badge bg-primary px-3 py-2">
+                  Rescued: {data.totalRescued}
+                </span>
+                <span className="badge bg-secondary px-3 py-2">
+                  Not Rescued: {data.totalNotRescued}
+                </span>
+              </div>
             </div>
           </div>
         </div>

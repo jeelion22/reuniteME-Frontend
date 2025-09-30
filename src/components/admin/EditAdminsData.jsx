@@ -1,17 +1,15 @@
 import "../../styles/EditAdminsData.css";
 import React, { useState } from "react";
 import { Formik } from "formik";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLoaderData } from "react-router-dom";
 import userServices from "../../../services/userServices";
 import { adminEditValidationSchema } from "../../validataionSchema/adminEditValidationSchema";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import { toast } from "react-toastify";
 
-const EditAdminsData = ({ admin, getAllAdmins }) => {
+const EditAdminsData = ({ admin, setAdminInfo, getAllAdmins }) => {
   const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   return (
     <Formik
@@ -25,11 +23,10 @@ const EditAdminsData = ({ admin, getAllAdmins }) => {
             values
           );
 
-          getAllAdmins();
+          await getAllAdmins();
 
           toast.success(response.data.message);
-          resetForm();
-          navigate(0);
+          setAdminInfo(useLoaderData());
         } catch (error) {
           toast.error(error.response.data.message);
         } finally {
@@ -264,16 +261,17 @@ const EditAdminsData = ({ admin, getAllAdmins }) => {
                     <div className="col-auto">
                       <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="btn btn-outline-primary d-flex align-items-center gap-2"
                         disabled={isLoading}
                       >
                         {isLoading ? (
-                          <div
-                            className="spinner-border fs-5 text-light "
-                            role="status"
-                          >
-                            <span className="visually-hidden">Loading...</span>
-                          </div>
+                          <>
+                            <div
+                              className="spinner-border spinner-border-sm"
+                              role="status"
+                            />
+                            <span>Loading...</span>
+                          </>
                         ) : (
                           "Save changes"
                         )}

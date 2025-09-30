@@ -188,7 +188,7 @@ const EditUserData = ({ user }) => {
                       <div className=" d-flex justify-content-center">
                         <button
                           type="submit"
-                          className="btn btn-primary"
+                          className="btn btn-outline-primary"
                           disabled={isSubmitting}
                         >
                           {isSubmitting ? (

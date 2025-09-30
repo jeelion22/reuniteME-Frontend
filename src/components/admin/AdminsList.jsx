@@ -33,27 +33,25 @@ const AdminsList = () => {
     }
   };
 
+  // run on mount
+  useEffect(() => {
+    getAllAdmins();
+  }, []);
+
   useEffect(() => {
     if (admin) {
       setAdminInfo(admin);
     }
   }, [admin]);
 
-  useEffect(() => {
-    getAllAdmins();
-  }, []);
-
   const handleAdminDelete = async (name, adminId) => {
     if (confirm(`Would you like to delete ${name}?`)) {
       try {
         const response = await userServices.deleteAdmin(adminId);
-
-        if (response) {
-          toast.success("Admin was deleted successfully!");
-          await getAllAdmins();
-        }
+        toast.success("Admin was deleted successfully!");
+        await getAllAdmins(); // refresh list after delete
       } catch (error) {
-        toast.error(error.response.data.message);
+        toast.error(error.response?.data?.message || "Failed to delete admin");
       }
     }
   };
@@ -67,14 +65,14 @@ const AdminsList = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container-flex rounded border p-4">
         <div className="row ">
-          <h4 className="text-center border-bottom shadow p-2 ">
+          <h4 className="text-center border-bottom shadow-sm p-4 ">
             List of Admins
           </h4>
         </div>
 
-        <div className="row border rounded bg-light p-2  mt-2">
+        <div className="row border rounded p-2  mt-2 shadow-sm">
           <div className="table-responsive">
             <table className="table table-hover align-middle">
               <thead>
@@ -88,8 +86,8 @@ const AdminsList = () => {
                   <th scope="col">Role</th>
                   <th scope="col">Permissions</th>
                   <th scope="col">Status</th>
-                  {adminInfo.permissions?.includes(
-                    "write" || "delete" || "update"
+                  {adminInfo.permissions?.some((p) =>
+                    ["write", "delete", "update"].includes(p)
                   ) && <th scope="col">Manage</th>}
                 </tr>
               </thead>
@@ -108,7 +106,15 @@ const AdminsList = () => {
 
                       <td>{admin.phone}</td>
                       <td>{admin.role}</td>
-                      <td>{admin.permissions?.join(", ")}</td>
+                      <td>
+                        <div className="d-flex gap-2">
+                          {admin.permissions?.map((permission) => (
+                            <span className="bg-warning px-2 rounded ">
+                              {permission}
+                            </span>
+                          ))}
+                        </div>
+                      </td>
 
                       <td>{admin.status}</td>
 
@@ -117,18 +123,38 @@ const AdminsList = () => {
                       ) && (
                         <td className="text-end">
                           <div className="d-flex justify-content-end gap-2">
-                            <button
-                              type="button"
-                              className="btn btn-primary"
-                              data-bs-toggle="modal"
-                              data-bs-target={`#${admin._id.toString()}`}
-                              disabled={admin.email === "jeelion22@gmail.com"}
-                            >
-                              <FontAwesomeIcon
+                            <div className="d-flex gap-2">
+                              <button
                                 type="button"
-                                icon={faPenToSquare}
-                              />
-                            </button>
+                                className="btn btn-outline-primary"
+                                data-bs-toggle="modal"
+                                data-bs-target={`#${admin._id.toString()}`}
+                                disabled={admin.email === "jeelion22@gmail.com"}
+                              >
+                                <FontAwesomeIcon
+                                  type="button"
+                                  icon={faPenToSquare}
+                                />
+                              </button>
+
+                              <button
+                                className="btn btn-outline-danger"
+                                type="button"
+                                disabled={
+                                  admin.status === "deleted" ||
+                                  admin.email === "jeelion22@gmail.com"
+                                }
+                                aria-disabled={admin.status === "deleted"}
+                                onClick={() => {
+                                  handleAdminDelete(
+                                    `${admin.firstname} ${admin.lastname}`,
+                                    admin._id.toString()
+                                  );
+                                }}
+                              >
+                                <FontAwesomeIcon icon={faTrashCan} />
+                              </button>
+                            </div>
 
                             <div
                               className="modal fade"
@@ -156,6 +182,7 @@ const AdminsList = () => {
                                   <div className="modal-body">
                                     <EditAdminsData
                                       admin={admin}
+                                      setAdminInfo={setAdminInfo}
                                       key={admin._id.toString()}
                                       getAllAdmins={getAllAdmins}
                                     />
@@ -163,24 +190,6 @@ const AdminsList = () => {
                                 </div>
                               </div>
                             </div>
-
-                            <button
-                              className="btn btn-outline-danger"
-                              type="button"
-                              disabled={
-                                admin.status === "deleted" ||
-                                admin.email === "jeelion22@gmail.com"
-                              }
-                              aria-disabled={admin.status === "deleted"}
-                              onClick={() => {
-                                handleAdminDelete(
-                                  `${admin.firstname} ${admin.lastname}`,
-                                  admin._id.toString()
-                                );
-                              }}
-                            >
-                              <FontAwesomeIcon icon={faTrashCan} />
-                            </button>
                           </div>
                         </td>
                       )}
