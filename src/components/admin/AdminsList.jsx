@@ -12,6 +12,8 @@ import { useLoaderData } from "react-router-dom";
 import EditAdminsData from "./EditAdminsData";
 import { toast } from "react-toastify";
 
+const admin = import.meta.env.VITE_ADMIN;
+
 const AdminsList = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [adminsList, setAdminsList] = useState([]);
@@ -129,7 +131,7 @@ const AdminsList = () => {
                                 className="btn btn-outline-primary"
                                 data-bs-toggle="modal"
                                 data-bs-target={`#${admin._id.toString()}`}
-                                disabled={admin.email === "jeelion22@gmail.com"}
+                                disabled={admin.email === admin}
                               >
                                 <FontAwesomeIcon
                                   type="button"
@@ -142,7 +144,7 @@ const AdminsList = () => {
                                 type="button"
                                 disabled={
                                   admin.status === "deleted" ||
-                                  admin.email === "jeelion22@gmail.com"
+                                  admin.email === admin
                                 }
                                 aria-disabled={admin.status === "deleted"}
                                 onClick={() => {
