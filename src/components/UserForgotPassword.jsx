@@ -4,6 +4,7 @@ import { userForgotPasswordValidationSchema } from "../validataionSchema/userFor
 import { Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import userServices from "../../services/userServices";
+import { toast } from "react-toastify";
 
 const UserForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -46,25 +47,23 @@ const UserForgotPassword = () => {
               setIsLoading(true);
               const response = await userServices.forgotPassword(values);
 
-              if (response.status === 200) {
-                setIsLoading(false);
-                setIsEmailVerified(true);
-
-                setTimeout(() => {
-                  alert(response.data.message);
-                  setEmail("");
-                  navigate("/");
-                }, 5000);
-              }
+              setIsLoading(false);
+              setIsEmailVerified(true);
+              toast.success(
+                response?.data?.message ||
+                  "Password reset link sent successfully!"
+              );
+              setEmail("");
+              navigate("/");
             } catch (error) {
               setIsLoading(false);
               setIsEmailVerified(false);
               console.log(error);
 
               if (error.response.data) {
-                alert(error.response.data.message);
+                toast.error(error.response.data.message);
               } else {
-                alert(error.message);
+                toast.error(error.message);
               }
             }
           }}
