@@ -46,6 +46,9 @@ const AdminPasswordReset = () => {
               }, 5000);
             } else {
               toast.success(response.data.message);
+              toast.info(
+                "Please check your inbox (and spam folder) for the password reset link."
+              );
               setPasswordStatus(false);
             }
           })

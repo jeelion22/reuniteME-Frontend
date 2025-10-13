@@ -53,6 +53,9 @@ const UserForgotPassword = () => {
                 response?.data?.message ||
                   "Password reset link sent successfully!"
               );
+              toast.info(
+                "Please check your inbox (and spam folder) for the password reset link."
+              );
               setEmail("");
               navigate("/");
             } catch (error) {
