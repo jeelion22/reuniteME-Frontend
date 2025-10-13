@@ -33,7 +33,7 @@ const Contributions = () => {
     setCurrentPage(data.selected);
   };
 
-  const itemsPerPage = 6;
+  const itemsPerPage = 5;
   const contributions = user.data.user.contributions || [];
   const paginatedContributions = contributions.slice(
     currentPage * itemsPerPage,
@@ -184,17 +184,18 @@ const Contributions = () => {
         pageCount={Math.ceil(contributions.length / itemsPerPage)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
-        className="pagination justify-content-center mt-4"
-        pageclassName="page-item"
-        pageLinkclassName="page-link"
-        previousclassName="page-item"
-        previousLinkclassName="page-link"
-        nextclassName="page-item"
-        nextLinkclassName="page-link"
-        breakclassName="page-item"
+        className="pagination justify-content-center my-4"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakClassName="page-item"
         breakLinkclassName="page-link"
-        activeclassName="active"
+        activeClassName="active"
         onPageChange={handlePageClick}
+        renderOnZeroPageCount={null}
       />
     </>
   );

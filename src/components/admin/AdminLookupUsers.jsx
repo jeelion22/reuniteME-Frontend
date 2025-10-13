@@ -245,17 +245,18 @@ const AdminLookupUsers = () => {
         pageCount={Math.ceil(users.length / itemsPerPage)}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
-        className="pagination justify-content-center mt-4"
-        pageclassName="page_item"
-        pageLinkclassName="page-link"
-        previousclassName="page-item"
-        previousLinkclassName="page-link"
-        nextclassName="page-item"
-        nextLinkclassName="page-link"
-        breakclassName="page-item"
-        breakLinkclassName="page-link"
-        activeclassName="active"
+        className="pagination justify-content-center my-4"
+        pageClassName="page_item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        activeClassName="active"
         onPageChange={handlePageClick}
+        renderOnZeroPageCount={null}
       />
     </>
   );
